@@ -1,26 +1,262 @@
 @import "tailwindcss";
 
+/* `dark:` utilities follow the `.dark` class on <html> (set by ThemeToggle /
+   the no-flash script in layout.tsx), not the OS media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ----------------------------------------------------------------------------
+ * Theme values
+ *
+ * Neutrals and surfaces are CSS variables so a single `.dark` class flips the
+ * whole site. Components just use `bg-surface`, `text-ink-900`, `ring-ink-200`
+ * etc. and never need their own `dark:` variants for neutrals.
+ *
+ *   surface          page background
+ *   surface-raised   cards, inputs, popovers
+ *   ink-50 … 950     neutral scale — 50 is "closest to the background",
+ *                    950 is "strongest text". Inverts in dark mode.
+ *   night-*          FIXED dark palette for blocks that stay dark in both
+ *                    themes (footer, video, testimonial, code blocks).
+ *   brand-50 … 200   tints; darkened in dark mode so chips don't glow.
+ *   logo-cyan / logo-deep   extra logo colours for gradients.
+ * ------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+
+  /* Cool neutrals tinted towards the logo's navy wordmark (#030d26). */
+  --ink-50: #f6f7fa;
+  --ink-100: #eef0f5;
+  --ink-200: #e1e4ec;
+  --ink-300: #c6cbd8;
+  --ink-400: #6b7285; /* ≥4.5:1 on white, for small meta text */
+  --ink-500: #5a6175;
+  --ink-600: #444b5f;
+  --ink-700: #30364a;
+  --ink-800: #1d2336;
+  --ink-900: #0d1328;
+  --ink-950: #030d26; /* logo wordmark navy */
+
+  --brand-50: #eef4fe;
+  --brand-100: #dce8fd;
+  --brand-200: #bcd3fb;
+
+  color-scheme: light;
+}
+
+.dark {
+  --surface: #0a0d15;
+  --surface-raised: #121621;
+
+  --ink-50: #0e121b;
+  --ink-100: #161b27;
+  --ink-200: #232a39;
+  --ink-300: #343c4e;
+  --ink-400: #8a92a6; /* ≥4.5:1 on surface-raised */
+  --ink-500: #9aa2b5;
+  --ink-600: #b8bfcd;
+  --ink-700: #d2d7e1;
+  --ink-800: #e4e7ee;
+  --ink-900: #f1f3f7;
+  --ink-950: #fafbfd;
+
+  --brand-50: #0f1a33;
+  --brand-100: #14223f;
+  --brand-200: #1d3261;
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+
+  --color-ink-50: var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-200: var(--ink-200);
+  --color-ink-300: var(--ink-300);
+  --color-ink-400: var(--ink-400);
+  --color-ink-500: var(--ink-500);
+  --color-ink-600: var(--ink-600);
+  --color-ink-700: var(--ink-700);
+  --color-ink-800: var(--ink-800);
+  --color-ink-900: var(--ink-900);
+  --color-ink-950: var(--ink-950);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* Brand: the blue of ".ai" in the Dagsis.ai logo (#3171f3 = brand-500).
+     Used as an accent, not on every surface. No purple anywhere. */
+  --color-brand-300: #8db3f8;
+  --color-brand-400: #5c91f5;
+  --color-brand-500: #3171f3;
+  --color-brand-600: #1f5ce0;
+  --color-brand-700: #1a4bbb;
+  --color-brand-800: #1a3f96;
+  --color-brand-900: #1b3777;
+  --color-brand-950: #0c1a40;
+
+  /* Other colours from the logo mark, for gradients and highlights. */
+  --color-logo-cyan: #56bbf7;
+  --color-logo-deep: #0a1eb0;
+
+  /* Fixed deep palette (does not flip with the theme). Deep logo blues,
+     never black. */
+  --color-night-600: #2d56ad;
+  --color-night-700: #1f428f;
+  --color-night-800: #173276;
+  --color-night-900: #10245a;
+  --color-night-950: #0c1a40;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 1.5s infinite;
+  --animate-blink: blink 4s ease-in-out infinite;
+  --animate-typing: typing 1.2s ease-in-out infinite;
+  --animate-dash: dash 1.2s linear infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-word-in: word-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-line-y: line-y 5s linear infinite;
+  --animate-line-x: line-x 6s linear infinite;
+  --animate-spin-slow: spin 10s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -16; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes word-in {
+    from { opacity: 0; transform: translateY(0.35em); filter: blur(8px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
+  }
+  /* Glowing dot travelling along grid lines (joinboardly) */
+  @keyframes line-y {
+    from { top: -15%; }
+    to { top: 115%; }
+  }
+  @keyframes line-x {
+    from { left: -15%; }
+    to { left: 115%; }
+  }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-2px); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    /* Smooth scrolling comes from Lenis (SmoothScroll.tsx); keep native
+       smooth behaviour only when Lenis isn't running. */
+    scroll-behavior: smooth;
+    /* Offset anchor jumps for the floating navbar */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-surface text-ink-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-ink-950;
+  }
+}
+
+/* Smooth colour change when the theme is toggled (not on first paint). */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    fill 0.25s ease !important;
+}
+
+@layer utilities {
+  /* Logo-mark gradient (deep blue → blue → cyan) for big step numerals */
+  .text-gradient-logo {
+    @apply bg-gradient-to-br from-logo-deep via-brand-500 to-logo-cyan bg-clip-text text-transparent;
+  }
+
+  /* Italic serif accent inside sans headlines */
+  .accent-serif {
+    @apply font-serif font-normal italic tracking-normal;
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+}
+
+/* Scroll-reveal (see components/shared/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-from="right"] {
+  transform: translateX(48px);
+}
+.reveal[data-from="left"] {
+  transform: translateX(-48px);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* FAQ: animate <details> open/close height where supported (progressive). */
+:root {
+  interpolate-size: allow-keywords;
+}
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    content-visibility 0.35s allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+/* Showcase auto-advance progress bar (components/sections/product-showcase) */
+@keyframes showcase-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
