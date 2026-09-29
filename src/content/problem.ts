@@ -3,35 +3,35 @@ import type { IconItem, SectionIntro } from "@/types/content";
 
 export const problemIntro: SectionIntro = {
   eyebrow: "The problem",
-  title: "Most support work is the same twenty questions",
+  title: "Customers Don't Wait. Your Team Can't Be Everywhere.",
   description:
-    "The answers already exist somewhere in your docs. Someone still has to find them, copy them and paste them, one customer at a time.",
+    "Every missed message is a missed sale. Here is what is holding most businesses back.",
 };
 
 export const problems: IconItem[] = [
   {
-    icon: FileQuestion,
-    title: "Repetitive customer questions",
-    description:
-      "Pricing, shipping, opening hours, refunds. The same handful of questions, answered by hand every day.",
-  },
-  {
     icon: Clock,
-    title: "Slow response times",
+    title: "Slow replies lose customers",
     description:
-      "Customers expect answers in seconds. Hours-long replies (or none after hours) mean lost sales and frustrated buyers.",
-  },
-  {
-    icon: FolderSearch,
-    title: "Information scattered everywhere",
-    description:
-      "PDFs, the help center, the website, someone's memory. Every reply starts with a search.",
+      "Customers expect answers in minutes. When enquiries sit unanswered after hours or during busy periods, they move on to a competitor.",
   },
   {
     icon: Users,
-    title: "Support teams overloaded",
+    title: "Support costs keep rising",
     description:
-      "Your best people spend their day copy-pasting instead of solving the problems that actually need a human.",
+      "Hiring more people to answer repetitive questions about pricing, hours and orders is expensive and doesn't scale.",
+  },
+  {
+    icon: FolderSearch,
+    title: "Knowledge is scattered",
+    description:
+      "Answers live in PDFs, websites, chat threads and people's heads, so replies are inconsistent.",
+  },
+  {
+    icon: FileQuestion,
+    title: "Leads slip through the cracks",
+    description:
+      "Potential buyers ask questions in chat, but their details are never captured or followed up on.",
   },
 ];
 

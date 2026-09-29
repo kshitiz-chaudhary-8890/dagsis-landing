@@ -28,7 +28,7 @@ export function Section({
   ...props
 }: SectionProps) {
   return (
-    <section className={cn("relative isolate py-20 sm:py-28", tones[tone], className)} {...props}>
+    <section className={cn("relative isolate py-16 sm:py-20", tones[tone], className)} {...props}>
       <Container className={containerClassName}>{children}</Container>
     </section>
   );

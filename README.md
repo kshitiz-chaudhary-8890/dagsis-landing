@@ -2,7 +2,7 @@
 
 Marketing site for **Dagsis: AI Agents That Know Your Business**.
 
-Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · lucide-react · Lenis**. Supports **light and dark themes**, with scroll animations modelled on the reference sites.
+Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · lucide-react · Lenis**. Uses a fixed **light theme**, with scroll animations modelled on the reference sites.
 
 ```bash
 npm install
@@ -19,7 +19,7 @@ npm run media:placeholders  # regenerate placeholder screenshots + video (dev se
 ```
 src/
 ├── app/
-│   ├── layout.tsx              # <html>, fonts, SEO metadata, no-flash theme script
+│   ├── layout.tsx              # <html>, fonts, SEO metadata, light colour scheme
 │   ├── globals.css             # Design tokens (colours per theme, animations) + utilities
 │   ├── (site)/                 # Public marketing pages
 │   │   ├── layout.tsx          #   Navbar, Footer, smooth scroll, skip link
@@ -35,7 +35,6 @@ src/
 │   └── useMediaQuery.ts        # media queries, useReducedMotion()
 ├── lib/
 │   ├── utils.ts                # cn() class merger, formatPrice()
-│   ├── theme.ts                # theme storage key, no-flash script, applyTheme()
 │   └── smooth-scroll.ts        # Lenis handle + scrollToY()
 └── components/
     ├── ui/                     # Generic building blocks (no business copy)
@@ -43,10 +42,10 @@ src/
     ├── layout/                 # Navbar, Footer, SmoothScroll
     ├── shared/                 # Reusable visuals + motion primitives:
     │   RobotAvatar, BrowserFrame, ChatBubble, BrandIcons, Logo (official Dagsis.ai artwork),
-    │   ThemeToggle, Reveal, Marquee (ticker: speed, hover slow-down, drag/scroll), ScrollRevealText
+    │   Reveal, Marquee (ticker: speed, hover slow-down, drag/scroll), ScrollRevealText
     ├── dev/                    # MediaTour (only used by /media-preview)
     └── sections/               # One folder per landing section (+ its sub-components)
-        ├── hero/               Hero, HeroAgentCard
+        ├── hero/               Hero, HeroBot, HeroRobot, HeroChatPreview, ChannelIcon, HeroGradient + scoped CSS
         ├── trusted-by/         TrustedBy            (hidden by flag)
         ├── problem/            Problem, ProblemItem, ProblemInbox
         ├── use-cases/          UseCases, UseCaseChat
@@ -76,32 +75,22 @@ design/brand/Final Dagsis Logo/                         # ORIGINAL logo artwork 
 1. **Copy is data.** Components never hard-code marketing text; they read from `src/content`. Changing a headline is a one-file edit, and TypeScript catches missing fields.
 2. **One section, one folder.** A section's helper components stay in its folder. Only truly reusable pieces go in `components/shared` or `components/ui`.
 3. **Server components by default.** `"use client"` is only used where there's state or scroll/animation logic. Client components import content directly instead of receiving icon components as props, because functions can't be passed across the server/client boundary.
-4. **Design tokens in one place.** Colours (`surface`, `ink-*`, `brand-*`, `night-*`) and keyframes live in `globals.css`. Neutrals are CSS variables that change under `.dark`.
+4. **Design tokens in one place.** Colours (`surface`, `ink-*`, `brand-*`, `night-*`) and keyframes live in `globals.css`. Public pages use the light neutral palette.
 5. **Motion is built from shared primitives** (see below) and always respects `prefers-reduced-motion`.
 
 ---
 
-## Light & dark theme
+## Light theme
 
-A sun/moon button in the navbar switches themes. The first visit follows the visitor's OS setting, and the choice is saved in `localStorage` (`dagsis-theme`).
-
-| Piece | File |
-|-------|------|
-| Colour variables for both themes | `src/app/globals.css` (`:root` and `.dark`) |
-| No-flash script, runs before paint | `src/lib/theme.ts` → injected in `src/app/layout.tsx` |
-| Toggle button | `src/components/shared/ThemeToggle.tsx` |
+Public pages always render in light mode. The navbar has no theme toggle, and OS colour preferences or an old `dagsis-theme` localStorage value do not change the site. Browser controls and the browser theme colour also use the light scheme.
 
 **Rules for new components**
-- Use the semantic tokens and **don't** add `dark:` variants for neutrals. They flip automatically:
-  `bg-surface` (page), `bg-surface-raised` (cards), `text-ink-900` (strong text), `text-ink-500` (muted), `text-ink-400` (small meta text, still ≥ 4.5:1), `ring-ink-200` (borders).
-- Main buttons use the logo blue in both themes (`Button` variant `primary`). **Avoid black:** don't use `bg-ink-950` / `bg-ink-900` as large backgrounds or buttons.
-- For areas that stay dark in **both** themes (video section, pricing highlight, code blocks), use the fixed `night-*` palette (deep logo blues, not black), `bg-white`/`text-night-950` for white elements, and `text-white` / `text-white/60` for text. Don't use theme tokens inside them.
-- Coloured text needs a dark-mode pair and a dark enough light shade: `text-emerald-700 dark:text-emerald-300`, `bg-emerald-100 dark:bg-emerald-500/15`.
-- SVG strokes should use `currentColor` with an `ink-*` text class, not hex values.
-- Images that show UI should come in light + dark versions (`src` + `srcDark`).
+- Use semantic tokens: `bg-surface`, `bg-surface-raised`, `text-ink-900`, `text-ink-500`, and `ring-ink-200`.
+- Primary buttons use the logo blue. Use the fixed deep-blue `night-*` palette for intentional contrast sections such as the video and pricing highlight.
+- Use readable colours on light backgrounds and `currentColor` for SVG strokes.
+- Use the light versions of product screenshots and logos. Legacy dark styles and paired assets remain available for media previews, but public pages do not activate dark mode.
 
 ---
-
 ## Logo
 
 The official artwork is kept in `design/brand/Final Dagsis Logo/` (full-size PNGs, **not** deployed; `public/` would make 7 MB of source files downloadable).
@@ -127,7 +116,7 @@ Motion follows the reference sites (mostly built in Framer, with Lenis smooth sc
 | Section | Motion | Reference | Built with |
 |---------|--------|-----------|------------|
 | Whole page | Inertial smooth scrolling | youratlas, joinboardly | `layout/SmoothScroll.tsx` (Lenis) |
-| Hero | Headline words rise in one by one; agent panel plays sample chats (question → typing → answer) | youratlas | CSS `animate-word-in`, `HeroAgentCard` |
+| Hero | Full-viewport introduction with eyebrow, italic headline and CTAs; wide white agent demonstration follows on scroll | PDF + Framer references | `Hero`, `HeroBot`, `HeroRobot`, `HeroChatPreview`, `ChannelIcon`, `HeroGradient` |
 | Problem | As the section arrives the left column builds in from the left: accent line + label, headline word by word (slide + un-blur), description, then a "Support inbox" illustration. The section then pins: problem cards slide in from the right while matching inbox rows slide in from the left, and the unanswered counter / waiting timer climb with scroll. Mobile: heading and inbox from the left, cards from the right | joinboardly / Intercom-style scroll storytelling | `Problem` (`enter` + `pin`), `ProblemInbox`, `ProblemItem`, content in `content/problem.ts` (`problemInbox`) |
 | Use cases | Sticky cards that stack while scrolling (big gradient numerals, WhatsApp chat per use case); covered cards shrink and dim | cevver | `UseCases` + `useScrollProgress` |
 | Video | Player grows to full size as it arrives | Framer sites | `VideoSection` |
@@ -158,8 +147,8 @@ The site should read as designed by people, not generated. Keep it that way:
 
 | # | Section | Reference | How it follows the reference |
 |---|---------|-----------|------------------------------|
-| – | Navbar | youratlas / cevver / saaslandings | Floating pill navbar with theme toggle |
-| 1 | Hero | youratlas.com | Inset card with a light-to-dark blue gradient (light theme: pale blue → logo blue with navy text; dark theme: dark blue → logo blue), sans + *italic serif* headline, glass **AI agent panel with robot avatar** in place of the toggle widget |
+| – | Navbar | dagis.framer.website | Floating white rounded navigation with one primary CTA |
+| 1 | Hero | PDF + Framer references | The first viewport contains the eyebrow, centered headline, explanation and CTAs over the reference gradient. A scroll link leads to a separate white agent demo with a 1440px container, larger robot, readable knowledge cards and chat previews up to 420px wide. A single sequence starts when the chat enters view: question, source lookup, reply and acknowledgement. Channels reset the example; replay brings the chat into view. Content stacks on mobile; reduced-motion preferences show the completed conversation without animation. |
 | 2 | Trusted By | — | Built, **hidden** (`featureFlags.showTrustedBy`) until verified |
 | 3 | The Problem | joinboardly (scroll storytelling) | Pinned split layout; problems slide in from the right as you scroll |
 | 4 | Use Cases | cevver.com (stacking cards) | Sticky stacking cards: numeral `01–04`, icon + title, description, highlights; the use case's **WhatsApp** conversation on the right |

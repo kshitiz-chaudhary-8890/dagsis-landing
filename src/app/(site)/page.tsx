@@ -8,10 +8,8 @@ import {
   PricingPreview,
   Problem,
   ProductShowcase,
-  Testimonial,
   TrustedBy,
   UseCases,
-  VideoSection,
   WhyDagsis,
 } from "@/components/sections";
 
@@ -26,12 +24,10 @@ export default function HomePage() {
       {featureFlags.showTrustedBy && <TrustedBy />}
       <Problem />
       <UseCases />
-      <VideoSection />
       <Features />
       <ProductShowcase />
       <DeployEverywhere />
       <WhyDagsis />
-      {featureFlags.showTestimonial && <Testimonial />}
       <PricingPreview />
       <Faq />
       <FinalCta />

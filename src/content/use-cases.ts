@@ -1,66 +1,71 @@
-import { Headset, HelpCircle, MessageCircleHeart, Target } from "lucide-react";
+import { Headset, MessageCircle, Target, Users } from "lucide-react";
 import type { SectionIntro, UseCase } from "@/types/content";
 
 export const useCasesIntro: SectionIntro = {
   eyebrow: "Use cases",
-  title: "Trusted by people who live on",
-  titleAccent: "WhatsApp",
+  title: "One Platform, Many Ways to Grow.",
   description:
-    "Your customers already message you there. Here is what a Dagsis agent does with those chats.",
+    "See how businesses put Dagsis to work every day.",
 };
 
 export const useCases: UseCase[] = [
   {
-    id: "support",
-    icon: Headset,
-    title: "Customer Support",
+    id: "whatsapp-sales",
+    visual: "chat",
+    icon: MessageCircle,
+    title: "Turn WhatsApp Into Your Best Sales and Support Agent",
     description:
-      "Resolve common questions instantly and hand off complex cases to your team with full context.",
-    highlights: ["Instant answers from your docs", "Smart human handoff", "Works after hours"],
+      "Everyone in Singapore is on WhatsApp, so your business should be too. Dagsis connects an AI agent to your WhatsApp Business number. It answers product and service questions instantly, shares pricing and availability, and handles bookings and FAQs. Customers get replies in seconds, and you never lose an enquiry that comes in after hours.",
+    highlights: [],
     conversation: [
-      { from: "user", text: "Hi, my order #4821 hasn't arrived yet", time: "10:41" },
-      { from: "agent", text: "Sorry about that! Order #4821 shipped on Monday and is out for delivery today 📦", time: "10:41" },
-      { from: "user", text: "Great, thanks!", time: "10:42" },
-      { from: "agent", text: "Anything else I can help with? 😊", time: "10:42" },
+      { from: "user", text: "Hi! Do you have the black sneakers in size 38?", time: "18:20" },
+      { from: "agent", text: "Yes, in stock! $89 — I can reserve a pair for pickup today.", time: "18:20" },
+      { from: "user", text: "Great, reserve one please", time: "18:21" },
+      { from: "agent", text: "Done ✅ Reserved under your number. Anything else?", time: "18:21" },
+    ],
+  },
+  {
+    id: "support",
+    visual: "widget",
+    icon: Headset,
+    title: "Customer Support That Never Sleeps",
+    description:
+      "Train an agent on your help articles, policies and product guides, then place it on your website. It resolves common questions on its own. Your team focuses on the issues that need real attention.",
+    highlights: [],
+    conversation: [
+      { from: "user", text: "What time do you close on Sundays?", time: "09:15" },
+      { from: "agent", text: "We're open 10:00–16:00 on Sundays. Want me to book you a slot?", time: "09:15" },
+      { from: "user", text: "Yes, 2pm please", time: "09:16" },
+      { from: "agent", text: "Booked ✅ See you Sunday at 2pm!", time: "09:16" },
     ],
   },
   {
     id: "leads",
+    visual: "inbox",
     icon: Target,
-    title: "Lead Qualification",
+    title: "Capture and Qualify Leads Automatically",
     description:
-      "Ask the right questions, score intent, and route hot leads straight to your sales team.",
-    highlights: ["Custom qualifying questions", "Captures contact details", "Syncs leads to your team"],
+      "When the agent detects a potential buyer on any channel, it politely asks for their name, email and phone number and saves them as a lead in your dashboard. Your sales team sees who is interested and what they asked about, and can follow up while the interest is fresh.",
+    highlights: [],
     conversation: [
-      { from: "user", text: "Do you offer plans for teams?", time: "14:03" },
-      { from: "agent", text: "We do! How many people are on your team?", time: "14:03" },
-      { from: "user", text: "Around 25", time: "14:04" },
-      { from: "agent", text: "Then the Professional plan is the one. Want me to book a quick call with sales?", time: "14:04" },
+      { from: "user", text: "Do you offer bulk pricing for offices?", time: "14:03" },
+      { from: "agent", text: "We do! Can I take your name and email so sales can share a quote?", time: "14:03" },
+      { from: "user", text: "Sara, sara@co.com", time: "14:04" },
+      { from: "agent", text: "Thanks Sara! Our team will reach out today ✅", time: "14:04" },
     ],
   },
   {
-    id: "faq",
-    icon: HelpCircle,
-    title: "FAQ Automation",
+    id: "internal",
+    visual: "knowledge",
+    icon: Users,
+    title: "Internal Team Assistant",
     description:
-      "Turn your help center into a conversational agent that answers accurately, every time.",
-    highlights: ["Learns from PDFs & URLs", "Always up to date", "Cites your sources"],
+      "Upload your SOPs, onboarding guides and internal documents, and give your team an agent that answers their questions instantly. New hires get up to speed faster, and experienced staff stop being interrupted with the same questions.",
+    highlights: [],
     conversation: [
-      { from: "user", text: "What's your refund policy?", time: "09:15" },
-      { from: "agent", text: "You can request a full refund within 30 days of purchase. Just reply with your order number and I'll start it for you.", time: "09:15" },
-    ],
-  },
-  {
-    id: "engagement",
-    icon: MessageCircleHeart,
-    title: "Customer Engagement",
-    description:
-      "Recommend products, share restock news and follow up with customers one by one, without anyone on your team typing it.",
-    highlights: ["Personalized recommendations", "Proactive follow-ups", "Multi-language replies"],
-    conversation: [
-      { from: "agent", text: "Hi Sara! The sneakers you liked are back in stock in size 38 👟", time: "18:20" },
-      { from: "user", text: "Oh nice! Can I reserve a pair?", time: "18:22" },
-      { from: "agent", text: "Done ✅ They're held for you for 24 hours.", time: "18:22" },
+      { from: "user", text: "How do I file an expense claim?", time: "11:02" },
+      { from: "agent", text: "Submit receipts in the finance portal by Friday. Anything over $500 needs manager approval.", time: "11:02" },
+      { from: "user", text: "Got it, thanks!", time: "11:03" },
     ],
   },
 ];

@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { mainNav } from "@/content";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/shared/Logo";
-import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { ButtonLink } from "@/components/ui";
 
 /**
- * Floating pill navbar (youratlas / cevver / saaslandings all use this pattern).
+ * Floating white navigation, matching the centered hero reference.
  */
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +27,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4">
       <div
         className={cn(
-          "mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 rounded-full pr-2 pl-4 transition-all duration-300 sm:pl-5",
+          "mx-auto flex h-16 max-w-[960px] items-center justify-between gap-4 rounded-2xl pr-3 pl-4 transition-all duration-300 sm:h-18 sm:pl-6",
           "bg-surface-raised/90 ring-1 ring-ink-200/70 backdrop-blur-xl",
           scrolled ? "shadow-lg shadow-black/5" : "shadow-sm",
         )}
@@ -48,17 +47,13 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <ThemeToggle />
-          <ButtonLink href={siteConfig.links.bookDemo} variant="secondary" size="sm">
-            Book a Demo
-          </ButtonLink>
-          <ButtonLink href={siteConfig.links.signUp} size="sm">
+          <ButtonLink href={siteConfig.links.signUp} size="sm" className="bg-gradient-to-r from-brand-500 to-brand-700 shadow-md shadow-brand-500/20">
             Start for Free
+            <span className="flex size-5 items-center justify-center rounded-full bg-white text-brand-700"><ArrowRight className="size-3" aria-hidden="true" /></span>
           </ButtonLink>
         </div>
 
         <div className="flex items-center gap-1 lg:hidden">
-          <ThemeToggle />
           <button
             type="button"
             className="inline-flex size-10 items-center justify-center rounded-full text-ink-700 hover:bg-ink-100"

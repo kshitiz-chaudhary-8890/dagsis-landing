@@ -17,7 +17,7 @@ export function Testimonial() {
         <ScrollRevealText
           as="blockquote"
           text={`“${t.quote}”`}
-          className="accent-serif text-3xl leading-[1.2] text-balance text-ink-900 sm:text-4xl lg:text-5xl"
+          className="font-serif text-3xl leading-[1.15] font-normal tracking-[-0.005em] text-balance normal-case not-italic text-ink-900 sm:text-4xl lg:text-5xl"
         />
 
         <Reveal>

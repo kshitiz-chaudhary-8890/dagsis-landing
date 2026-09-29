@@ -1,0 +1,310 @@
+.section { background: #fff; }
+.inner { max-width: 1360px; margin-inline: auto; font-family: var(--font-inter), Arial, sans-serif; }
+.intro { display: grid; grid-template-columns: 1.45fr .75fr; align-items: end; gap: 64px; margin-bottom: 48px; }
+.kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #16213a; }
+.kicker::before { content: ""; width: 28px; height: 2px; background: #3171f3; }
+.intro .title { margin-top: 20px; max-width: 760px; font-size: clamp(40px, 4.4vw, 60px); line-height: 1.04; }
+.introAside { padding-bottom: 5px; }
+.platformLabel { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; color: #16213a; }
+.platformLabel > span, .previewHeading i { width: 6px; height: 6px; display: inline-block; border-radius: 50%; background: #3171f3; }
+.intro .desc { margin: 0; max-width: 340px; font-size: 16px; line-height: 1.75; color: #596980; }
+.featureGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 22px; }
+.panel { min-width: 0; border-radius: 24px; border: 1px solid #dce6f4; background: #fff; overflow: hidden; }
+.knowledgePanel { grid-column: span 7; padding: 25px 28px 30px; display: flex; flex-direction: column; }
+.workspacePanel { grid-column: span 5; padding: 25px 28px 30px; }
+.panelHeading { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #34629c; font-size: 11px; font-weight: 600; }
+.panelHeading > svg { color: #3171f3; }
+.featureCopy h3 { font-family: var(--font-jakarta), var(--font-inter), Arial, sans-serif; font-weight: 600; font-size: 21px; letter-spacing: -.03em; line-height: 1.25; color: #152643; }
+.featureCopy p { margin-top: 10px; color: #5a6a82; font-size: 14px; line-height: 1.75; }
+.pairedCopy { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.pairedCopy > .featureCopy + .featureCopy { border-left: 1px solid #dce6f4; padding-left: 25px; }
+.knowledgePanel > .pairedCopy { margin-top: auto; }
+.knowledgeDiagram { position: relative; padding: 32px 24px 30px; margin: 22px -12px 28px; border-radius: 18px; background: #2466ec; background-image: radial-gradient(ellipse at 100% 0%, #53bafa80, transparent 65%); overflow: hidden; }
+.sourceCards { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sourceCards > div { position: relative; display: flex; flex-direction: column; align-items: center; padding: 15px 5px 13px; border-radius: 12px; background: #fff; box-shadow: 0 8px 18px -10px #102a7150; }
+.sourceCards > div:first-child { transform: rotate(-3deg); }
+.sourceCards > div:last-child { transform: rotate(3deg); }
+.sourceCards > div > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; background: #edf4ff; color: #3171f3; margin-bottom: 10px; }
+.sourceCards strong { color: #203957; text-align: center; font-size: 11px; font-weight: 600; line-height: 1.3; }
+.sourceCards small { display: block; margin-top: 4px; font-size: 9px; color: #78879b; font-weight: 400; }
+.sourceCards > div > svg { position: absolute; right: 9px; top: 9px; color: #18764e; }
+.knowledgeConnectors { position: relative; height: 65px; margin-inline: 4px; }
+.knowledgeConnectors svg { width: 100%; height: 100%; }
+.knowledgeConnectors path { stroke: #aad9ff; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.knowledgeConnectors > span { position: absolute; left: 50%; top: 22px; transform: translateX(-50%); padding: 3px 9px; color: #e5f2ff; background: #2466ec; border-radius: 20px; font-size: 8px; white-space: nowrap; }
+.agentCard { position: relative; max-width: 350px; margin-inline: auto; padding: 17px 20px; border-radius: 15px; border: 1px solid #fff; background: #fff; box-shadow: 0 12px 35px -18px #082e8f80; }
+.agentIdentity { display: flex; align-items: center; gap: 10px; padding-bottom: 13px; }
+.agentIdentity > span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: #fff; background: #2466ec; }
+.agentIdentity > div { flex: 1; font-size: 12px; color: #173455; font-weight: 600; }
+.agentIdentity small { display: flex; align-items: center; gap: 5px; margin-top: 5px; font-size: 9px; color: #6b7d93; font-weight: 400; }
+.agentIdentity i { width: 5px; height: 5px; border-radius: 50%; background: #15a56b; }
+.agentIdentity > svg { color: #3171f3; }
+.agentRule { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-top: 1px solid #edf1f7; font-size: 9px; }
+.agentRule > span { color: #7a8799; }
+.agentRule strong { display: inline-flex; align-items: center; gap: 4px; color: #45658e; font-weight: 500; }
+.agentMessage { padding: 10px 11px; margin-top: 8px; border-radius: 7px; background: #edf5ff; color: #2b5da3; font-size: 10px; }
+.workspaceFrame { margin: 22px -2px 28px; border: 1px solid #c5d9f6; border-radius: 13px; overflow: hidden; background: #fff; box-shadow: 0 9px 22px -16px #2466ec50; }
+.appTopbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 13px; background: #f7faff; border-bottom: 1px solid #e1ebf8; color: #657b99; font-size: 9px; }
+.appTopbar > span { display: inline-flex; align-items: center; gap: 5px; }
+.appTopbar > span:first-child { color: #274d80; font-weight: 500; }
+.appDot { width: 6px; height: 6px; border-radius: 50%; background: #3171f3; }
+.workspaceBody { display: flex; }
+.appSidebar { width: 43px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 15px 0; background: #f7faff; border-right: 1px solid #e1ebf8; color: #8ca0bb; }
+.sidebarMark { color: #3171f3; font-weight: 700; font-size: 18px; letter-spacing: -.09em; margin-bottom: 4px; }
+.sidebarActive { display: grid; place-items: center; width: 28px; height: 28px; color: #3171f3; background: #e4efff; border-radius: 6px; }
+.workspacePreview { flex: 1; min-width: 0; padding: 20px 16px 18px; }
+.workspaceTop { display: flex; align-items: start; gap: 8px; }
+.workspaceTop > div { flex: 1; font-size: 13px; font-weight: 600; color: #162d4b; }
+.workspaceTop small { display: block; font-weight: 400; color: #7b8da5; font-size: 9px; margin-top: 5px; line-height: 1.5; }
+.inviteMember { background: #3171f3; color: #fff; border-radius: 5px; font-size: 9px; padding: 6px 8px; white-space: nowrap; }
+.workspaceFolders { display: flex; gap: 16px; margin-top: 19px; border-bottom: 1px solid #e4eef9; }
+.workspaceFolders > span { font-size: 9px; color: #7e91ac; padding-bottom: 9px; }
+.workspaceFolders > .settingsTabActive { color: #3171f3; border-bottom: 2px solid #3171f3; }
+.memberHeading { display: flex; justify-content: space-between; margin-top: 16px; font-size: 9px; color: #8191a6; }
+.member { display: flex; align-items: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid #eef3fa; }
+.avatar { width: 29px; height: 29px; flex-shrink: 0; display: grid; place-items: center; background: #dfebff; color: #2663c1; border-radius: 50%; font-size: 9px; font-weight: 600; }
+.member:nth-last-child(2) .avatar { background: #dff6fa; color: #1c7a9c; }
+.member > span:nth-child(2) { flex: 1; min-width: 0; font-size: 10px; font-weight: 500; color: #273e5c; }
+.member small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 8px; font-weight: 400; margin-top: 4px; color: #8798ae; }
+.member b { display: inline-flex; align-items: center; gap: 5px; font-size: 8px; font-weight: 400; border: 1px solid #dbe5f5; border-radius: 5px; padding: 5px 6px; color: #587aa7; }
+.permission { display: flex; align-items: center; gap: 5px; margin-top: 12px; color: #6988ad; font-size: 8px; }
+.workspaceCopy > .pairedCopy { margin-top: 22px; gap: 18px; }
+.workspaceCopy > .pairedCopy h3 { font-size: 16px; }
+.workspaceCopy > .pairedCopy p { font-size: 12px; }
+.workspaceCopy .pairedCopy > .featureCopy + .featureCopy { padding-left: 18px; }
+.detailPanel { grid-column: span 4; padding: 12px 12px 28px; }
+.detailPanel > .featureCopy { padding: 24px 13px 0; }
+.detailPanel .featureCopy h3 { font-size: 20px; }
+.smallPreview { height: 320px; border-radius: 15px; overflow: hidden; border: 1px solid #d3e3f9; background: #fff; }
+.conversationPreview { background: #efeae2; border-color: #d8e6df; display: flex; flex-direction: column; }
+.whatsappHeader { display: flex; align-items: center; gap: 8px; padding: 12px 11px; background: #075e54; color: #fff; }
+.whatsappHeader > svg { flex-shrink: 0; }
+.whatsappHeader > div { flex: 1; min-width: 0; font-size: 12px; font-weight: 500; }
+.whatsappHeader small { display: block; font-size: 9px; font-weight: 400; margin-top: 2px; color: #cce4dd; }
+.whatsappAvatar { width: 31px; height: 31px; flex-shrink: 0; display: grid; place-items: center; background: #e6eee9; color: #598678; border-radius: 50%; }
+.whatsappBody { flex: 1; min-height: 0; padding: 10px 14px 8px; background-image: url('/images/features/chat-wallpaper.svg'); background-size: 180px 140px; }
+.chatDay { display: block; width: fit-content; margin: 0 auto; padding: 4px 8px; border-radius: 5px; background: #fff; color: #67766e; font-size: 8px; box-shadow: 0 1px 2px #00000010; }
+.chatSecurity { display: flex; align-items: center; justify-content: center; gap: 3px; margin: 8px auto 10px; max-width: 220px; padding: 4px; color: #8c8163; background: #fff2ca; border-radius: 5px; font-size: 7px; }
+.customerBubble, .agentBubble { position: relative; max-width: 88%; width: fit-content; padding: 8px 10px 5px; font-size: 11px; line-height: 1.4; color: #253d31; border-radius: 7px; box-shadow: 0 1px 2px #00000015; }
+.customerBubble { margin: 0 0 9px auto; background: #d9fdd3; border-top-right-radius: 0; }
+.agentBubble { background: #fff; border-top-left-radius: 0; }
+.customerBubble::after { content: ''; position: absolute; right: -5px; top: 0; border-left: 6px solid #d9fdd3; border-bottom: 6px solid transparent; }
+.agentBubble::before { content: ''; position: absolute; left: -5px; top: 0; border-right: 6px solid #fff; border-bottom: 6px solid transparent; }
+.customerBubble small, .agentBubble small { display: flex; align-items: center; justify-content: end; gap: 3px; margin-top: 3px; font-size: 8px; color: #819084; line-height: 1; }
+.customerBubble small svg { color: #53bdeb; }
+.whatsappComposer { display: flex; align-items: center; gap: 6px; padding: 7px 8px; }
+.whatsappComposer > span { flex: 1; display: flex; align-items: center; gap: 9px; padding: 9px 10px; border-radius: 25px; background: #fff; color: #88938c; }
+.whatsappComposer > span > span { flex: 1; font-size: 10px; }
+.whatsappComposer > i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #008069; color: #fff; }
+.conversationFooter { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 8px; background: #fff; color: #668775; padding: 8px; border-top: 1px solid #e1e8e3; }
+.miniAppBar { display: flex; align-items: center; gap: 10px; padding: 13px 15px; border-bottom: 1px solid #e3edf9; background: #f7faff; color: #738dab; }
+.miniAppBar > span:first-child { display: inline-flex; align-items: center; gap: 5px; margin-right: auto; font-size: 11px; font-weight: 600; color: #254979; }
+.leadContent { padding: 0 16px 14px; }
+.leadRecord { display: flex; align-items: center; gap: 10px; padding: 19px 0; }
+.leadAvatar { width: 35px; height: 35px; border-radius: 50%; background: #dff1fa; color: #337d9d; display: grid; place-items: center; font-size: 11px; font-weight: 600; flex-shrink: 0; }
+.leadRecord > div { flex: 1; font-size: 13px; color: #27476f; font-weight: 600; }
+.leadRecord small { display: block; font-size: 8px; margin-top: 4px; color: #8196b1; font-weight: 400; }
+.leadTag { padding: 4px 7px; border-radius: 5px; color: #1f895e; background: #e2f6ec; font-size: 9px; }
+.leadField { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-top: 1px solid #edf2f9; font-size: 9px; color: #889cb5; }
+.leadField b { display: flex; align-items: center; gap: 5px; font-weight: 400; color: #4d709d; }
+.leadField b > svg { width: 13px; height: 13px; color: #19a763; }
+.assigneeAvatar { display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: #e6edfc; color: #4876ae; font-size: 6px; }
+.leadNote { display: flex; gap: 7px; padding: 10px; margin-top: 10px; border: 1px solid #dfeafa; border-radius: 6px; background: #f7faff; color: #6385b0; }
+.leadNote > svg { flex-shrink: 0; margin-top: 1px; }
+.leadNote > div { font-size: 9px; font-weight: 500; }
+.leadNote small { display: block; margin-top: 5px; font-size: 8px; font-weight: 400; line-height: 1.5; color: #879ab6; }
+.dateFilter { display: flex; align-items: center; gap: 5px; padding: 4px 6px; border: 1px solid #dce6f4; border-radius: 4px; background: #fff; font-size: 8px; }
+.analyticsContent { padding: 17px 15px 12px; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.metrics > div { padding: 11px 9px; border: 1px solid #dfeafa; border-radius: 7px; }
+.metrics > div > span { display: block; color: #8096b3; font-size: 8px; }
+.metrics b { display: block; color: #24446f; font-size: 27px; font-weight: 500; letter-spacing: -.035em; margin-top: 7px; line-height: 1; }
+.metrics b small { font-size: 14px; }
+.metrics > div > small { display: block; font-size: 7px; color: #8b9eba; margin-top: 7px; }
+.chartLegend { display: flex; align-items: center; gap: 11px; margin-top: 17px; font-size: 8px; color: #708aac; }
+.chartLegend > span { display: inline-flex; align-items: center; gap: 4px; }
+.chartLegend i { width: 5px; height: 5px; border-radius: 1px; background: #3171f3; }
+.chartLegend > span:last-child i { background: #7cceef; }
+.chart { display: flex; align-items: end; height: 77px; gap: 10px; margin-top: 14px; border-bottom: 1px solid #dce7f7; background: repeating-linear-gradient(to top, transparent 0, transparent 24px, #edf2fa 24px, #edf2fa 25px); }
+.chart > div { display: flex; align-items: end; gap: 3px; flex: 1; height: 100%; }
+.chart > div > span { flex: 1; background: #3171f3; border-radius: 2px 2px 0 0; }
+.chart > div > span:last-child { background: #7cceef; }
+.chartLabels { display: flex; justify-content: space-between; margin-top: 7px; font-size: 7px; color: #8299b8; }
+.channelsPanel { grid-column: 1 / -1; display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 54px; padding: 32px 38px; border: 1px solid #dce6f4; border-radius: 24px; background: #fff; }
+.channelsPanel .featureCopy h3 { font-size: 28px; }
+.channelsPanel .featureCopy p { max-width: 350px; font-size: 14px; }
+.channelDiagram { position: relative; height: 300px; border-radius: 18px; background: #edf5ff; }
+.channelConnections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.channelConnections path { stroke: #8cb7f7; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.channelHub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 132px; height: 124px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #bdd5fa; border-radius: 20px; background: #fff; box-shadow: 0 10px 26px -16px #3171f360, 0 0 0 7px #edf5ff; }
+.hubLogo { width: 100px; height: auto; }
+.channelHub strong { font-size: 11px; font-weight: 600; margin-top: 14px; color: #254979; }
+.channelHub small { font-size: 9px; color: #7290b5; margin-top: 4px; }
+.channelNode { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.channelLogo { display: grid; place-items: center; width: 52px; height: 52px; background: #fff; border: 1px solid #d5e4fa; border-radius: 15px; box-shadow: 0 6px 14px -8px #346fc34a; }
+.channelNode small { font-size: 10px; color: #4a6b95; background: #edf5ff; padding: 0 4px; }
+.channelPosition0, .channelPosition1, .channelPosition2 { left: calc(12.5% - 40px); }
+.channelPosition3, .channelPosition4, .channelPosition5 { right: calc(12.5% - 40px); }
+.channelPosition0, .channelPosition3 { top: 22px; }
+.channelPosition1, .channelPosition4 { top: 124px; }
+.channelPosition2, .channelPosition5 { top: 226px; }
+.channelPosition0 .channelLogo { color: #19a763; }
+.channelPosition1 .channelLogo { color: #d13676; }
+.channelPosition2 .channelLogo { color: #1877f2; }
+.channelPosition3 .channelLogo { color: #5865f2; }
+.channelPosition4 .channelLogo { color: #279fd3; }
+.channelPosition5 .channelLogo { color: #3171f3; }
+/* Each preview adapts to its own available width, including tablet columns. */
+.panel { container-type: inline-size; }
+.inner, .intro > *, .featureCopy, .pairedCopy > *, .agentIdentity > div, .leadRecord > div, .leadNote > div, .metrics > div { min-width: 0; }
+.featureCopy p, .featureCopy h3 { overflow-wrap: break-word; }
+.sourceCards > div > span, .agentIdentity > span, .agentIdentity > svg, .agentRule svg, .whatsappComposer > i, .leadTag, .leadField svg, .assigneeAvatar { flex-shrink: 0; }
+.agentRule { gap: 10px; }
+.agentRule strong { text-align: right; }
+.appTopbar { gap: 10px; }
+.appTopbar > span:last-child { flex-shrink: 0; }
+.permission { align-items: start; line-height: 1.5; }
+.permission > svg { flex-shrink: 0; }
+.leadField { gap: 12px; }
+.leadField > span { flex-shrink: 0; }
+.leadField b { min-width: 0; overflow-wrap: anywhere; text-align: right; }
+.whatsappBody { flex: 1 0 auto; }
+.whatsappComposer > span { min-width: 0; }
+.chatSecurity { text-align: center; line-height: 1.5; }
+.chatSecurity svg { flex-shrink: 0; }
+.miniAppBar { gap: 8px; }
+.dateFilter { flex-shrink: 0; }
+.smallPreview { height: auto; min-height: 320px; }
+.conversationPreview { height: auto; min-height: 320px; }
+.metrics b { font-size: clamp(24px, 2.4vw, 30px); }
+.metrics > div > span { font-size: 9px; line-height: 1.4; }
+.metrics > div > small { font-size: 8px; line-height: 1.4; }
+.chartLabels { font-size: 8px; }
+.mobileChannelConnections { display: none; }
+
+@container (max-width: 440px) {
+  .pairedCopy { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .pairedCopy > .featureCopy + .featureCopy,
+  .workspaceCopy .pairedCopy > .featureCopy + .featureCopy { border-left: 0; border-top: 1px solid #dce6f4; padding: 20px 0 0; }
+  .workspaceCopy > .pairedCopy h3 { font-size: 19px; }
+  .workspaceCopy > .pairedCopy p { font-size: 14px; }
+  .sourceCards { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .sourceCards > div { flex-direction: row; gap: 12px; padding: 10px 12px; }
+  .sourceCards > div:first-child, .sourceCards > div:last-child { transform: none; }
+  .sourceCards > div > span { margin-bottom: 0; width: 34px; height: 34px; }
+  .sourceCards strong { flex: 1; text-align: left; font-size: 12px; }
+  .sourceCards small { font-size: 10px; }
+  .sourceCards > div > svg { position: static; }
+  .knowledgeConnectors svg { display: none; }
+  .knowledgeConnectors::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #aad9ff; }
+  .knowledgeConnectors > span { font-size: 9px; }
+  .agentIdentity > div { font-size: 12px; }
+  .agentIdentity small { font-size: 10px; }
+  .agentRule { font-size: 10px; flex-wrap: wrap; }
+  .agentMessage { font-size: 11px; line-height: 1.5; }
+}
+
+/* Tablet and smaller laptops get full-width, readable previews. */
+@media (max-width: 1199px) {
+  .intro { grid-template-columns: 1.3fr .7fr; gap: 30px; }
+  .knowledgePanel, .workspacePanel { padding-inline: 23px; }
+  .channelsPanel { gap: 28px; padding-inline: 26px; }
+}
+@media (max-width: 1023px) {
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 22px; margin-bottom: 34px; }
+  .intro .title { max-width: 740px; }
+  .intro .desc { max-width: 520px; }
+  .platformLabel { margin-bottom: 8px; }
+  .knowledgePanel, .workspacePanel { grid-column: 1 / -1; }
+  .knowledgeDiagram { max-width: 620px; width: 100%; margin-inline: auto; }
+  .workspaceFrame { max-width: 620px; width: 100%; margin-inline: auto; }
+  .workspacePreview { padding: 24px; }
+  .workspaceTop > div { font-size: 16px; }
+  .workspaceTop small { font-size: 11px; }
+  .appTopbar, .workspaceFolders > span, .memberHeading, .member b { font-size: 11px; }
+  .member > span:nth-child(2) { font-size: 12px; }
+  .member small, .permission { font-size: 10px; }
+  .detailPanel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 16px; padding: 14px; }
+  .detailPanel > .featureCopy { padding: 20px; }
+  .detailPanel .featureCopy h3 { font-size: 24px; }
+  .channelsPanel { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .channelsPanel .featureCopy p { max-width: 560px; }
+  .channelDiagram { max-width: 680px; width: 100%; margin-inline: auto; }
+}
+@media (max-width: 639px) {
+  .section { padding-block: 56px; }
+  .featureGrid { gap: 16px; }
+  .intro { margin-bottom: 28px; }
+  .intro .title { font-size: clamp(34px, 8.7vw, 48px); }
+  .intro .desc { font-size: 15px; }
+  .kicker { font-size: 10px; letter-spacing: .14em; gap: 9px; }
+  .kicker::before { width: 20px; }
+  .knowledgePanel, .workspacePanel { padding: 20px 18px 24px; border-radius: 20px; }
+  .panelHeading { font-size: 11px; }
+  .knowledgeDiagram { padding: 24px 16px; margin-block: 20px 25px; }
+  .workspacePreview { padding: 19px 15px; }
+  .workspaceTop > div { font-size: 14px; }
+  .workspaceTop small { font-size: 10px; }
+  .appSidebar { width: 36px; }
+  .member b { font-size: 9px; }
+  .member small { font-size: 9px; }
+  .permission { font-size: 9px; }
+  .detailPanel { display: block; border-radius: 20px; padding: 12px 12px 24px; }
+  .detailPanel > .featureCopy { padding: 23px 8px 0; }
+  .detailPanel .featureCopy h3 { font-size: 21px; }
+  .smallPreview { min-height: 340px; }
+  .whatsappHeader > div { font-size: 13px; }
+  .whatsappHeader small { font-size: 10px; }
+  .whatsappBody { padding: 12px 15px; }
+  .customerBubble, .agentBubble { font-size: 12px; max-width: 90%; }
+  .chatDay { font-size: 9px; }
+  .chatSecurity { font-size: 8px; }
+  .conversationFooter { font-size: 9px; }
+  .leadRecord small, .leadNote small { font-size: 10px; }
+  .leadField { font-size: 11px; }
+  .leadNote > div, .miniAppBar > span:first-child { font-size: 11px; }
+  .metrics b { font-size: 30px; }
+  .metrics > div > span { font-size: 10px; }
+  .metrics > div > small { font-size: 9px; }
+  .chartLegend { font-size: 10px; flex-wrap: wrap; }
+  .chartLabels { font-size: 9px; }
+  .chart { gap: 8px; height: 86px; }
+  .channelsPanel { padding: 24px 18px; border-radius: 20px; }
+  .channelsPanel .featureCopy h3 { font-size: 25px; }
+  .channelDiagram { height: 340px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 120px 100px 100px; gap: 10px 0; padding-inline: 4px; }
+  .channelConnections { display: none; }
+  .mobileChannelConnections { display: block; position: absolute; inset: 0; height: 100%; width: 100%; }
+  .mobileChannelConnections path { stroke: #8cb7f7; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+  .channelHub { position: relative; top: auto; left: auto; transform: none; grid-column: 1 / -1; justify-self: center; align-self: start; width: 132px; height: 100px; margin-top: 8px; border-radius: 17px; }
+  .hubLogo { width: 92px; }
+  .channelHub strong { margin-top: 10px; }
+  .channelNode { position: relative; top: auto; left: auto; right: auto; width: 100%; align-self: start; z-index: 1; }
+  .channelLogo { width: 48px; height: 48px; border-radius: 13px; }
+  .channelNode small { font-size: 10px; }
+}
+@media (max-width: 379px) {
+  .intro .title { font-size: 34px; }
+  .kicker { font-size: 9px; letter-spacing: .1em; }
+  .knowledgePanel, .workspacePanel { padding-inline: 14px; }
+  .knowledgeDiagram { padding-inline: 12px; }
+  .agentCard { padding-inline: 13px; }
+  .agentIdentity { gap: 8px; }
+  .agentIdentity > span { width: 36px; height: 36px; }
+  .agentIdentity > svg { display: none; }
+  .appSidebar { display: none; }
+  .workspaceTop { flex-wrap: wrap; }
+  .workspaceTop > div { flex-basis: 100%; }
+  .inviteMember { font-size: 10px; padding: 6px 10px; }
+  .member { gap: 7px; }
+  .member > span:nth-child(2) { font-size: 11px; }
+  .member b { padding: 4px; gap: 2px; }
+  .whatsappHeader { gap: 6px; padding-inline: 8px; }
+  .whatsappHeader > svg:nth-last-child(3) { display: none; }
+  .chatSecurity { font-size: 7px; }
+  .leadContent, .analyticsContent { padding-inline: 12px; }
+  .leadField { font-size: 10px; }
+  .dateFilter { font-size: 7px; }
+  .channelsPanel { padding-inline: 14px; }
+  .channelNode small { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .panel, .channelLogo { transition: none; } }

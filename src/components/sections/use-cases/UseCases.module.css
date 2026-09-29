@@ -1,0 +1,65 @@
+/* Header only — mirrors demo/problem (split grid, editorial kicker,
+   oversized serif title). Cards below untouched for now. */
+
+.inner { max-width: 1360px; margin-inline: auto; }
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  gap: 16px 56px;
+  margin: 0 0 48px;
+  text-align: left;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #16213a;
+}
+.kicker::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: #16213a;
+}
+
+.intro .title {
+  margin-top: 18px;
+  font-size: clamp(40px, 4.4vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.intro .desc {
+  max-width: 400px;
+  margin: 0;
+  justify-self: end;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 40px; }
+  .intro .desc { justify-self: start; }
+}
+
+/* Sticky card titles: Jakarta Sans product voice. */
+.cardTitle {
+  font-family: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-size: clamp(26px, 2.6vw, 32px);
+  color: var(--ink-900);
+}

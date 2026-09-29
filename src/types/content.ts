@@ -36,15 +36,11 @@ export interface IconItem {
 
 /** A "Why Dagsis" reason; `id` picks its illustration. */
 export interface WhyReason extends IconItem {
-  id: "knowledge" | "always-on" | "speed" | "channels" | "setup";
+  id: "singapore" | "knowledge" | "setup" | "security" | "growth";
 }
 
-/** A platform feature: icon, title, description, a headline stat and its picture. */
-export interface Feature extends IconItem {
-  stat: { value: string; label: string };
-  /** Picture card shown after the feature card in the ticker. */
-  image: { src: string; alt: string };
-}
+/** A platform feature: icon, title, description. Copy-only, no mock stats. */
+export type Feature = IconItem;
 
 export interface ChatMessage {
   from: "user" | "agent";
@@ -52,6 +48,9 @@ export interface ChatMessage {
   /** Optional display time, e.g. "10:42". */
   time?: string;
 }
+
+/** Right-side visual for a use-case card, matched to the case content. */
+export type UseCaseVisual = "chat" | "widget" | "inbox" | "knowledge";
 
 export interface UseCase {
   id: string;
@@ -61,6 +60,7 @@ export interface UseCase {
   highlights: string[];
   /** Sample WhatsApp-style conversation shown in the phone mockup. */
   conversation: ChatMessage[];
+  visual: UseCaseVisual;
 }
 
 /**

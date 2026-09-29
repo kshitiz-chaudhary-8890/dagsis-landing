@@ -1,21 +1,28 @@
 import { Plus } from "lucide-react";
 import { channelsFootnote, channelsIntro } from "@/content";
-import { Section, SectionHeader } from "@/components/ui";
+import { Section } from "@/components/ui";
 import { Reveal } from "@/components/shared/Reveal";
 import { ChannelHub } from "./ChannelHub";
+import styles from "./DeployEverywhere.module.css";
 
 /**
- * Deploy everywhere — reference: youratlas.com integrations
- * ("Plugs into your stack. No rip-and-replace.").
+ * Deploy everywhere with the channel hub beneath the section introduction.
  * Light section; glowing Dagsis orb in the centre with channel pills fanned
  * out on both sides along curved dashed connectors.
  */
 export function DeployEverywhere() {
   return (
-    <Section id="deploy" className="overflow-hidden">
-      <SectionHeader {...channelsIntro} />
+    <Section id="deploy" aria-labelledby="deploy-title" containerClassName="max-w-[1440px]" className="overflow-hidden">
+      <div className={styles.inner}>
+      <header className={styles.intro}>
+        <div>
+          <span className={styles.kicker}>{channelsIntro.eyebrow}</span>
+          <h2 id="deploy-title" className={`section-title ${styles.title}`}>{channelsIntro.title} {channelsIntro.titleAccent}</h2>
+        </div>
+        <p className={`section-description ${styles.description}`}>{channelsIntro.description}</p>
+      </header>
 
-      <Reveal className="mt-12">
+      <Reveal className={styles.visual}>
         <ChannelHub />
       </Reveal>
 
@@ -24,6 +31,7 @@ export function DeployEverywhere() {
           <Plus className="size-4 text-brand-600 dark:text-brand-400" />
           {channelsFootnote}
         </span>
+      </div>
       </div>
     </Section>
   );

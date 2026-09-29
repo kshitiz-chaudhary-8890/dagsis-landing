@@ -1,0 +1,248 @@
+﻿.section { background: #fff; }
+.inner { max-width: 1360px; margin-inline: auto; font-family: var(--font-inter), Arial, sans-serif; }
+.intro { display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 65px; margin-bottom: 42px; }
+.kicker { display: inline-flex; align-items: center; gap: 10px; color: #2466ec; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.kicker::before { content: ''; width: 25px; height: 2px; background: currentColor; }
+.intro .title { margin-top: 20px; max-width: 650px; font-size: clamp(40px, 4.5vw, 60px); line-height: 1.05; }
+.intro .description { margin: 0; font-size: 16px; line-height: 1.75; max-width: 360px; color: #626771; }
+.demoGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: stretch; gap: 36px 28px; }
+.demoCard { min-width: 0; container-type: inline-size; }
+.demoCard[data-industry="restaurant"], .demoCard[data-industry="property"] { grid-column: span 7; }
+.demoCard[data-industry="retail"], .demoCard[data-industry="salon"] { grid-column: span 5; }
+.cardDetails { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 164px; padding: 20px 2px; }
+.cardDetails > div { flex: 1; min-width: 0; }
+.cardCategory { display: flex; align-items: center; gap: 7px; color: #727781; font-size: 11px; margin-bottom: 8px; }
+.cardDetails h3 { font-family: var(--font-jakarta), Arial, sans-serif; color: #1f2836; font-size: 23px; font-weight: 600; line-height: 1.25; letter-spacing: -.04em; }
+.cardDetails p { max-width: 350px; color: #666c76; font-size: 13px; line-height: 1.7; margin-top: 7px; }
+.demoCta { flex-shrink: 0; align-self: center; white-space: nowrap; font-size: 12px; padding: 11px 15px; }
+.demoWebsite { --demo-accent: #75452c; --demo-background: #faf8f4; --demo-ink: #24221f; overflow: hidden; border: 1px solid #d9dce0; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px -18px #242b3540; }
+.websiteCanvas { position: relative; background: #fff; }
+.websiteNav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 21px 22px; background: #fff; color: #222; border-bottom: 1px solid #efefed; }
+.websiteBrand { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 26px; line-height: 1; white-space: nowrap; }
+.websiteBrand > span { color: var(--demo-accent); }
+.demoWebsite[data-industry="retail"] .websiteBrand, .demoWebsite[data-industry="property"] .websiteBrand { font-family: var(--font-inter), Arial, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -.06em; }
+.demoWebsite[data-industry="retail"] .websiteWords h3, .demoWebsite[data-industry="property"] .websiteWords h3 { font-family: var(--font-inter), Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -.05em; }
+.websiteNav > div { display: flex; align-items: center; gap: 17px; font-size: 9px; color: #555; }
+.websiteMenu { display: none; }
+.websiteHero { position: relative; min-height: 382px; background: var(--demo-background); }
+.websitePhotoPanel { position: absolute; inset: 0 0 0 45%; }
+.websitePhoto { object-fit: cover; }
+.websiteWords { position: relative; width: 45%; padding: 45px 21px 35px; color: var(--demo-ink); }
+.websiteWords > span { display: block; font-size: 9px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 18px; color: var(--demo-accent); }
+.websiteWords h3 { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 36px; line-height: 1.07; font-weight: 400; letter-spacing: -.025em; }
+.websiteWords p { font-size: 11px; line-height: 1.75; color: #5e5b56; margin-top: 18px; }
+.websiteWords .websiteAction { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; font-size: 10px; line-height: 1.4; text-transform: none; letter-spacing: 0; color: #fff; padding: 11px 13px; background: var(--demo-accent); }
+.websiteBottom { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 21px 22px; border-top: 1px solid #ecebe8; }
+.websiteBottom > div + div { border-left: 1px solid #e8e7e4; padding-left: 14px; }
+.websiteBottom small { display: block; font-size: 8px; color: #8a8680; margin-bottom: 5px; }
+.websiteBottom strong { display: block; font-size: 10px; line-height: 1.5; font-weight: 500; color: #46423c; }
+.chatWidget { position: absolute; right: 18px; top: 100px; z-index: 2; display: flex; flex-direction: column; width: 46%; max-width: 260px; border: 1px solid #e3e4e7; border-radius: 14px; background: #fff; overflow: hidden; box-shadow: 0 14px 38px #10151f30, 0 2px 7px #10151f0a; }
+.widgetHeader { display: flex; align-items: center; gap: 10px; padding: 15px 14px; background: var(--demo-accent); color: #fff; border-bottom: 0; }
+.widgetAvatar { flex-shrink: 0; display: grid; place-items: center; width: 34px; height: 34px; background: #fff; color: var(--demo-accent); font-family: Georgia, serif; font-size: 21px; border-radius: 50%; }
+.widgetHeader > div { flex: 1; min-width: 0; font-size: 13px; font-weight: 600; letter-spacing: -.025em; }
+.widgetHeader small { display: block; font-size: 9px; color: #ffffffb8; margin-top: 4px; font-weight: 400; letter-spacing: 0; }
+.widgetHeader > button { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 5px; color: #fff; cursor: pointer; }
+.widgetHeader > button:hover { background: #ffffff18; }
+.widgetMessages { height: 168px; overflow-y: auto; overscroll-behavior: contain; padding: 15px 13px; scrollbar-width: thin; background: #fff; }
+.agentMessage { display: flex; align-items: start; gap: 8px; margin-bottom: 15px; }
+.replyAvatar { flex-shrink: 0; display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid #e5e7eb; color: var(--demo-accent); border-radius: 50%; font-family: Georgia, serif; font-size: 13px; }
+.agentMessage > div { flex: 1; min-width: 0; }
+.agentMessage small { display: block; color: #969ba5; font-size: 9px; margin: 1px 0 5px; }
+.agentReply, .customerReply { font-size: 11px; line-height: 1.65; overflow-wrap: anywhere; }
+.agentReply { color: #454d59; }
+.customerReply { width: fit-content; max-width: 88%; margin: 0 0 17px auto; padding: 9px 11px; background: #f0f2f5; color: #343c48; border-radius: 10px 10px 2px 10px; }
+.promptSuggestions { display: flex; flex-direction: column; gap: 6px; }
+.promptSuggestions > button { display: flex; align-items: center; justify-content: space-between; gap: 7px; border: 1px solid #dce0e7; padding: 8px 9px; border-radius: 5px; text-align: left; font-size: 10px; line-height: 1.4; color: #454e5d; background: #fff; cursor: pointer; }
+.promptSuggestions > button > svg { flex-shrink: 0; }
+.promptSuggestions > button:hover { border-color: #245ede; color: #245ede; }
+.widgetComposer { display: flex; align-items: center; gap: 5px; margin: 0 12px 9px; border: 1px solid #e7e9ed; border-radius: 10px; background: #f9fafb; padding: 5px; }
+.widgetComposer input { min-width: 0; width: 100%; flex: 1; padding: 7px 5px; color: #303744; background: transparent; font-size: 11px; outline: none; }
+.widgetComposer input::placeholder { color: #979ca5; }
+.widgetComposer:focus-within { border-color: #245ede; }
+.widgetComposer button { display: grid; place-items: center; width: 29px; height: 29px; flex-shrink: 0; background: var(--demo-accent); color: #fff; border-radius: 50%; cursor: pointer; }
+.widgetComposer button:disabled { opacity: .45; cursor: default; }
+.widgetFooter { display: flex; align-items: center; justify-content: center; gap: 3px; padding: 9px 12px; border-top: 1px solid #f0f1f3; font-size: 8px; color: #8c919b; }
+.widgetFooter strong { font-weight: 600; color: #505967; }
+.widgetFooter > span { margin-left: auto; font-size: 7px; color: #9298a1; }
+.widgetFooter button { display: grid; place-items: center; padding: 2px; margin-left: 4px; color: #8c919b; cursor: pointer; }
+.widgetFooter button:hover { color: #394454; }
+.chatLauncher { position: absolute; bottom: 16px; right: 18px; width: 38px; height: 38px; display: grid; place-items: center; background: var(--demo-accent); color: #fff; border-radius: 50%; }
+.showcaseFooter { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 44px; border-top: 1px solid #dfe3e9; padding-block: 36px 8px; margin-top: 26px; }
+.footerGuide { min-width: 0; }
+.footerGuide h3 { font-family: var(--font-jakarta), Arial, sans-serif; font-size: 23px; font-weight: 600; letter-spacing: -.04em; color: #202b3d; }
+.demoSteps { display: flex; flex-wrap: wrap; align-items: center; gap: 13px 22px; list-style: none; padding: 0; margin: 20px 0 15px; }
+.demoSteps li { display: flex; align-items: center; gap: 8px; color: #3b4657; font-size: 12px; font-weight: 500; }
+.demoSteps li > span { display: grid; place-items: center; width: 23px; height: 23px; flex-shrink: 0; border: 1px solid #d9e1ed; border-radius: 50%; color: #245ede; font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.footerGuide p { max-width: 480px; color: #737b88; font-size: 13px; line-height: 1.75; }
+.footerCta { display: flex; align-items: center; justify-content: space-between; gap: 26px; min-width: 0; padding: 10px 0 10px 38px; border-left: 1px solid #dfe3e9; }
+.footerCta > div { min-width: 0; max-width: 265px; }
+.footerLabel { display: block; margin-bottom: 10px; color: #245ede; font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+.footerCta h3 { font-family: var(--font-jakarta), Arial, sans-serif; color: #202b3d; font-size: clamp(23px, 2.1vw, 29px); line-height: 1.3; font-weight: 600; letter-spacing: -.045em; }
+.bookDemoCta { flex-shrink: 0; white-space: nowrap; font-size: 13px; padding: 14px 18px; }
+.widgetHeader button:focus-visible, .promptSuggestions button:focus-visible, .widgetComposer button:focus-visible, .showcaseFooter a:focus-visible { outline: 2px solid #3171f3; outline-offset: 3px; }
+.widgetHeader button:focus-visible { outline-color: #fff; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* Each scene follows the visual conventions of its business. */
+.demoWebsite[data-industry="restaurant"] .websiteNav { background: #282019; color: #fff6e7; border-color: #40382d; }
+.demoWebsite[data-industry="restaurant"] .websiteNav > div { color: #d8caba; }
+.demoWebsite[data-industry="restaurant"] .websiteBrand > span { color: #d7a771; }
+.demoWebsite[data-industry="restaurant"] .websiteHero { min-height: 465px; }
+.demoWebsite[data-industry="restaurant"] .websitePhotoPanel { inset: 0; }
+.demoWebsite[data-industry="restaurant"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #1a120dda, #1a120d65 56%, #1a120d08); }
+.demoWebsite[data-industry="restaurant"] .websiteWords { width: 51%; padding-top: 75px; color: #fff8ed; }
+.demoWebsite[data-industry="restaurant"] .websiteWords h3 { font-size: 46px; }
+.demoWebsite[data-industry="restaurant"] .websiteWords > span { color: #e4c6a1; }
+.demoWebsite[data-industry="restaurant"] .websiteWords p { color: #e4d9cc; }
+.demoWebsite[data-industry="restaurant"] .websiteAction { background: #f4eadb; color: #3f2b1c; }
+.demoWebsite[data-industry="restaurant"] .websiteBottom { background: #faf7f1; }
+.demoWebsite[data-industry="restaurant"] .chatWidget { top: 172px; }
+.demoWebsite[data-industry="retail"] .websiteHero { min-height: 300px; }
+.demoWebsite[data-industry="retail"] .websiteWords { width: 46%; padding-top: 35px; }
+.demoWebsite[data-industry="retail"] .websiteWords h3 { font-size: 29px; }
+.demoWebsite[data-industry="retail"] .websitePhotoPanel { left: 46%; }
+.demoWebsite[data-industry="retail"] .websitePhoto { object-position: 60% center; }
+.demoWebsite[data-industry="retail"] .websiteAction { border-radius: 0; }
+.demoWebsite[data-industry="retail"] .chatWidget { top: 88px; }
+.demoWebsite[data-industry="salon"] .websiteHero { min-height: 305px; }
+.demoWebsite[data-industry="salon"] .websiteWords { padding-top: 38px; }
+.demoWebsite[data-industry="salon"] .websiteWords h3 { font-size: 39px; }
+.demoWebsite[data-industry="salon"] .websitePhotoPanel { inset: 20px 18px 20px 48%; border-radius: 80px 80px 3px 3px; overflow: hidden; }
+.demoWebsite[data-industry="salon"] .websiteAction { background: transparent; color: var(--demo-accent); border-bottom: 1px solid currentColor; padding: 0 0 7px; }
+.demoWebsite[data-industry="salon"] .chatWidget { top: 84px; }
+.demoWebsite[data-industry="property"] .websiteHero { min-height: 455px; }
+.demoWebsite[data-industry="property"] .websitePhotoPanel { inset: 0; }
+.demoWebsite[data-industry="property"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0b1c29bd, #0b1c2910 85%); }
+.demoWebsite[data-industry="property"] .websiteWords { width: 56%; padding-top: 255px; color: #fff; }
+.demoWebsite[data-industry="property"] .websiteWords h3 { font-size: 31px; }
+.demoWebsite[data-industry="property"] .websiteWords > span { display: inline-block; padding: 5px 7px; background: #fff; color: #253d49; font-size: 8px; margin-bottom: 13px; }
+.demoWebsite[data-industry="property"] .websiteWords p { display: none; }
+.demoWebsite[data-industry="property"] .websiteAction { background: #fff; color: #253d49; margin-top: 16px; }
+.demoWebsite[data-industry="property"] .websiteBottom { background: #f5f7f8; }
+.demoWebsite[data-industry="property"] .chatWidget { top: 92px; }
+/* The gallery uses a photograph and a conversation, without browser chrome. */
+.demoWebsite:not(.fullPage) { border: 0; border-radius: 16px; background: #ecebe8; box-shadow: none; }
+.sceneImage { position: relative; height: 430px; }
+.sceneImage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0e152130, transparent 65%); pointer-events: none; }
+.demoWebsite[data-industry]:not(.fullPage) .chatWidget { top: auto; bottom: 24px; right: 24px; width: 260px; max-width: calc(100% - 48px); }
+.demoWebsite:not(.fullPage) .widgetMessages { height: 185px; }
+.demoWebsite:not(.fullPage) .websitePhoto { object-position: center; }
+.fullPage { border: 0; border-radius: 0; box-shadow: none; font-family: var(--font-inter), Arial, sans-serif; }
+.fullPage .websiteNav { padding: 32px max(30px, 5vw); }
+.fullPage .websiteBrand { font-size: 36px; }
+.fullPage .websiteNav > div { font-size: 13px; gap: 32px; }
+.fullPage[data-industry] .websiteHero { min-height: 660px; }
+.fullPage .websiteWords { padding: 100px max(30px, 5vw); }
+.fullPage .websiteWords h3 { font-size: clamp(55px, 6vw, 90px); }
+.fullPage[data-industry] .websiteWords { width: 45%; padding: 100px max(30px, 5vw); }
+.fullPage[data-industry="restaurant"] .websiteWords h3, .fullPage[data-industry="salon"] .websiteWords h3 { font-size: clamp(55px, 6vw, 90px); }
+.fullPage[data-industry="property"] .websiteWords { padding-top: 300px; }
+.fullPage[data-industry="retail"] .websiteWords h3, .fullPage[data-industry="property"] .websiteWords h3 { font-size: clamp(48px, 5vw, 76px); }
+.fullPage[data-industry="retail"] .websiteBrand, .fullPage[data-industry="property"] .websiteBrand { font-size: 28px; }
+.fullPage .websiteWords > span { font-size: 11px; }
+.fullPage .websiteWords p { font-size: 15px; max-width: 360px; }
+.fullPage .websiteWords .websiteAction { font-size: 13px; padding: 13px 20px; }
+.fullPage[data-industry] .chatWidget { width: 350px; max-width: none; top: 150px; right: max(30px, 5vw); }
+.fullPage .widgetHeader { padding: 19px; }
+.fullPage .widgetHeader > div { font-size: 14px; }
+.fullPage .widgetHeader small { font-size: 11px; }
+.fullPage .widgetMessages { height: 300px; padding: 19px; }
+.fullPage .agentReply, .fullPage .customerReply { font-size: 13px; }
+.fullPage .promptSuggestions > button { font-size: 12px; padding: 11px; }
+.fullPage .widgetComposer { margin: 0 17px 14px; }
+.fullPage .widgetComposer input { font-size: 13px; padding: 10px; }
+.fullPage .widgetComposer button { width: 35px; height: 35px; }
+.fullPage .widgetFooter { font-size: 10px; padding: 13px; }
+.fullPage .widgetFooter > span { font-size: 9px; }
+.fullPage .websiteBottom { padding: 28px max(30px, 5vw); }
+.fullPage .websiteBottom small { font-size: 11px; }
+.fullPage .websiteBottom strong { font-size: 14px; }
+.fullPage .chatLauncher { right: max(30px, 5vw); bottom: 24px; }
+@container (max-width: 560px) {
+  .websiteNav { padding: 19px 16px; }
+  .websiteNav > div { gap: 10px; font-size: 8px; }
+  .websiteBrand { font-size: 23px; }
+  .websiteWords { padding: 40px 16px; }
+  .websiteWords h3 { font-size: 31px; }
+  .websiteWords p { font-size: 10px; }
+  .websiteWords .websiteAction { padding: 10px; font-size: 9px; }
+  .chatWidget { right: 10px; width: 49%; }
+  .widgetHeader { gap: 6px; padding: 12px 9px; }
+  .widgetAvatar { width: 25px; height: 25px; }
+  .widgetHeader > div { font-size: 11px; }
+  .widgetHeader small { font-size: 8px; }
+  .cardDetails { gap: 14px; }
+  .cardDetails h3 { font-size: 21px; }
+}
+@media (max-width: 1023px) {
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .intro .description { max-width: 560px; }
+  .demoGrid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .demoCard[data-industry] { grid-column: auto; }
+  .showcaseFooter { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .footerCta { border-left: 0; border-top: 1px solid #e6e9ee; padding: 26px 0 0; }
+  .footerCta > div { max-width: 420px; }
+  .fullPage .websiteWords { padding-inline: 26px; }
+  .fullPage .websiteWords h3 { font-size: 62px; }
+  .fullPage .chatWidget { width: 320px; right: 26px; }
+}
+@media (max-width: 767px) {
+  .demoGrid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+}
+@media (max-width: 479px) {
+  .section { padding-block: 56px; }
+  .intro { margin-bottom: 30px; gap: 20px; }
+  .intro .title { font-size: clamp(36px, 9vw, 44px); }
+  .intro .description { font-size: 15px; }
+  .kicker { font-size: 9px; letter-spacing: .1em; }
+  .cardDetails { gap: 12px; height: 220px; }
+  .demoCta { font-size: 10px; padding: 10px; }
+  .cardDetails h3 { font-size: 19px; }
+  .cardDetails p { font-size: 12px; }
+  .websiteNav > div { display: none; }
+  .websiteMenu { display: block; }
+  .demoWebsite[data-industry] .websiteHero { min-height: 0; display: flex; flex-direction: column; }
+  .demoWebsite[data-industry] .websitePhotoPanel { position: relative; inset: auto; order: 2; height: 200px; margin: 0; border-radius: 0; }
+  .demoWebsite[data-industry] .websitePhotoPanel::after { display: none; }
+  .demoWebsite[data-industry] .websiteWords { width: 100%; padding: 30px 22px; }
+  .demoWebsite[data-industry] .websiteWords h3 { font-size: 40px; }
+  .demoWebsite[data-industry="retail"] .websiteWords h3, .demoWebsite[data-industry="property"] .websiteWords h3 { font-size: 33px; }
+  .demoWebsite[data-industry="restaurant"] .websiteWords { background: #282019; }
+  .demoWebsite[data-industry="property"] .websiteWords { background: #1e3945; }
+  .websiteWords p { font-size: 12px; max-width: 290px; }
+  .websiteWords .websiteAction { font-size: 11px; margin-top: 17px; }
+  .websiteBottom { padding: 19px 16px; gap: 9px; }
+  .websiteBottom > div + div { padding-left: 9px; }
+  .websiteBottom small { font-size: 8px; }
+  .websiteBottom strong { font-size: 10px; }
+  .demoWebsite[data-industry] .chatWidget { position: relative; inset: auto; width: calc(100% - 32px); max-width: 380px; margin: 0 auto 20px; box-shadow: 0 6px 20px #181b2512; }
+  .widgetHeader { padding: 15px 13px; }
+  .widgetAvatar { width: 31px; height: 31px; }
+  .widgetHeader > div { font-size: 13px; }
+  .widgetHeader small { font-size: 10px; }
+  .widgetMessages { height: 235px; padding: 15px 13px; }
+  .agentReply, .customerReply { font-size: 12px; }
+  .promptSuggestions > button { min-height: 44px; font-size: 11px; }
+  .widgetComposer input { font-size: 16px; }
+  .widgetComposer button { width: 36px; height: 36px; }
+  .chatLauncher { display: none; }
+  .demoWebsite .chatLauncher { display: grid; }
+  .showcaseFooter { gap: 25px; margin-top: 18px; padding-top: 28px; }
+  .footerGuide h3 { font-size: 22px; }
+  .demoSteps { gap: 12px 18px; margin-block: 18px 14px; }
+  .demoSteps li { font-size: 11px; }
+  .footerCta { gap: 16px; padding-top: 24px; }
+  .footerCta h3 { font-size: 21px; }
+  .footerLabel { font-size: 9px; margin-bottom: 8px; }
+  .bookDemoCta { padding: 12px; font-size: 11px; }
+  .fullPage .websiteNav { padding: 24px; }
+  .fullPage .websiteBrand { font-size: 32px; }
+  .fullPage .websiteNav > div { display: none; }
+  .fullPage .websiteBottom { padding: 22px 16px; }
+  .fullPage .websiteBottom strong { font-size: 11px; }
+  .demoWebsite[data-industry]:not(.fullPage) .sceneImage { height: 370px; }
+  .demoWebsite[data-industry]:not(.fullPage) .chatWidget { position: absolute; inset: auto 14px 14px auto; width: 250px; max-width: calc(100% - 28px); margin: 0; box-shadow: 0 10px 28px #10151f30; }
+  .demoWebsite:not(.fullPage) .widgetHeader { padding: 12px; }
+  .demoWebsite:not(.fullPage) .widgetMessages { height: 175px; padding: 12px; }
+  .demoWebsite:not(.fullPage) .agentReply, .demoWebsite:not(.fullPage) .customerReply { font-size: 11px; }
+  .demoWebsite:not(.fullPage) .widgetComposer input { font-size: 16px; }
+}

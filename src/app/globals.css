@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* `dark:` utilities follow the `.dark` class on <html> (set by ThemeToggle /
-   the no-flash script in layout.tsx), not the OS media query. */
+/* Legacy dark styles remain available for media previews. Public pages always
+   use light mode; dark OS preferences must not activate these utilities. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ----------------------------------------------------------------------------
@@ -71,6 +71,7 @@
   --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
@@ -201,14 +202,74 @@ html.theme-transition *::after {
     @apply bg-gradient-to-br from-logo-deep via-brand-500 to-logo-cyan bg-clip-text text-transparent;
   }
 
-  /* Italic serif accent inside sans headlines */
+  /* Non-hero accent inside headlines: Instrument Serif, brand colour, never italic.
+     Hero keeps its own italic serif (Hero.module.css). */
   .accent-serif {
-    @apply font-serif font-normal italic tracking-normal;
+    @apply tracking-normal;
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
   }
 
   .mask-fade-x {
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
+}
+
+/* Shared editorial typography. Hero keeps its own styles (Hero.module.css). */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border: 1px solid var(--brand-200);
+  border-radius: 999px;
+  background: var(--brand-50);
+  color: #1a4bbb;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-brand-500);
+}
+.dark .section-eyebrow:not(.section-eyebrow--inverted) { color: #8db3f8; }
+.section-eyebrow--inverted {
+  color: #dbe6fd;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+.section-eyebrow--inverted::before { background: #8db3f8; }
+.section-title, .card-title {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: capitalize;
+  letter-spacing: -0.01em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+.section-title { font-size: clamp(36px, 4.2vw, 58px); }
+.card-title { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.005em; line-height: 1.18; }
+.section-description, .font-description {
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-style: normal;
+}
+.section-description { font-size: clamp(15px, 1.2vw, 17px); font-weight: 400; line-height: 1.75; letter-spacing: -0.005em; }
+.font-description { line-height: 1.7; }
+@media (max-width: 767px) {
+  .section-title { font-size: clamp(36px, 9.5vw, 48px); }
+  .section-eyebrow { padding: 7px 13px 7px 11px; font-size: 10.5px; letter-spacing: .14em; }
 }
 
 /* Scroll-reveal (see components/shared/Reveal.tsx) */

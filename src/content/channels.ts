@@ -9,11 +9,11 @@ import {
 import type { Channel, SectionIntro } from "@/types/content";
 
 export const channelsIntro: SectionIntro = {
-  eyebrow: "Deploy everywhere",
-  title: "Plugs into your stack.",
-  titleAccent: "No rip-and-replace.",
+  eyebrow: "Deploy",
+  title: "Deploy Everywhere",
+  titleAccent: "Your Customers Are.",
   description:
-    "Build once and go live wherever your customers are. Dagsis connects to the channels you already use.",
+    "Connect your AI agent to WhatsApp, Instagram, Facebook, Discord, Telegram and your website in a few clicks.",
 };
 
 /** Pill under the diagram, shown with a "+" icon (youratlas: "+ any SIP-based system."). */

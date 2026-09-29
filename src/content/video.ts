@@ -10,5 +10,8 @@ export const videoIntro: SectionIntro = {
 export const videoMeta = {
   /** Shown on the placeholder until a real video is set in siteConfig.links.productVideo. */
   duration: "0:15",
-  caption: "Product walkthrough",
+  caption: "Dagsis introduction",
+  watchLabel: "Watch the Dagsis introduction",
+  /** The three beats of the walkthrough, from the section description. */
+  chapters: ["Upload your docs", "Set the tone", "Connect your number"],
 };

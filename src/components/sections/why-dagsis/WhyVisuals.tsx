@@ -1,211 +1,76 @@
-"use client";
-
-import { Check, FileText, Moon, ShieldCheck, Sun } from "lucide-react";
-import { useRef, type ReactNode } from "react";
-import { channels } from "@/content";
+﻿import Image from "next/image";
+import { ArrowLeft, ArrowRight, Camera, Check, CheckCheck, ChevronDown, FileText, LayoutDashboard, LockKeyhole, Mic, MoreVertical, Paperclip, Phone, Plus, Search, Send, ShieldCheck, Smile, Video } from "lucide-react";
+import type { ReactNode } from "react";
 import type { WhyReason } from "@/types/content";
-import { useInView } from "@/hooks/useInView";
-import { cn } from "@/lib/utils";
-import { ChatBubble } from "@/components/shared/ChatBubble";
 import { LogoMark } from "@/components/shared/Logo";
+import { WhatsAppIcon } from "@/components/shared/BrandIcons";
+import styles from "./WhyDagsis.module.css";
 
-/**
- * Small live illustrations for the Why Dagsis bento cards. Each one plays
- * its entrance once when scrolled into view (reduced motion: shown as-is,
- * handled by the global reduced-motion CSS).
- */
-
-/** Shared frame: tinted panel at the top of a card; passes `on` to children. */
-function Stage({ children, className }: { children: (on: boolean) => ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const on = useInView(ref, { threshold: 0.4 });
-  return (
-    <div
-      ref={ref}
-      aria-hidden="true"
-      className={cn("relative overflow-hidden rounded-2xl bg-ink-50 p-5 ring-1 ring-ink-200/60", className)}
-    >
-      {children(on)}
-    </div>
-  );
+function AppFrame({ label, children }: { label: string; children: ReactNode }) {
+  return <div className={styles.appFrame}><div className={styles.appHeader}><LogoMark className="h-4" /><strong>Dagsis</strong><span>/ {label}</span><MoreVertical size={14} /></div><div className={styles.appBody}>{children}</div></div>;
 }
 
-/** Fade + rise, delayed, once `on`. */
-const appear = (on: boolean, delayMs: number) => ({
-  className: cn("transition-all duration-700 ease-out", on ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"),
-  style: { transitionDelay: `${delayMs}ms` },
-});
+function SingaporeVisual() {
+  return <div className={styles.whatsappScene}>
+    <div className={styles.whatsappBrand}><WhatsAppIcon className="size-5" /><span>WhatsApp Business</span></div>
+    <div className={styles.whatsappWindow}>
+      <div className={styles.whatsappHeader}><ArrowLeft size={17} /><span className={styles.businessAvatar}><Image src="/images/showcase/demo-salon.webp" alt="" fill sizes="36px" /></span><div>Studio &amp; You<small>Business account</small></div><Video size={18} /><Phone size={16} /><MoreVertical size={17} /></div>
+      <div className={styles.whatsappMessages}>
+        <span className={styles.chatDate}>Today</span>
+        <div className={styles.whatsappOutgoing}>Hi! Do you have appointments this Saturday?<small>10:42 <CheckCheck size={13} /></small></div>
+        <div className={styles.whatsappIncoming}>Yes, we have a slot at 11am. Would you like a haircut or a colour appointment?<small>10:42</small></div>
+        <div className={styles.whatsappOutgoing}>A haircut, please.<small>10:43 <CheckCheck size={13} /></small></div>
+        <div className={styles.whatsappIncoming}>Great! Can I have your name to help arrange it?<small>10:43</small></div>
+      </div>
+      <div className={styles.whatsappComposer}><div><Smile size={18} /><span>Message</span><Paperclip size={17} /><Camera size={18} /></div><span className={styles.voiceButton}><Mic size={19} /></span></div>
+    </div>
+    <span className={styles.sampleNote}>Sample business conversation</span>
+  </div>;
+}
 
 function KnowledgeVisual() {
-  return (
-    <Stage className="flex min-h-64 flex-col justify-center gap-3 sm:p-7">
-      {(on) => (
-        <>
-          <div {...appear(on, 0)}>
-            <ChatBubble message={{ from: "user", text: "Can I return items I bought on sale?" }} className="ml-auto text-sm" />
-          </div>
-          <div {...appear(on, 350)}>
-            <ChatBubble
-              message={{ from: "agent", text: "Yes, within 14 days, as long as the tags are still attached. Want me to start a return?" }}
-              className="bg-surface-raised text-sm shadow-sm ring-1 ring-ink-200/70"
-            />
-          </div>
-          <div {...appear(on, 750)} className={cn(appear(on, 750).className, "flex flex-wrap items-center gap-2")}>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 ring-1 ring-brand-100 dark:text-brand-300">
-              <FileText className="size-3.5" /> Returns policy.docx · section 3
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
-              <ShieldCheck className="size-3.5" /> Answered from your docs
-            </span>
-          </div>
-        </>
-      )}
-    </Stage>
-  );
-}
-
-function AlwaysOnVisual() {
-  // Conversation times across a day (hours), clustered through the night too.
-  const dots = [1.2, 3.2, 5.6, 8.4, 11, 13.6, 16.2, 18.8, 21.2, 23];
-  return (
-    <Stage className="flex h-40 flex-col justify-between">
-      {(on) => (
-        <>
-          <div className="flex items-center justify-between text-[11px] text-ink-500">
-            <span className="inline-flex items-center gap-1"><Moon className="size-3.5" /> 00:00</span>
-            <span className="inline-flex items-center gap-1"><Sun className="size-3.5" /> 12:00</span>
-            <span className="inline-flex items-center gap-1"><Moon className="size-3.5" /> 24:00</span>
-          </div>
-          <div className="relative h-8">
-            <div className="absolute inset-x-0 top-1/2 h-px bg-ink-200" />
-            {/* night shading */}
-            <div className="absolute inset-y-0 left-0 w-1/4 rounded-l-full bg-brand-100/60" />
-            <div className="absolute inset-y-0 right-0 w-[12%] rounded-r-full bg-brand-100/60" />
-            {dots.map((h, i) => (
-              <span
-                key={h}
-                className={cn(
-                  "absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-600 ring-2 ring-ink-50 transition-transform duration-500 dark:bg-brand-400",
-                  on ? "scale-100" : "scale-0",
-                )}
-                style={{ left: `${(h / 24) * 100}%`, transitionDelay: `${i * 60}ms` }}
-              />
-            ))}
-          </div>
-          <p {...appear(on, 900)} className={cn(appear(on, 900).className, "text-xs text-ink-600")}>
-            <span className="font-mono font-semibold text-ink-900">03:12</span> · “Is my order shipped?” · answered in 2s
-          </p>
-        </>
-      )}
-    </Stage>
-  );
-}
-
-function SpeedVisual() {
-  const rows = [
-    { label: "Dagsis agent", value: "2s", width: "8%", bar: "bg-brand-600 dark:bg-brand-400", strong: true },
-    { label: "Typical email reply", value: "12h", width: "100%", bar: "bg-ink-300", strong: false },
-  ];
-  return (
-    <Stage className="flex h-40 flex-col justify-center gap-4">
-      {(on) =>
-        rows.map((r, i) => (
-          <div key={r.label}>
-            <div className="flex justify-between text-xs">
-              <span className={r.strong ? "font-semibold text-ink-900" : "text-ink-600"}>{r.label}</span>
-              <span className={cn("font-mono", r.strong ? "font-semibold text-brand-700 dark:text-brand-300" : "text-ink-600")}>{r.value}</span>
-            </div>
-            <div className="mt-1.5 h-2 rounded-full bg-ink-200/60">
-              <div
-                className={cn("h-full rounded-full transition-[width] ease-out", r.bar)}
-                style={{ width: on ? r.width : "0%", transitionDuration: i === 0 ? "500ms" : "1600ms", transitionDelay: `${i * 200}ms` }}
-              />
-            </div>
-          </div>
-        ))
-      }
-    </Stage>
-  );
-}
-
-function ChannelsVisual() {
-  return (
-    <Stage className="flex h-40 items-center justify-center">
-      {(on) => (
-        <div className="grid grid-cols-7 items-center gap-2">
-          {channels.slice(0, 3).map((c, i) => (
-            <span
-              key={c.id}
-              className={cn("flex size-9 items-center justify-center rounded-xl transition-all duration-500", c.accent, on ? "scale-100 opacity-100" : "scale-50 opacity-0")}
-              style={{ transitionDelay: `${i * 90}ms` }}
-              title={c.name}
-            >
-              <c.icon className="size-4" />
-            </span>
-          ))}
-          <span className="flex size-11 items-center justify-center rounded-2xl bg-surface-raised shadow-md ring-1 ring-ink-200">
-            <LogoMark className="h-6" />
-          </span>
-          {channels.slice(3, 6).map((c, i) => (
-            <span
-              key={c.id}
-              className={cn("flex size-9 items-center justify-center rounded-xl transition-all duration-500", c.accent, on ? "scale-100 opacity-100" : "scale-50 opacity-0")}
-              style={{ transitionDelay: `${(i + 3) * 90}ms` }}
-              title={c.name}
-            >
-              <c.icon className="size-4" />
-            </span>
-          ))}
-        </div>
-      )}
-    </Stage>
-  );
+  return <AppFrame label="Playground">
+    <div className={styles.agentToolbar}><span className={styles.agentDot} /> Customer care<span className={styles.readyBadge}>Ready</span></div>
+    <div className={styles.question}>What is your return policy?</div>
+    <div className={styles.answer}><span className={styles.answerAvatar}><LogoMark className="h-5" /></span><div><small>Customer care</small><p>Unused items can be returned within 14 days in their original packaging.</p></div></div>
+    <div className={styles.sourceCard}><FileText size={15} /><div><strong>Returns policy.pdf</strong><span>Source used for this answer</span></div><Check size={13} /></div>
+    <div className={styles.testComposer}>Test your agent...<Send size={13} /></div>
+  </AppFrame>;
 }
 
 function SetupVisual() {
-  const steps = ["Upload your docs", "Choose a tone", "Go live"];
-  return (
-    <Stage className="flex h-40 flex-col justify-center gap-2.5">
-      {(on) =>
-        steps.map((s, i) => (
-          <div key={s} className="flex items-center gap-3 text-sm">
-            <span
-              className={cn(
-                "flex size-6 items-center justify-center rounded-full transition-colors duration-500",
-                on ? "bg-emerald-500 text-white" : "bg-ink-200 text-transparent",
-              )}
-              style={{ transitionDelay: `${i * 450}ms` }}
-            >
-              <Check className="size-3.5" strokeWidth={3} />
-            </span>
-            <span className="flex-1 font-medium text-ink-800">{s}</span>
-            {i === steps.length - 1 && (
-              <span
-                className={cn(
-                  "rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 transition-opacity duration-500 dark:bg-emerald-500/10 dark:text-emerald-300",
-                  on ? "opacity-100" : "opacity-0",
-                )}
-                style={{ transitionDelay: "1400ms" }}
-              >
-                Live
-              </span>
-            )}
-          </div>
-        ))
-      }
-    </Stage>
-  );
+  return <AppFrame label="Agent settings">
+    <div className={styles.sceneHeading}><strong>Create an agent</strong><span>Draft</span></div>
+    <div className={styles.sceneField}><small>Agent name</small><div>Customer support</div></div>
+    <div className={styles.sceneField}><small>Knowledge base</small><div><FileText size={13} /> Business documents<ChevronDown size={12} /></div></div>
+    <div className={styles.toneSetting}><span>Tone of voice</span><span>Friendly<ChevronDown size={11} /></span></div>
+    <div className={styles.publishRow}><span><Check size={12} /> Settings saved</span><span>Publish agent<ArrowRight size={13} /></span></div>
+  </AppFrame>;
 }
 
-const visuals: Record<WhyReason["id"], () => ReactNode> = {
-  knowledge: KnowledgeVisual,
-  "always-on": AlwaysOnVisual,
-  speed: SpeedVisual,
-  channels: ChannelsVisual,
-  setup: SetupVisual,
-};
+function SecurityVisual() {
+  return <AppFrame label="Team">
+    <div className={styles.sceneHeading}><strong>Team members</strong><span className={styles.inviteBadge}><Plus size={11} /> Invite</span></div>
+    <div className={styles.memberTabs}><span>Members</span><span>Roles &amp; permissions</span></div>
+    <div className={styles.memberSearch}><Search size={12} /> Search members...</div>
+    <div className={styles.tableLabels}><span>Member</span><span>Role</span></div>
+    {[{ initials: "JL", name: "Jamie Lee", role: "Admin" }, { initials: "AT", name: "Alex Tan", role: "Support" }].map(member => <div className={styles.teamMember} key={member.name}><span className={styles.memberAvatar}>{member.initials}</span><div><strong>{member.name}</strong></div><span className={styles.memberRole}>{member.role}<ChevronDown size={11} /></span></div>)}
+    <div className={styles.permissionNote}><LockKeyhole size={12} /> Only admins can manage permissions.</div>
+  </AppFrame>;
+}
+
+function GrowthVisual() {
+  return <AppFrame label="Plans & billing">
+    <div className={styles.sceneHeading}><strong>Your subscription</strong><LayoutDashboard size={14} /></div>
+    <div className={styles.currentPlan}><span>Current plan</span><div><strong>Free</strong><span><Check size={11} /> Active</span></div><small>Start with your first workspace.</small></div>
+    <div className={styles.businessOffer}><div><strong>Ready to grow?</strong><p>Choose a package that fits your business.</p></div><ArrowRight size={18} /></div>
+    <div className={styles.billingFooter}><ShieldCheck size={13} /> Keep your workspace as you upgrade.</div>
+  </AppFrame>;
+}
+
+const visuals = { singapore: SingaporeVisual, knowledge: KnowledgeVisual, setup: SetupVisual, security: SecurityVisual, growth: GrowthVisual };
 
 export function WhyVisual({ id }: { id: WhyReason["id"] }) {
   const Visual = visuals[id];
-  return <Visual />;
+  return <div className={styles.visual} aria-hidden="true"><Visual /></div>;
 }

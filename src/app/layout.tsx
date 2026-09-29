@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Geist_Mono, Instrument_Sans, Instrument_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
-import { themeInitScript } from "@/lib/theme";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
@@ -9,6 +8,16 @@ import "./globals.css";
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
+});
+
+/** Editorial descriptions; UI and hero retain Instrument Sans. */
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
+
+/** Section + card headings (everything except hero). Capitalized, non-italic. */
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 /** Italic serif for accent words in headlines (youratlas / cevver style). */
@@ -46,23 +55,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0d15" },
-  ],
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning: the theme script adds `.dark` before React hydrates.
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} ${inter.variable} ${jakartaSans.variable}`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       {/* Page chrome (navbar, footer, smooth scroll) lives in app/(site)/layout.tsx */}
       <body className="flex min-h-screen flex-col font-sans">{children}</body>
     </html>

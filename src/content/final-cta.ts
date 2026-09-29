@@ -1,11 +1,12 @@
 import { siteConfig } from "@/config/site";
 
 export const finalCtaContent = {
-  title: "Build your first AI agent today.",
+  title: "Ready to Let AI Handle Your Customer Conversations?",
+  description: "Launch your Dagsis agent on WhatsApp and your website today, and never miss another enquiry or lead.",
   /** Rendered only when `featureFlags.noCreditCardRequired` is true. */
   noCardNote: "Start free. No credit card required.",
   /** Fallback note used otherwise. */
   defaultNote: "Start free and upgrade anytime.",
-  primaryCta: { label: "Start for Free", href: siteConfig.links.signUp },
-  secondaryCta: { label: "Book a Demo", href: siteConfig.links.bookDemo },
+  primaryCta: { label: "Book a Demo", href: `${siteConfig.links.contactSales}?subject=Book%20a%20Dagsis%20demo` },
+  secondaryCta: { label: "Start for Free", href: siteConfig.links.signUp },
 };

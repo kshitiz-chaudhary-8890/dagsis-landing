@@ -1,56 +1,42 @@
-import { Brain, Clock3, Layers, Wand2, Zap } from "lucide-react";
+﻿import { BookOpen, MessageCircle, ShieldCheck, TrendingUp, Wand2 } from "lucide-react";
 import type { SectionIntro, WhyReason } from "@/types/content";
 
 export const whyIntro: SectionIntro = {
   eyebrow: "Why Dagsis",
-  titleAccent: "One platform.",
-  accentFirst: true,
-  title: "Every customer conversation.",
-  description:
-    "Built for small teams that can't staff a support desk around the clock, and bigger ones that are tired of answering the same thing twice.",
+  title: "Why Businesses Choose Dagsis.",
+  description: "Powerful enough for growing teams, simple enough to launch in a day.",
 };
 
-/**
- * Rendered as a bento grid; each reason's `id` picks its illustration
- * (components/sections/why-dagsis/WhyVisuals.tsx). Order = grid order.
- */
 export const reasons: WhyReason[] = [
   {
-    icon: Brain,
-    id: "knowledge",
-    title: "Business-specific knowledge",
-    description:
-      "Answers come from your documents and website, not from whatever the internet thinks.",
+    id: "singapore", icon: MessageCircle,
+    title: "Built for how Singapore communicates",
+    description: "WhatsApp-first, so you meet customers where they already are.",
   },
   {
-    icon: Clock3,
-    id: "always-on",
-    title: "24/7 availability",
-    description: "Nights, weekends and holidays. Your customers never wait for business hours.",
+    id: "knowledge", icon: BookOpen,
+    title: "Trained on your business, not generic answers",
+    description: "Your agent only speaks from the knowledge you give it.",
   },
   {
-    icon: Zap,
-    id: "speed",
-    title: "Instant responses",
-    description: "Replies in seconds, even when thousands of customers write at once.",
+    id: "setup", icon: Wand2,
+    title: "No technical skills needed",
+    description: "Set up, train and deploy without writing a line of code.",
   },
   {
-    icon: Layers,
-    id: "channels",
-    title: "Multi-channel",
-    description: "Website, WhatsApp, Instagram, Facebook, Telegram and Discord, all managed from one dashboard.",
+    id: "security", icon: ShieldCheck,
+    title: "Secure and organised",
+    description: "Role-based access keeps your data protected.",
   },
   {
-    icon: Wand2,
-    id: "setup",
-    title: "Easy setup",
-    description: "No code and no ML expertise. If you can upload a file, you can launch an agent.",
+    id: "growth", icon: TrendingUp,
+    title: "Grows with you",
+    description: "Start free, then move to a package that fits as your business expands.",
   },
 ];
 
-/** Fills the last grid cell. */
 export const whyCta = {
-  title: "Ready when you are",
-  description: "Launch your first agent today and see the difference this week.",
+  title: "Start with your business.",
+  description: "Create your workspace and launch your first agent.",
   label: "Start for Free",
 };

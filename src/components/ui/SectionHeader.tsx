@@ -17,7 +17,7 @@ interface SectionHeaderProps extends SectionIntro {
 
 /**
  * Eyebrow + title + description block used at the top of sections.
- * `titleAccent` is rendered in brand-coloured italic serif (joinboardly / youratlas style).
+ * `titleAccent` is rendered in brand colour, same Jakarta Sans as the title, never italic.
  */
 export function SectionHeader({
   eyebrow,
@@ -32,7 +32,7 @@ export function SectionHeader({
   const accent = titleAccent ? (
     <span
       className={cn(
-        "accent-serif text-[1.08em]",
+        "text-[1em] not-italic",
         inverted ? "text-brand-300" : "text-brand-600 dark:text-brand-400",
       )}
     >
@@ -45,7 +45,7 @@ export function SectionHeader({
       {eyebrow && <Eyebrow inverted={inverted}>{eyebrow}</Eyebrow>}
       <h2
         className={cn(
-          "mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl",
+          "section-title mt-5 text-balance",
           inverted ? "text-white" : "text-ink-900",
         )}
       >
@@ -59,8 +59,8 @@ export function SectionHeader({
   const body = description && (
     <p
       className={cn(
-        "text-lg text-pretty",
-        align === "split" ? "max-w-md lg:justify-self-end" : "mt-4",
+        "section-description text-pretty",
+        align === "split" ? "max-w-md lg:justify-self-end" : "mt-5",
         align === "center" && "mx-auto max-w-2xl",
         inverted ? "text-white/65" : "text-ink-500",
       )}

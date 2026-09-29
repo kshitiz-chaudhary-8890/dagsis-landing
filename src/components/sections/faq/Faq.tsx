@@ -1,40 +1,40 @@
-import { Plus } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { faqIntro, faqs } from "@/content";
-import { ButtonLink, Section, SectionHeader } from "@/components/ui";
+import { faqGroups, faqIntro } from "@/content/faq";
+import { Section } from "@/components/ui";
+import styles from "./Faq.module.css";
 
-/**
- * FAQ — reference: joinboardly.com
- * Centred heading, single narrow column, each question in its own card.
- * Uses native <details name="faq"> so only one opens at a time — no JS needed.
- */
 export function Faq() {
-  return (
-    <Section id="faq" tone="muted">
-      <SectionHeader {...faqIntro} />
-
-      <div className="mx-auto mt-12 max-w-2xl space-y-3">
-        {faqs.map((f) => (
-          <details
-            key={f.question}
-            name="faq"
-            className="faq-item group rounded-2xl bg-surface-raised px-5 shadow-sm ring-1 ring-ink-200/70 transition-shadow open:shadow-md sm:px-6"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-left font-medium text-ink-900 [&::-webkit-details-marker]:hidden">
-              {f.question}
-              <Plus className="size-5 shrink-0 text-ink-500 transition-transform duration-300 group-open:rotate-45 group-open:text-brand-600" />
-            </summary>
-            <p className="pb-5 pr-8 leading-relaxed text-ink-500">{f.answer}</p>
-          </details>
-        ))}
+  return <Section id="faq" aria-labelledby="faq-title" containerClassName="max-w-[1440px]" className={styles.section}>
+    <div className={styles.inner}>
+      <header className={styles.intro}>
+        <div><span className={styles.kicker}>{faqIntro.eyebrow}</span><h2 id="faq-title" className={`section-title ${styles.title}`}>{faqIntro.title}</h2></div>
+        <p className={`section-description ${styles.description}`}>{faqIntro.description}</p>
+      </header>
+      <div className={styles.layout}>
+        <aside className={styles.sidebar}>
+          <nav className={styles.topicNav} aria-label="FAQ topics">
+            <p>Browse by topic</p>
+            {faqGroups.map(group => <a href={`#faq-${group.id}`} key={group.id}><span>{group.title}</span><span className={styles.topicCount}>{group.items.length}<span className="sr-only"> questions</span></span></a>)}
+          </nav>
+          <div className={styles.help}>
+            <h3>Still have questions?</h3>
+            <p>Book a demo and talk through your business with our team.</p>
+            <a href={siteConfig.links.bookDemo}>Book a Demo<span><ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" /></span></a>
+          </div>
+        </aside>
+        <div className={styles.questions}>
+          {faqGroups.map((group, groupIndex) => <section key={group.id} id={`faq-${group.id}`} className={styles.group} aria-labelledby={`faq-heading-${group.id}`}>
+            <h3 id={`faq-heading-${group.id}`}>{group.title}</h3>
+            <div className={styles.groupItems}>
+              {group.items.map((item, itemIndex) => <details key={item.question} className={styles.item} open={groupIndex === 0 && itemIndex === 0}>
+                <summary><span>{item.question}</span><span className={styles.expandMark}><Plus size={17} strokeWidth={1.5} aria-hidden="true" /></span></summary>
+                <div className={styles.answer}><p>{item.answer}</p></div>
+              </details>)}
+            </div>
+          </section>)}
+        </div>
       </div>
-
-      <div className="mt-10 text-center">
-        <p className="text-ink-500">Still have questions?</p>
-        <ButtonLink href={siteConfig.links.bookDemo} variant="secondary" className="mt-4">
-          Talk to our team
-        </ButtonLink>
-      </div>
-    </Section>
-  );
+    </div>
+  </Section>;
 }
