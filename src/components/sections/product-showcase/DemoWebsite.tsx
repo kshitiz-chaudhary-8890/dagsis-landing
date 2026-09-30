@@ -56,16 +56,11 @@ export function DemoWebsite({ industryId, fullPage = false }: { industryId: stri
   return (
     <div className={`${styles.demoWebsite} ${fullPage ? styles.fullPage : ""}`} style={theme} data-industry={demo.id}>
       <div className={styles.websiteCanvas}>
-        {!fullPage && (demo.image
-          ? <div className={styles.sceneImage}><Image src={demo.image} alt={demo.imageAlt} fill sizes="(max-width: 1023px) 100vw, 55vw" className={styles.websitePhoto} /></div>
-          : <LandingPreview demo={demo} />)}
+        {!fullPage && <div className={styles.sceneImage}><Image src={demo.image} alt={demo.imageAlt} fill sizes="(max-width: 1023px) 100vw, 55vw" className={styles.websitePhoto} /></div>}
         {fullPage && <>
         <nav className={styles.websiteNav} aria-label={`${demo.brand} sample website`}><span className={styles.websiteBrand}>{demo.brand}<span>.</span></span><div>{demo.navigation.map(item => <span key={item}>{item}</span>)}</div><span className={styles.websiteMenu}><Menu size={16} /></span></nav>
         <div className={styles.websiteHero}>
-          <div className={styles.websitePhotoPanel}>{demo.image
-            ? <Image src={demo.image} alt={demo.imageAlt} fill sizes={fullPage ? "55vw" : "(max-width: 767px) 100vw, 35vw"} className={styles.websitePhoto} />
-            : <div className={styles.landingFallback} style={{ background: demo.accent }}>{demo.brand[0]}</div>}
-          </div>
+          <div className={styles.websitePhotoPanel}><Image src={demo.image} alt={demo.imageAlt} fill sizes={fullPage ? "55vw" : "(max-width: 767px) 100vw, 35vw"} className={styles.websitePhoto} /></div>
           <div className={styles.websiteWords}><span>{demo.category}</span><h3>{demo.headline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</h3><p>{demo.websiteDescription}</p><span className={styles.websiteAction}>{demo.action}<ArrowRight size={13} /></span></div>
         </div>
         <div className={styles.websiteBottom}>{websiteDetails[demo.id].map(detail => <div key={detail.label}><small>{detail.label}</small><strong>{detail.value}</strong></div>)}</div>
