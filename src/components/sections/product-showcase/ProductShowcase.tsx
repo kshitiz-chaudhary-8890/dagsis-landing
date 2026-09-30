@@ -30,7 +30,7 @@ export function ProductShowcase() {
             <li><span aria-hidden="true">2</span>Open its demo</li>
             <li><span aria-hidden="true">3</span>Ask a question</li>
           </ol>
-          <p>Ask about products, prices, bookings or policies and see how the agent responds.</p>
+          <p>Ask about listings, programmes, itineraries or appointments and see how the agent responds.</p>
         </div>
         <div className={styles.footerCta}>
           <div><span className={styles.footerLabel}>For your business</span><h3>{demoShowcase.closing}</h3></div>

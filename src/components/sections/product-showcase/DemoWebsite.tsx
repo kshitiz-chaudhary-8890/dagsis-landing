@@ -9,24 +9,24 @@ import styles from "./ProductShowcase.module.css";
 type Message = { role: "customer" | "agent"; text: string };
 
 const websiteDetails: Record<string, { label: string; value: string }[]> = {
-  restaurant: [{ label: "Dining", value: "Seasonal menu" }, { label: "Opening hours", value: "Tue–Sun, 12pm–10pm" }, { label: "Reservations", value: "Tables & private dining" }],
-  retail: [{ label: "Collection", value: "New season essentials" }, { label: "Delivery", value: "2–4 working days" }, { label: "Returns", value: "Within 14 days" }],
-  salon: [{ label: "Services", value: "Cut, colour & care" }, { label: "Haircuts", value: "From S$45" }, { label: "Appointments", value: "Find your next slot" }],
-  property: [{ label: "Bedrooms", value: "3 bedrooms" }, { label: "Outdoor space", value: "Private garden" }, { label: "Viewings", value: "By appointment" }],
+  realestate: [{ label: "Featured", value: "Marina Bay penthouse" }, { label: "Prime psf", value: "From S$2,798" }, { label: "Viewings", value: "By private appointment" }],
+  education: [{ label: "Courses", value: "100 accredited" }, { label: "Faculty", value: "30 doctoral scholars" }, { label: "Intakes", value: "Oct & Nov 2026" }],
+  travel: [{ label: "Destinations", value: "50 precincts & islands" }, { label: "Journeys", value: "100 curated packages" }, { label: "Stays", value: "5-star certified" }],
+  healthcare: [{ label: "Clinics", value: "20 sanctuaries" }, { label: "Specialists", value: "80 doctors" }, { label: "Insurance", value: "30 direct panels" }],
 };
 
 const previewReplies: Record<string, string> = {
-  restaurant: "Yes! We have mushroom pasta and a roasted vegetable bowl. Let us know about any dietary requirements when you book.",
-  retail: "Standard delivery takes 2–4 working days. We'll send a tracking link as soon as your order is dispatched.",
-  salon: "Haircuts, colour, styling and conditioning treatments. Which service would you like to explore?",
-  property: "Yes, our featured home has three bedrooms, a private garden and an open-plan living area. Are you looking to buy or rent?",
+  realestate: "Yes — The Sky Penthouse at Marina Bay Residences: 4 beds, 5,200 sqft at S$24.8M. Would you like a private viewing?",
+  education: "Data science, AI, cyber security, cloud and Cambridge prep — 100 accredited courses. Which field interests you?",
+  travel: "We curate 50 Singapore precincts and islands — from Marina Bay to Lazarus Island. What kind of journey do you have in mind?",
+  healthcare: "Health screenings, 25 specialist disciplines and 24/7 teleconsultation. How can we help you today?",
 };
 
 const supportTopics: Record<string, string> = {
-  restaurant: "Menu & reservations",
-  retail: "Orders & delivery",
-  salon: "Services & appointments",
-  property: "Listings & viewings",
+  realestate: "Listings & viewings",
+  education: "Programmes & admissions",
+  travel: "Itineraries & bookings",
+  healthcare: "Appointments & insurance",
 };
 
 export function DemoWebsite({ industryId, fullPage = false }: { industryId: string; fullPage?: boolean }) {
@@ -65,6 +65,7 @@ export function DemoWebsite({ industryId, fullPage = false }: { industryId: stri
         </div>
         <div className={styles.websiteBottom}>{websiteDetails[demo.id].map(detail => <div key={detail.label}><small>{detail.label}</small><strong>{detail.value}</strong></div>)}</div>
         </>}
+        {!fullPage && <a className={styles.sceneLink} href={demo.href} target="_blank" rel="noopener noreferrer" aria-label={`Open the ${demo.brand} demo website in a new tab`} />}
         {chatOpen && <div className={styles.chatWidget}>
           <div className={styles.widgetHeader}><span className={styles.widgetAvatar}>{demo.brand[0]}</span><div>{demo.brand}<small>{supportTopics[demo.id]}</small></div><button type="button" aria-label="Minimise chat" onClick={() => setChatOpen(false)}><Minus size={17} /></button></div>
           <div className={styles.widgetMessages} ref={messagesRef} role="log" aria-label="Sample chat messages" aria-live="polite" aria-relevant="additions">

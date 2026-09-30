@@ -7,8 +7,8 @@
 .intro .description { margin: 0; max-width: 400px; justify-self: end; text-wrap: pretty; border-left: 2px solid #d9dcff; padding-left: 32px; }
 .demoGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: stretch; gap: 36px 28px; }
 .demoCard { min-width: 0; container-type: inline-size; }
-.demoCard[data-industry="restaurant"], .demoCard[data-industry="property"], .demoCard[data-industry="realestate"], .demoCard[data-industry="healthcare"] { grid-column: span 7; }
-.demoCard[data-industry="retail"], .demoCard[data-industry="salon"], .demoCard[data-industry="education"], .demoCard[data-industry="travel"] { grid-column: span 5; }
+.demoCard[data-industry="realestate"], .demoCard[data-industry="healthcare"] { grid-column: span 7; }
+.demoCard[data-industry="education"], .demoCard[data-industry="travel"] { grid-column: span 5; }
 .cardDetails { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 164px; padding: 20px 2px; }
 .cardDetails > div { flex: 1; min-width: 0; }
 .cardCategory { display: flex; align-items: center; gap: 7px; color: #727781; font-size: 11px; margin-bottom: 8px; }
@@ -20,8 +20,8 @@
 .websiteNav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 21px 22px; background: #fff; color: #222; border-bottom: 1px solid #efefed; }
 .websiteBrand { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 26px; line-height: 1; white-space: nowrap; }
 .websiteBrand > span { color: var(--demo-accent); }
-.demoWebsite[data-industry="retail"] .websiteBrand, .demoWebsite[data-industry="property"] .websiteBrand { font-family: var(--font-inter), Arial, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -.06em; }
-.demoWebsite[data-industry="retail"] .websiteWords h3, .demoWebsite[data-industry="property"] .websiteWords h3 { font-family: var(--font-inter), Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -.05em; }
+.demoWebsite[data-industry="healthcare"] .websiteBrand { font-family: var(--font-inter), Arial, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -.06em; }
+.demoWebsite[data-industry="healthcare"] .websiteWords h3 { font-family: var(--font-inter), Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -.05em; }
 .websiteNav > div { display: flex; align-items: center; gap: 17px; font-size: 9px; color: #555; }
 .websiteMenu { display: none; }
 .websiteHero { position: relative; min-height: 382px; background: var(--demo-background); }
@@ -66,7 +66,9 @@
 .widgetFooter > span { margin-left: auto; font-size: 7px; color: #9298a1; }
 .widgetFooter button { display: grid; place-items: center; padding: 2px; margin-left: 4px; color: #8c919b; cursor: pointer; }
 .widgetFooter button:hover { color: #394454; }
-.chatLauncher { position: absolute; bottom: 16px; right: 18px; width: 38px; height: 38px; display: grid; place-items: center; background: var(--demo-accent); color: #fff; border-radius: 50%; }
+.sceneLink { position: absolute; inset: 0; z-index: 1; }
+.sceneLink:focus-visible { outline: 2px solid #3171f3; outline-offset: -3px; }
+.chatLauncher { position: absolute; bottom: 16px; right: 18px; z-index: 3; width: 38px; height: 38px; display: grid; place-items: center; background: var(--demo-accent); color: #fff; border-radius: 50%; }
 .showcaseFooter { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 44px; border-top: 1px solid #dfe3e9; padding-block: 36px 8px; margin-top: 26px; }
 .footerGuide { min-width: 0; }
 .footerGuide h3 { font-family: var(--font-jakarta), Arial, sans-serif; font-size: 23px; font-weight: 600; letter-spacing: -.04em; color: #202b3d; }
@@ -83,49 +85,59 @@
 .widgetHeader button:focus-visible { outline-color: #fff; }
 .srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 /* Each scene follows the visual conventions of its business. */
-.demoWebsite[data-industry="restaurant"] .websiteNav { background: #282019; color: #fff6e7; border-color: #40382d; }
-.demoWebsite[data-industry="restaurant"] .websiteNav > div { color: #d8caba; }
-.demoWebsite[data-industry="restaurant"] .websiteBrand > span { color: #d7a771; }
-.demoWebsite[data-industry="restaurant"] .websiteHero { min-height: 465px; }
-.demoWebsite[data-industry="restaurant"] .websitePhotoPanel { inset: 0; }
-.demoWebsite[data-industry="restaurant"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #1a120dda, #1a120d65 56%, #1a120d08); }
-.demoWebsite[data-industry="restaurant"] .websiteWords { width: 51%; padding-top: 75px; color: #fff8ed; }
-.demoWebsite[data-industry="restaurant"] .websiteWords h3 { font-size: 46px; }
-.demoWebsite[data-industry="restaurant"] .websiteWords > span { color: #e4c6a1; }
-.demoWebsite[data-industry="restaurant"] .websiteWords p { color: #e4d9cc; }
-.demoWebsite[data-industry="restaurant"] .websiteAction { background: #f4eadb; color: #3f2b1c; }
-.demoWebsite[data-industry="restaurant"] .websiteBottom { background: #faf7f1; }
-.demoWebsite[data-industry="restaurant"] .chatWidget { top: 172px; }
-.demoWebsite[data-industry="retail"] .websiteHero { min-height: 300px; }
-.demoWebsite[data-industry="retail"] .websiteWords { width: 46%; padding-top: 35px; }
-.demoWebsite[data-industry="retail"] .websiteWords h3 { font-size: 29px; }
-.demoWebsite[data-industry="retail"] .websitePhotoPanel { left: 46%; }
-.demoWebsite[data-industry="retail"] .websitePhoto { object-position: 60% center; }
-.demoWebsite[data-industry="retail"] .websiteAction { border-radius: 0; }
-.demoWebsite[data-industry="retail"] .chatWidget { top: 88px; }
-.demoWebsite[data-industry="salon"] .websiteHero { min-height: 305px; }
-.demoWebsite[data-industry="salon"] .websiteWords { padding-top: 38px; }
-.demoWebsite[data-industry="salon"] .websiteWords h3 { font-size: 39px; }
-.demoWebsite[data-industry="salon"] .websitePhotoPanel { inset: 20px 18px 20px 48%; border-radius: 80px 80px 3px 3px; overflow: hidden; }
-.demoWebsite[data-industry="salon"] .websiteAction { background: transparent; color: var(--demo-accent); border-bottom: 1px solid currentColor; padding: 0 0 7px; }
-.demoWebsite[data-industry="salon"] .chatWidget { top: 84px; }
-.demoWebsite[data-industry="property"] .websiteHero { min-height: 455px; }
-.demoWebsite[data-industry="property"] .websitePhotoPanel { inset: 0; }
-.demoWebsite[data-industry="property"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0b1c29bd, #0b1c2910 85%); }
-.demoWebsite[data-industry="property"] .websiteWords { width: 56%; padding-top: 255px; color: #fff; }
-.demoWebsite[data-industry="property"] .websiteWords h3 { font-size: 31px; }
-.demoWebsite[data-industry="property"] .websiteWords > span { display: inline-block; padding: 5px 7px; background: #fff; color: #253d49; font-size: 8px; margin-bottom: 13px; }
-.demoWebsite[data-industry="property"] .websiteWords p { display: none; }
-.demoWebsite[data-industry="property"] .websiteAction { background: #fff; color: #253d49; margin-top: 16px; }
-.demoWebsite[data-industry="property"] .websiteBottom { background: #f5f7f8; }
-.demoWebsite[data-industry="property"] .chatWidget { top: 92px; }
+.demoWebsite[data-industry="realestate"] .websiteNav { background: #10182a; color: #f4efe4; border-color: #24314d; }
+.demoWebsite[data-industry="realestate"] .websiteNav > div { color: #c3cadb; }
+.demoWebsite[data-industry="realestate"] .websiteBrand > span { color: #d8b45a; }
+.demoWebsite[data-industry="realestate"] .websiteHero { min-height: 465px; }
+.demoWebsite[data-industry="realestate"] .websitePhotoPanel { inset: 0; }
+.demoWebsite[data-industry="realestate"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #0b1120dd, #0b112065 56%, #0b112008); }
+.demoWebsite[data-industry="realestate"] .websiteWords { width: 51%; padding-top: 75px; color: #f7f3ea; }
+.demoWebsite[data-industry="realestate"] .websiteWords h3 { font-size: 46px; }
+.demoWebsite[data-industry="realestate"] .websiteWords > span { color: #d8b45a; }
+.demoWebsite[data-industry="realestate"] .websiteWords p { color: #d6dbe7; }
+.demoWebsite[data-industry="realestate"] .websiteAction { background: #c9a227; color: #17130a; }
+.demoWebsite[data-industry="realestate"] .websiteBottom { background: #f7f5ef; }
+.demoWebsite[data-industry="realestate"] .chatWidget { top: 172px; }
+.demoWebsite[data-industry="education"] .websiteHero { min-height: 305px; }
+.demoWebsite[data-industry="education"] .websiteWords { padding-top: 38px; }
+.demoWebsite[data-industry="education"] .websiteWords h3 { font-size: 39px; }
+.demoWebsite[data-industry="education"] .websitePhotoPanel { inset: 20px 18px 20px 48%; border-radius: 14px; overflow: hidden; }
+.demoWebsite[data-industry="education"] .websiteAction { border-radius: 8px; }
+.demoWebsite[data-industry="education"] .chatWidget { top: 84px; }
+.demoWebsite[data-industry="travel"] .websiteNav { background: #122a21; color: #f2ede2; border-color: #24402f; }
+.demoWebsite[data-industry="travel"] .websiteNav > div { color: #cfd8c9; }
+.demoWebsite[data-industry="travel"] .websiteHero { min-height: 455px; }
+.demoWebsite[data-industry="travel"] .websitePhotoPanel { inset: 0; }
+.demoWebsite[data-industry="travel"] .websitePhotoPanel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #0f2019d9, #0f201960 56%, #0f201908); }
+.demoWebsite[data-industry="travel"] .websiteWords { width: 51%; padding-top: 75px; color: #f5f1e6; }
+.demoWebsite[data-industry="travel"] .websiteWords h3 { font-size: 46px; }
+.demoWebsite[data-industry="travel"] .websiteWords > span { color: #e5c992; }
+.demoWebsite[data-industry="travel"] .websiteWords p { color: #d9e0d2; }
+.demoWebsite[data-industry="travel"] .websiteAction { background: #e9bd8f; color: #2a1a0c; }
+.demoWebsite[data-industry="travel"] .chatWidget { top: 172px; }
+.demoWebsite[data-industry="healthcare"] .websiteHero { min-height: 305px; background: #faf7f2; }
+.demoWebsite[data-industry="healthcare"] .websiteWords { padding-top: 38px; }
+.demoWebsite[data-industry="healthcare"] .websitePhotoPanel { inset: 20px 18px 20px 48%; border-radius: 16px; overflow: hidden; }
+.demoWebsite[data-industry="healthcare"] .websiteAction { border-radius: 999px; }
+.demoWebsite[data-industry="healthcare"] .chatWidget { top: 84px; }
 /* The gallery uses a photograph and a conversation, without browser chrome. */
 .demoWebsite:not(.fullPage) { border: 0; border-radius: 16px; background: #ecebe8; box-shadow: none; }
 .sceneImage { position: relative; height: 430px; }
 .sceneImage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0e152130, transparent 65%); pointer-events: none; }
-.demoWebsite[data-industry]:not(.fullPage) .chatWidget { top: auto; bottom: 24px; right: 24px; width: 260px; max-width: calc(100% - 48px); }
-.demoWebsite:not(.fullPage) .widgetMessages { height: 185px; }
-.demoWebsite:not(.fullPage) .websitePhoto { object-position: center; }
+.demoWebsite[data-industry]:not(.fullPage) .chatWidget { top: auto; bottom: 20px; right: 20px; width: 212px; max-width: calc(100% - 40px); }
+.demoWebsite:not(.fullPage) .widgetMessages { height: 148px; padding: 12px 11px; }
+.demoWebsite:not(.fullPage) .widgetHeader { gap: 7px; padding: 11px 12px; }
+.demoWebsite:not(.fullPage) .widgetAvatar { width: 26px; height: 26px; font-size: 16px; }
+.demoWebsite:not(.fullPage) .widgetHeader > div { font-size: 11px; }
+.demoWebsite:not(.fullPage) .widgetHeader small { font-size: 8px; margin-top: 2px; }
+.demoWebsite:not(.fullPage) .agentReply, .demoWebsite:not(.fullPage) .customerReply { font-size: 10px; line-height: 1.55; }
+.demoWebsite:not(.fullPage) .agentMessage { margin-bottom: 11px; }
+.demoWebsite:not(.fullPage) .customerReply { margin-bottom: 13px; padding: 7px 9px; }
+.demoWebsite:not(.fullPage) .widgetComposer { margin: 0 10px 8px; }
+.demoWebsite:not(.fullPage) .widgetComposer input { font-size: 10px; padding: 6px 4px; }
+.demoWebsite:not(.fullPage) .widgetComposer button { width: 25px; height: 25px; }
+.demoWebsite:not(.fullPage) .widgetFooter { padding: 7px 10px; font-size: 7px; }
+.demoWebsite:not(.fullPage) .websitePhoto { object-position: center top; }
 .fullPage { border: 0; border-radius: 0; box-shadow: none; font-family: var(--font-inter), Arial, sans-serif; }
 .fullPage .websiteNav { padding: 32px max(30px, 5vw); }
 .fullPage .websiteBrand { font-size: 36px; }
@@ -134,10 +146,10 @@
 .fullPage .websiteWords { padding: 100px max(30px, 5vw); }
 .fullPage .websiteWords h3 { font-size: clamp(55px, 6vw, 90px); }
 .fullPage[data-industry] .websiteWords { width: 45%; padding: 100px max(30px, 5vw); }
-.fullPage[data-industry="restaurant"] .websiteWords h3, .fullPage[data-industry="salon"] .websiteWords h3 { font-size: clamp(55px, 6vw, 90px); }
-.fullPage[data-industry="property"] .websiteWords { padding-top: 300px; }
-.fullPage[data-industry="retail"] .websiteWords h3, .fullPage[data-industry="property"] .websiteWords h3 { font-size: clamp(48px, 5vw, 76px); }
-.fullPage[data-industry="retail"] .websiteBrand, .fullPage[data-industry="property"] .websiteBrand { font-size: 28px; }
+.fullPage[data-industry="realestate"] .websiteWords h3, .fullPage[data-industry="travel"] .websiteWords h3 { font-size: clamp(55px, 6vw, 90px); }
+.fullPage[data-industry="realestate"] .websiteBrand, .fullPage[data-industry="travel"] .websiteBrand { font-size: 28px; }
+.fullPage[data-industry="healthcare"] .websiteBrand { font-family: var(--font-inter), Arial, sans-serif; font-size: 28px; }
+.fullPage[data-industry="healthcare"] .websiteWords h3 { font-family: var(--font-inter), Arial, sans-serif; font-size: clamp(48px, 5vw, 76px); }
 .fullPage .websiteWords > span { font-size: 11px; }
 .fullPage .websiteWords p { font-size: 15px; max-width: 360px; }
 .fullPage .websiteWords .websiteAction { font-size: 13px; padding: 13px 20px; }
@@ -204,9 +216,9 @@
   .demoWebsite[data-industry] .websitePhotoPanel::after { display: none; }
   .demoWebsite[data-industry] .websiteWords { width: 100%; padding: 30px 22px; }
   .demoWebsite[data-industry] .websiteWords h3 { font-size: 40px; }
-  .demoWebsite[data-industry="retail"] .websiteWords h3, .demoWebsite[data-industry="property"] .websiteWords h3 { font-size: 33px; }
-  .demoWebsite[data-industry="restaurant"] .websiteWords { background: #282019; }
-  .demoWebsite[data-industry="property"] .websiteWords { background: #1e3945; }
+  .demoWebsite[data-industry="healthcare"] .websiteWords h3 { font-size: 33px; }
+  .demoWebsite[data-industry="realestate"] .websiteWords { background: #10182a; }
+  .demoWebsite[data-industry="travel"] .websiteWords { background: #122a21; }
   .websiteWords p { font-size: 12px; max-width: 290px; }
   .websiteWords .websiteAction { font-size: 11px; margin-top: 17px; }
   .websiteBottom { padding: 19px 16px; gap: 9px; }

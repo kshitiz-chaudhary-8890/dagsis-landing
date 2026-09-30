@@ -1,4 +1,13 @@
-export const plans = [
+export interface PlanDef {
+  title: string;
+  price: { monthly: string; annual: string };
+  subtitle: { monthly: string; annual: string };
+  features: string[];
+  /** Features available only in higher plans — rendered with an X icon on this card. */
+  excludedFeatures?: string[];
+}
+
+export const plans: PlanDef[] = [
   {
     title: "Free",
     price: {
@@ -14,7 +23,12 @@ export const plans = [
       "1 AI agent",
       "Chat History",
       "500 credits",
-      "No organization workspace",
+    ],
+    excludedFeatures: [
+      "Organization workspace",
+      "Team members",
+      "Detailed Analytics",
+      "More AI agents & credits",
     ],
   },
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Check, ArrowRight, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Sparkles, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { plans } from "@/utils/constants/billing.constants";
@@ -213,7 +213,7 @@ export function Pricing() {
                   </div>
 
                   {/* Features */}
-                  <ul className="space-y-3 flex-1 mb-8">
+                  <ul className="space-y-3 flex-1 mb-6">
                     {plan.features.map((feature, featureIndex) => (
                       <li
                         key={`${plan.title}-feature-${featureIndex}`}
@@ -242,6 +242,33 @@ export function Pricing() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Not included — features locked to higher plans */}
+                  {plan.excludedFeatures && plan.excludedFeatures.length > 0 && (
+                    <div className="mb-8">
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3">
+                        Not included
+                      </p>
+                      <ul className="space-y-3">
+                        {plan.excludedFeatures.map((feature, featureIndex) => (
+                          <li
+                            key={`${plan.title}-excluded-${featureIndex}`}
+                            className="flex items-start gap-2.5"
+                          >
+                            <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800">
+                              <X
+                                className="w-2.5 h-2.5 text-slate-400 dark:text-slate-500"
+                                strokeWidth={3}
+                              />
+                            </span>
+                            <span className="text-[13px] text-slate-400 dark:text-slate-500 leading-snug">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   {/* CTA */}
                   {plan.title === "Custom" ? (

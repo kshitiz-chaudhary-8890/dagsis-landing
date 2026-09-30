@@ -29,8 +29,8 @@ export default function HomePage() {
       <Section className="py-8 sm:py-10" containerClassName="max-w-[1440px]">
         <DashboardMockup />
       </Section>
-      <Features />
       <ProductShowcase />
+      <Features />
       <DeployEverywhere />
       <WhyDagsis />
       <Pricing />
