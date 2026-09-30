@@ -25,7 +25,7 @@ export function UseCases() {
   const count = useCases.length;
 
   return (
-    <Section id="use-cases" containerClassName="max-w-[1440px]">
+    <Section id="use-cases" containerClassName="max-w-[1440px]" className="pt-16 sm:pt-20 pb-8 sm:pb-10">
       <div className={styles.inner}>
         <div className={styles.intro}>
           <div>

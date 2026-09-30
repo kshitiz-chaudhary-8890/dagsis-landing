@@ -8,17 +8,17 @@
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   align-items: end;
   gap: 16px 56px;
-  margin: 0 0 48px;
+  margin: 0 0 80px;
   text-align: left;
 }
 
 .kicker {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--font-inter), Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
+  gap: 14px;
+  font-family: var(--font-dm-sans), Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -26,31 +26,34 @@
 }
 .kicker::before {
   content: "";
-  width: 32px;
+  width: 44px;
   height: 2px;
   flex-shrink: 0;
   border-radius: 2px;
-  background: #16213a;
+  background: #1f5cf0;
 }
 
 .intro .title {
   margin-top: 18px;
+  color: #16213a;
   font-size: clamp(40px, 4.4vw, 60px);
-  line-height: 1;
-  letter-spacing: -0.015em;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .intro .desc {
   max-width: 400px;
   margin: 0;
   justify-self: end;
-  font-size: 17px;
-  line-height: 1.7;
+  text-wrap: pretty;
+  border-left: 2px solid #d9dcff;
+  padding-left: 32px;
 }
 
 @media (max-width: 767px) {
-  .intro { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 40px; }
-  .intro .desc { justify-self: start; }
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 48px; }
+  .intro .desc { justify-self: start; border-left: 0; padding-left: 0; }
 }
 
 /* Sticky card titles: Jakarta Sans product voice. */

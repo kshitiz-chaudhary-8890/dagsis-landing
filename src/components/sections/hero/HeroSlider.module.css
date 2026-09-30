@@ -1,0 +1,42 @@
+/* Hero design-review slider chrome */
+.sliderWrap { position: relative; }
+.slide { animation: slide-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.controls {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #0d1230e6;
+  border: 1px solid #ffffff26;
+  box-shadow: 0 10px 28px #0d123040;
+  backdrop-filter: blur(8px);
+}
+.counter { font-size: 12px; font-weight: 600; color: #fff; letter-spacing: 0.04em; min-width: 34px; text-align: center; }
+.arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #ffffff1a; color: #fff;
+  transition: background 0.2s ease;
+}
+.arrow:hover { background: #ffffff33; }
+.dots { display: flex; align-items: center; gap: 6px; }
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #ffffff40; transition: all 0.2s ease;
+}
+.dot[data-active="true"] { width: 22px; border-radius: 999px; background: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { animation: none; }
+}

@@ -5,7 +5,7 @@ import { Section } from "@/components/ui";
 import styles from "./Faq.module.css";
 
 export function Faq() {
-  return <Section id="faq" aria-labelledby="faq-title" containerClassName="max-w-[1440px]" className={styles.section}>
+  return <Section id="faq" aria-labelledby="faq-title" containerClassName="max-w-[1440px]" className={`${styles.section} py-8 sm:py-10`}>
     <div className={styles.inner}>
       <header className={styles.intro}>
         <div><span className={styles.kicker}>{faqIntro.eyebrow}</span><h2 id="faq-title" className={`section-title ${styles.title}`}>{faqIntro.title}</h2></div>

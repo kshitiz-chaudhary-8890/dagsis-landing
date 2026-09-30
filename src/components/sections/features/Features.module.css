@@ -1,16 +1,19 @@
 .section { background: #fff; }
 .inner { max-width: 1360px; margin-inline: auto; font-family: var(--font-inter), Arial, sans-serif; }
-.intro { display: grid; grid-template-columns: 1.45fr .75fr; align-items: end; gap: 64px; margin-bottom: 48px; }
-.kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #16213a; }
-.kicker::before { content: ""; width: 28px; height: 2px; background: #3171f3; }
-.intro .title { margin-top: 20px; max-width: 760px; font-size: clamp(40px, 4.4vw, 60px); line-height: 1.04; }
-.introAside { padding-bottom: 5px; }
+.intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: end; gap: 16px 56px; margin-bottom: 80px; }
+.kicker { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-dm-sans), Arial, sans-serif; color: #16213a; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; white-space: nowrap; }
+.kicker::before { content: ""; width: 44px; height: 2px; flex-shrink: 0; border-radius: 2px; background: #1f5cf0; }
+.intro .title { margin-top: 18px; color: #16213a; font-size: clamp(40px, 4.4vw, 60px); line-height: 1.05; letter-spacing: 0; text-wrap: balance; }
+.introAside { justify-self: end; max-width: 400px; padding-bottom: 5px; border-left: 2px solid #d9dcff; padding-left: 32px; }
 .platformLabel { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; color: #16213a; }
 .platformLabel > span, .previewHeading i { width: 6px; height: 6px; display: inline-block; border-radius: 50%; background: #3171f3; }
-.intro .desc { margin: 0; max-width: 340px; font-size: 16px; line-height: 1.75; color: #596980; }
+.intro .desc { margin: 0; }
 .featureGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 22px; }
 .panel { min-width: 0; border-radius: 24px; border: 1px solid #dce6f4; background: #fff; overflow: hidden; }
 .knowledgePanel { grid-column: span 7; padding: 25px 28px 30px; display: flex; flex-direction: column; }
+.knowledgeMessage { margin-bottom: 24px; }
+.knowledgeMessage h3 { font-family: var(--font-jakarta), var(--font-inter), Arial, sans-serif; font-weight: 600; font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.25; color: #152643; }
+.knowledgeMessage p { margin-top: 10px; max-width: 560px; color: #5a6a82; font-size: 14px; line-height: 1.75; }
 .workspacePanel { grid-column: span 5; padding: 25px 28px 30px; }
 .panelHeading { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #34629c; font-size: 11px; font-weight: 600; }
 .panelHeading > svg { color: #3171f3; }
@@ -130,30 +133,6 @@
 .chart > div > span { flex: 1; background: #3171f3; border-radius: 2px 2px 0 0; }
 .chart > div > span:last-child { background: #7cceef; }
 .chartLabels { display: flex; justify-content: space-between; margin-top: 7px; font-size: 7px; color: #8299b8; }
-.channelsPanel { grid-column: 1 / -1; display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 54px; padding: 32px 38px; border: 1px solid #dce6f4; border-radius: 24px; background: #fff; }
-.channelsPanel .featureCopy h3 { font-size: 28px; }
-.channelsPanel .featureCopy p { max-width: 350px; font-size: 14px; }
-.channelDiagram { position: relative; height: 300px; border-radius: 18px; background: #edf5ff; }
-.channelConnections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.channelConnections path { stroke: #8cb7f7; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
-.channelHub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 132px; height: 124px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #bdd5fa; border-radius: 20px; background: #fff; box-shadow: 0 10px 26px -16px #3171f360, 0 0 0 7px #edf5ff; }
-.hubLogo { width: 100px; height: auto; }
-.channelHub strong { font-size: 11px; font-weight: 600; margin-top: 14px; color: #254979; }
-.channelHub small { font-size: 9px; color: #7290b5; margin-top: 4px; }
-.channelNode { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
-.channelLogo { display: grid; place-items: center; width: 52px; height: 52px; background: #fff; border: 1px solid #d5e4fa; border-radius: 15px; box-shadow: 0 6px 14px -8px #346fc34a; }
-.channelNode small { font-size: 10px; color: #4a6b95; background: #edf5ff; padding: 0 4px; }
-.channelPosition0, .channelPosition1, .channelPosition2 { left: calc(12.5% - 40px); }
-.channelPosition3, .channelPosition4, .channelPosition5 { right: calc(12.5% - 40px); }
-.channelPosition0, .channelPosition3 { top: 22px; }
-.channelPosition1, .channelPosition4 { top: 124px; }
-.channelPosition2, .channelPosition5 { top: 226px; }
-.channelPosition0 .channelLogo { color: #19a763; }
-.channelPosition1 .channelLogo { color: #d13676; }
-.channelPosition2 .channelLogo { color: #1877f2; }
-.channelPosition3 .channelLogo { color: #5865f2; }
-.channelPosition4 .channelLogo { color: #279fd3; }
-.channelPosition5 .channelLogo { color: #3171f3; }
 /* Each preview adapts to its own available width, including tablet columns. */
 .panel { container-type: inline-size; }
 .inner, .intro > *, .featureCopy, .pairedCopy > *, .agentIdentity > div, .leadRecord > div, .leadNote > div, .metrics > div { min-width: 0; }
@@ -180,7 +159,6 @@
 .metrics > div > span { font-size: 9px; line-height: 1.4; }
 .metrics > div > small { font-size: 8px; line-height: 1.4; }
 .chartLabels { font-size: 8px; }
-.mobileChannelConnections { display: none; }
 
 @container (max-width: 440px) {
   .pairedCopy { grid-template-columns: minmax(0, 1fr); gap: 20px; }
@@ -206,14 +184,12 @@
 
 /* Tablet and smaller laptops get full-width, readable previews. */
 @media (max-width: 1199px) {
-  .intro { grid-template-columns: 1.3fr .7fr; gap: 30px; }
+  .intro { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 30px; }
   .knowledgePanel, .workspacePanel { padding-inline: 23px; }
-  .channelsPanel { gap: 28px; padding-inline: 26px; }
 }
 @media (max-width: 1023px) {
-  .intro { grid-template-columns: minmax(0, 1fr); gap: 22px; margin-bottom: 34px; }
-  .intro .title { max-width: 740px; }
-  .intro .desc { max-width: 520px; }
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 22px; margin-bottom: 48px; }
+  .introAside { justify-self: start; max-width: 552px; border-left: 0; padding-left: 0; }
   .platformLabel { margin-bottom: 8px; }
   .knowledgePanel, .workspacePanel { grid-column: 1 / -1; }
   .knowledgeDiagram { max-width: 620px; width: 100%; margin-inline: auto; }
@@ -227,18 +203,14 @@
   .detailPanel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 16px; padding: 14px; }
   .detailPanel > .featureCopy { padding: 20px; }
   .detailPanel .featureCopy h3 { font-size: 24px; }
-  .channelsPanel { grid-template-columns: minmax(0, 1fr); gap: 26px; }
-  .channelsPanel .featureCopy p { max-width: 560px; }
-  .channelDiagram { max-width: 680px; width: 100%; margin-inline: auto; }
 }
 @media (max-width: 639px) {
   .section { padding-block: 56px; }
   .featureGrid { gap: 16px; }
-  .intro { margin-bottom: 28px; }
+  .intro { margin-bottom: 48px; }
   .intro .title { font-size: clamp(34px, 8.7vw, 48px); }
-  .intro .desc { font-size: 15px; }
-  .kicker { font-size: 10px; letter-spacing: .14em; gap: 9px; }
-  .kicker::before { width: 20px; }
+  .kicker { font-size: 12px; letter-spacing: .18em; gap: 12px; }
+  .kicker::before { width: 32px; }
   .knowledgePanel, .workspacePanel { padding: 20px 18px 24px; border-radius: 20px; }
   .panelHeading { font-size: 11px; }
   .knowledgeDiagram { padding: 24px 16px; margin-block: 20px 25px; }
@@ -269,22 +241,10 @@
   .chartLegend { font-size: 10px; flex-wrap: wrap; }
   .chartLabels { font-size: 9px; }
   .chart { gap: 8px; height: 86px; }
-  .channelsPanel { padding: 24px 18px; border-radius: 20px; }
-  .channelsPanel .featureCopy h3 { font-size: 25px; }
-  .channelDiagram { height: 340px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 120px 100px 100px; gap: 10px 0; padding-inline: 4px; }
-  .channelConnections { display: none; }
-  .mobileChannelConnections { display: block; position: absolute; inset: 0; height: 100%; width: 100%; }
-  .mobileChannelConnections path { stroke: #8cb7f7; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
-  .channelHub { position: relative; top: auto; left: auto; transform: none; grid-column: 1 / -1; justify-self: center; align-self: start; width: 132px; height: 100px; margin-top: 8px; border-radius: 17px; }
-  .hubLogo { width: 92px; }
-  .channelHub strong { margin-top: 10px; }
-  .channelNode { position: relative; top: auto; left: auto; right: auto; width: 100%; align-self: start; z-index: 1; }
-  .channelLogo { width: 48px; height: 48px; border-radius: 13px; }
-  .channelNode small { font-size: 10px; }
 }
 @media (max-width: 379px) {
   .intro .title { font-size: 34px; }
-  .kicker { font-size: 9px; letter-spacing: .1em; }
+  .kicker { font-size: 12px; letter-spacing: .18em; }
   .knowledgePanel, .workspacePanel { padding-inline: 14px; }
   .knowledgeDiagram { padding-inline: 12px; }
   .agentCard { padding-inline: 13px; }
@@ -304,7 +264,5 @@
   .leadContent, .analyticsContent { padding-inline: 12px; }
   .leadField { font-size: 10px; }
   .dateFilter { font-size: 7px; }
-  .channelsPanel { padding-inline: 14px; }
-  .channelNode small { font-size: 9px; }
 }
-@media (prefers-reduced-motion: reduce) { .panel, .channelLogo { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .panel { transition: none; } }

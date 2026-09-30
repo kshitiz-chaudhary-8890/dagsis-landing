@@ -1,11 +1,13 @@
 import { featureFlags } from "@/config/site";
+import { Section } from "@/components/ui";
 import {
+  DashboardMockup,
   DeployEverywhere,
   Faq,
   Features,
   FinalCta,
   Hero,
-  PricingPreview,
+  Pricing,
   Problem,
   ProductShowcase,
   TrustedBy,
@@ -24,11 +26,14 @@ export default function HomePage() {
       {featureFlags.showTrustedBy && <TrustedBy />}
       <Problem />
       <UseCases />
+      <Section className="py-8 sm:py-10" containerClassName="max-w-[1440px]">
+        <DashboardMockup />
+      </Section>
       <Features />
       <ProductShowcase />
       <DeployEverywhere />
       <WhyDagsis />
-      <PricingPreview />
+      <Pricing />
       <Faq />
       <FinalCta />
     </>

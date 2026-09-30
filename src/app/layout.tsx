@@ -1,8 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans, DM_Serif_Display, Geist_Mono, Instrument_Sans, Instrument_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+
+/** Section headings (DM Serif) + section body/eyebrows (DM Sans). */
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 /** Body + UI text. */
 const instrumentSans = Instrument_Sans({
@@ -63,7 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} ${inter.variable} ${jakartaSans.variable}`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} ${inter.variable} ${jakartaSans.variable} ${dmSerif.variable} ${dmSans.variable}`}
     >
       {/* Page chrome (navbar, footer, smooth scroll) lives in app/(site)/layout.tsx */}
       <body className="flex min-h-screen flex-col font-sans">{children}</body>

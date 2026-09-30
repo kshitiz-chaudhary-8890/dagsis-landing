@@ -71,5 +71,3 @@ export const industryDemos = [
     ],
   },
 ] as const;
-
-export type IndustryDemo = (typeof industryDemos)[number];

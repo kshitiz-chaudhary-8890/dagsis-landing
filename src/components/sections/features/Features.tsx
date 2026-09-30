@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Bot, Check, CheckCheck, ChevronDown, FileText, Globe, LayoutDashboard, LockKeyhole, MessageCircle, Mic, MoreVertical, Paperclip, Phone, Search, ShieldCheck, Smile, Sparkles, Users, Video } from "lucide-react";
 import { features, featuresIntro } from "@/content";
 import { Section } from "@/components/ui";
@@ -82,10 +81,8 @@ function AnalyticsPreview() {
   </div>;
 }
 
-const channels = ["WhatsApp", "Instagram", "Facebook", "Discord", "Telegram", "Website"];
-
 export function Features() {
-  return <Section id="features" aria-labelledby="features-title" containerClassName="max-w-[1440px]" className={styles.section}>
+  return <Section id="features" aria-labelledby="features-title" containerClassName="max-w-[1440px]" className={`${styles.section} py-8 sm:py-10`}>
     <div className={styles.inner}>
       <header className={styles.intro}>
         <div><span className={styles.kicker}>Core platform features</span><h2 id="features-title" className={`section-title ${styles.title}`}>{featuresIntro.title}</h2></div>
@@ -95,6 +92,10 @@ export function Features() {
         <article className={`${styles.panel} ${styles.knowledgePanel}`}>
           <div className={styles.panelHeading}><span>Built around your business</span><Sparkles size={18} /></div>
           <KnowledgePreview />
+          <div className={styles.knowledgeMessage}>
+            <h3>Your Knowledge. Your Agent. Better Conversations.</h3>
+            <p>Bring your website content, documents, and FAQs together to give your AI agent the knowledge it needs. Choose its tone and role, then connect it to your channels to answer customer questions in your brand’s voice.</p>
+          </div>
           <div className={styles.pairedCopy}><FeatureCopy title="Knowledge Base" /><FeatureCopy title="Agents" /></div>
         </article>
         <article className={`${styles.panel} ${styles.workspacePanel}`}>
@@ -105,19 +106,6 @@ export function Features() {
         <article className={`${styles.panel} ${styles.detailPanel}`}><ConversationPreview /><FeatureCopy title="Session and Chat History" /></article>
         <article className={`${styles.panel} ${styles.detailPanel}`}><LeadsPreview /><FeatureCopy title="Leads" /></article>
         <article className={`${styles.panel} ${styles.detailPanel}`}><AnalyticsPreview /><FeatureCopy title="Analytics" /></article>
-        <article className={styles.channelsPanel}>
-          <FeatureCopy title="Multiple Channels" />
-          <div className={styles.channelDiagram} aria-label="One Dagsis agent connected to six customer channels">
-            <svg className={styles.channelConnections} viewBox="0 0 640 300" preserveAspectRatio="none" fill="none" aria-hidden="true">
-              <path d="M80 48H180Q215 48 215 85V115Q215 150 250 150H320M80 150H320M80 252H180Q215 252 215 215V185Q215 150 250 150H320M560 48H460Q425 48 425 85V115Q425 150 390 150H320M560 150H320M560 252H460Q425 252 425 215V185Q425 150 390 150H320" />
-            </svg>
-            <svg className={styles.mobileChannelConnections} viewBox="0 0 360 340" preserveAspectRatio="none" fill="none" aria-hidden="true">
-              <path d="M180 95V120M60 120H300M60 120V262M180 120V262M300 120V262" />
-            </svg>
-            <div className={styles.channelHub}><Image src="/brand/dagsis-logo-light.png" alt="Dagsis" width={960} height={276} className={styles.hubLogo} /><strong>Your agent</strong><small>One knowledge base</small></div>
-            {channels.map((channel, index) => <div key={channel} className={`${styles.channelNode} ${styles[`channelPosition${index}`]}`}><span className={styles.channelLogo}><ChannelBrandIcon channel={channel} /></span><small>{channel}</small></div>)}
-          </div>
-        </article>
       </div>
     </div>
   </Section>;

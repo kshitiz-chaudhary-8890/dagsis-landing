@@ -12,7 +12,7 @@ import styles from "./DeployEverywhere.module.css";
  */
 export function DeployEverywhere() {
   return (
-    <Section id="deploy" aria-labelledby="deploy-title" containerClassName="max-w-[1440px]" className="overflow-hidden">
+    <Section id="deploy" aria-labelledby="deploy-title" containerClassName="max-w-[1440px]" className="overflow-hidden py-8 sm:py-10">
       <div className={styles.inner}>
       <header className={styles.intro}>
         <div>

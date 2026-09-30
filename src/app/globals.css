@@ -21,6 +21,7 @@
  *   logo-cyan / logo-deep   extra logo colours for gradients.
  * ------------------------------------------------------------------------- */
 :root {
+  --section-heading-tracking: 0.015em;
   --surface: #ffffff;
   --surface-raised: #ffffff;
 
@@ -216,60 +217,57 @@ html.theme-transition *::after {
   }
 }
 
-/* Shared editorial typography. Hero keeps its own styles (Hero.module.css). */
+/* Shared editorial typography (DM Serif Display + DM Sans).
+   Hero slider variants keep their own styles (hero/*.module.css). */
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 13px;
-  border: 1px solid var(--brand-200);
-  border-radius: 999px;
-  background: var(--brand-50);
-  color: #1a4bbb;
-  font-family: var(--font-inter), Arial, sans-serif;
-  font-size: 11px;
+  gap: 14px;
+  color: #16213a;
+  font-family: var(--font-dm-sans), Arial, sans-serif;
+  font-size: 13px;
   font-weight: 600;
   font-style: normal;
-  line-height: 1;
-  letter-spacing: .14em;
+  line-height: 1.4;
+  letter-spacing: .22em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 .section-eyebrow::before {
   content: "";
-  width: 5px;
-  height: 5px;
+  width: 44px;
+  height: 2px;
   flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-brand-500);
+  border-radius: 2px;
+  background: #1f5cf0;
 }
-.dark .section-eyebrow:not(.section-eyebrow--inverted) { color: #8db3f8; }
-.section-eyebrow--inverted {
-  color: #dbe6fd;
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-}
+.dark .section-eyebrow:not(.section-eyebrow--inverted) { color: #c6cde0; }
+.section-eyebrow--inverted { color: #dbe6fd; }
 .section-eyebrow--inverted::before { background: #8db3f8; }
 .section-title, .card-title {
-  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-family: var(--font-dm-serif), Georgia, serif;
   font-weight: 400;
   font-style: normal;
   text-transform: capitalize;
-  letter-spacing: -0.01em;
-  line-height: 1.06;
+  letter-spacing: 0;
+  line-height: 1.08;
   text-wrap: balance;
 }
-.section-title { font-size: clamp(36px, 4.2vw, 58px); }
-.card-title { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.005em; line-height: 1.18; }
+.section-title { font-size: clamp(38px, 4.4vw, 58px); }
+.card-title { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.18; }
 .section-description, .font-description {
-  font-family: var(--font-inter), Arial, sans-serif;
+  font-family: var(--font-dm-sans), Arial, sans-serif;
   font-style: normal;
 }
-.section-description { font-size: clamp(15px, 1.2vw, 17px); font-weight: 400; line-height: 1.75; letter-spacing: -0.005em; }
+.section-description { font-size: clamp(20px, 2vw, 27px); font-weight: 500; line-height: 1.5; letter-spacing: -0.01em; color: #232a45; }
+/* Blue emphasis inside a section description (same size, semibold). */
+.desc-accent { color: #1f5cf0; font-weight: 600; }
 .font-description { line-height: 1.7; }
 @media (max-width: 767px) {
-  .section-title { font-size: clamp(36px, 9.5vw, 48px); }
-  .section-eyebrow { padding: 7px 13px 7px 11px; font-size: 10.5px; letter-spacing: .14em; }
+  .section-title { font-size: clamp(34px, 9vw, 44px); }
+  .section-eyebrow { font-size: 12px; letter-spacing: .18em; }
+  .section-eyebrow::before { width: 32px; }
+  .section-description { font-size: clamp(18px, 4.6vw, 22px); }
 }
 
 /* Scroll-reveal (see components/shared/Reveal.tsx) */

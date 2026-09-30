@@ -1,53 +1,33 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { footerColumns } from "@/content";
-import { Logo } from "@/components/shared/Logo";
 import { Container } from "@/components/ui";
+import styles from "./Footer.module.css";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const pages = footerColumns.find(column => column.title === "Legal")?.links ?? [];
+  const socials = [
+    { label: "X / Twitter", href: siteConfig.social.twitter },
+    { label: "LinkedIn", href: siteConfig.social.linkedin },
+    { label: "Contact", href: siteConfig.links.contactSales },
+  ];
 
-  return (
-    <footer className="border-t border-ink-200 bg-surface text-ink-500">
-      <Container className="py-16">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-6">
-          <div className="lg:col-span-2">
-            <Logo variant="full" />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed">{siteConfig.description}</p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-4">
-            {footerColumns.map((col) => (
-              <div key={col.title}>
-                <p className="text-sm font-semibold text-ink-900">{col.title}</p>
-                <ul className="mt-4 space-y-3">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link href={link.href} className="text-sm transition-colors hover:text-ink-900">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+  return <footer className={styles.footer}>
+    <Container className="max-w-[1440px]">
+      <div className={styles.main}>
+        <div className={styles.brand}>
+          <Link href="/" aria-label={`${siteConfig.name}.ai home`} className={styles.logo}><Image src="/brand/dagsis-footer-reference.png" alt="Dagsis.ai — Platform for your AI solutions" width={5200} height={2000} sizes="250px" /></Link>
+          <p>AI agents that know your business. Train, deploy and start answering your customers.<br /><a href={siteConfig.links.signUp}>Start for Free<ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" /></a></p>
         </div>
-
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-ink-200 pt-8 text-sm sm:flex-row sm:items-center">
-          <p>
-            © {year} {siteConfig.name}. All rights reserved.
-          </p>
-          <div className="flex gap-5">
-            <a href={siteConfig.social.twitter} className="hover:text-ink-900" target="_blank" rel="noreferrer">
-              X / Twitter
-            </a>
-            <a href={siteConfig.social.linkedin} className="hover:text-ink-900" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </Container>
-    </footer>
-  );
+        <nav className={styles.navigation} aria-label="Footer navigation">
+          <div className={styles.column}><h2>Pages</h2><ul>{pages.map(page => <li key={page.label}>{page.href === "#" ? <span className={styles.unavailable} aria-disabled="true" title="This page is not available yet">{page.label}</span> : <Link href={page.href}>{page.label}</Link>}</li>)}</ul></div>
+          <div className={styles.column}><h2>Socials</h2><ul>{socials.map(social => <li key={social.label}><a href={social.href} target={social.href.startsWith("https://") ? "_blank" : undefined} rel={social.href.startsWith("https://") ? "noopener noreferrer" : undefined}>{social.label}<ArrowUpRight size={15} strokeWidth={1.5} aria-hidden="true" /></a></li>)}</ul></div>
+        </nav>
+      </div>
+      <div className={styles.copyright}><p>&copy; {year} {siteConfig.name}. All rights reserved.</p></div>
+    </Container>
+  </footer>;
 }

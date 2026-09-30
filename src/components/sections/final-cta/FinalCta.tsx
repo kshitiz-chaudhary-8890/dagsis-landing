@@ -13,8 +13,9 @@ export function FinalCta() {
     <Container className="max-w-[1440px]">
       <div className={styles.panel}>
         <div className={styles.copy}>
+          <span className={styles.kicker}>{content.eyebrow}</span>
           <h2 id="final-cta-title" className={`section-title ${styles.title}`}>{content.title}</h2>
-          <p className={styles.description}>{content.description}</p>
+          <p className={`section-description ${styles.description}`}>{content.description}</p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href={content.primaryCta.href}>{content.primaryCta.label}<span><ArrowUpRight size={19} strokeWidth={1.5} aria-hidden="true" /></span></a>
             <a className={styles.secondaryAction} href={content.secondaryCta.href}>{content.secondaryCta.label}<ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" /></a>

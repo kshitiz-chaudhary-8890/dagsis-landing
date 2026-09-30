@@ -1,14 +1,14 @@
 ﻿.section { background: #fff; }
 .inner { max-width: 1360px; margin-inline: auto; font-family: var(--font-inter), Arial, sans-serif; }
-.intro { display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 65px; margin-bottom: 42px; }
-.kicker { display: inline-flex; align-items: center; gap: 10px; color: #2466ec; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.kicker::before { content: ''; width: 25px; height: 2px; background: currentColor; }
-.intro .title { margin-top: 20px; max-width: 650px; font-size: clamp(40px, 4.5vw, 60px); line-height: 1.05; }
-.intro .description { margin: 0; font-size: 16px; line-height: 1.75; max-width: 360px; color: #626771; }
+.intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: end; gap: 16px 56px; margin-bottom: 80px; }
+.kicker { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-dm-sans), Arial, sans-serif; color: #16213a; font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; white-space: nowrap; }
+.kicker::before { content: ''; width: 44px; height: 2px; flex-shrink: 0; border-radius: 2px; background: #1f5cf0; }
+.intro .title { margin-top: 18px; color: #16213a; font-size: clamp(40px, 4.4vw, 60px); line-height: 1.05; letter-spacing: 0; text-wrap: balance; }
+.intro .description { margin: 0; max-width: 400px; justify-self: end; text-wrap: pretty; border-left: 2px solid #d9dcff; padding-left: 32px; }
 .demoGrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: stretch; gap: 36px 28px; }
 .demoCard { min-width: 0; container-type: inline-size; }
-.demoCard[data-industry="restaurant"], .demoCard[data-industry="property"] { grid-column: span 7; }
-.demoCard[data-industry="retail"], .demoCard[data-industry="salon"] { grid-column: span 5; }
+.demoCard[data-industry="restaurant"], .demoCard[data-industry="property"], .demoCard[data-industry="realestate"], .demoCard[data-industry="healthcare"] { grid-column: span 7; }
+.demoCard[data-industry="retail"], .demoCard[data-industry="salon"], .demoCard[data-industry="education"], .demoCard[data-industry="travel"] { grid-column: span 5; }
 .cardDetails { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 164px; padding: 20px 2px; }
 .cardDetails > div { flex: 1; min-width: 0; }
 .cardCategory { display: flex; align-items: center; gap: 7px; color: #727781; font-size: 11px; margin-bottom: 8px; }
@@ -16,6 +16,19 @@
 .cardDetails p { max-width: 350px; color: #666c76; font-size: 13px; line-height: 1.7; margin-top: 7px; }
 .demoCta { flex-shrink: 0; align-self: center; white-space: nowrap; font-size: 12px; padding: 11px 15px; }
 .demoWebsite { --demo-accent: #75452c; --demo-background: #faf8f4; --demo-ink: #24221f; overflow: hidden; border: 1px solid #d9dce0; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px -18px #242b3540; }
+.landingPreview { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; }
+.landingNav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 20px; border-bottom: 1px solid #00000010; }
+.landingBrand { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 18px; line-height: 1; white-space: nowrap; }
+.landingNavLinks { font-size: 8.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.landingHero { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 9px; padding: 18px 24px; overflow: hidden; }
+.landingHero::before { content: ""; position: absolute; right: -70px; top: -50px; width: 230px; height: 230px; border-radius: 50%; background: var(--demo-accent); opacity: .12; }
+.landingHero > * { position: relative; }
+.landingCategory { font-size: 8.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--demo-accent); }
+.landingHeadline { margin: 0; font-family: var(--font-instrument-serif), Georgia, serif; font-size: clamp(20px, 2vw, 28px); line-height: 1.06; font-weight: 400; letter-spacing: -.015em; max-width: 320px; }
+.landingHero p { margin: 0; font-size: 10.5px; line-height: 1.6; opacity: .68; max-width: 300px; }
+.landingCta { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; padding: 7px 14px; border-radius: 999px; background: var(--demo-accent); color: #fff; font-size: 10px; font-weight: 600; }
+.landingBand { height: 5px; flex-shrink: 0; }
+.landingFallback { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 120px; }
 .websiteCanvas { position: relative; background: #fff; }
 .websiteNav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 21px 22px; background: #fff; color: #222; border-bottom: 1px solid #efefed; }
 .websiteBrand { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 26px; line-height: 1; white-space: nowrap; }
@@ -175,7 +188,7 @@
 }
 @media (max-width: 1023px) {
   .intro { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-  .intro .description { max-width: 560px; }
+  .intro .description { max-width: 560px; justify-self: start; border-left: 0; padding-left: 0; }
   .demoGrid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .demoCard[data-industry] { grid-column: auto; }
   .showcaseFooter { grid-template-columns: minmax(0, 1fr); gap: 28px; }
@@ -192,8 +205,7 @@
   .section { padding-block: 56px; }
   .intro { margin-bottom: 30px; gap: 20px; }
   .intro .title { font-size: clamp(36px, 9vw, 44px); }
-  .intro .description { font-size: 15px; }
-  .kicker { font-size: 9px; letter-spacing: .1em; }
+  .kicker { font-size: 12px; letter-spacing: .18em; }
   .cardDetails { gap: 12px; height: 220px; }
   .demoCta { font-size: 10px; padding: 10px; }
   .cardDetails h3 { font-size: 19px; }

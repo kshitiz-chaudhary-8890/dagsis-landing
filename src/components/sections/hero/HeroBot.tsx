@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FileText, Globe, BookOpen, Check, RotateCcw, ArrowRight, Sparkles } from "lucide-react";
+import { Check, RotateCcw, ArrowRight, Sparkles } from "lucide-react";
 import { heroContent } from "@/content";
 import { useReducedMotion } from "@/hooks/useMediaQuery";
 import { HeroChatPreview } from "./HeroChatPreview";
@@ -10,9 +10,9 @@ import styles from "./HeroBot.module.css";
 
 export type DemoPhase = "ready" | "question" | "thinking" | "reply" | "complete";
 const sources = [
-  { key: "website", icon: Globe, name: "Your website", title: "Products & pricing", kind: "URL" },
-  { key: "documents", icon: FileText, name: "Your documents", title: "Policies & guides", kind: "PDF" },
-  { key: "faqs", icon: BookOpen, name: "Your FAQs", title: "Everyday questions", kind: "FAQ" },
+  { key: "website", text: "Answer customer questions instantly" },
+  { key: "documents", text: "Help shoppers find the right product" },
+  { key: "faqs", text: "Capture leads and booking enquiries" },
 ];
 const nextPhase = { question: "thinking", thinking: "reply", reply: "complete" } as const;
 const duration = { question: 1400, thinking: 1900, reply: 1600 };
@@ -49,20 +49,16 @@ function AgentDemo({ selected, onReplay }: { selected: number; onReplay: () => v
     <>
       <div className={styles.stage} data-phase={visiblePhase}>
         <div className={styles.sourceColumn}>
-          <span className={styles.columnLabel}>01 / YOUR DATA</span>
           <div className={styles.sourceCards}>
-            {sources.map(({ key, icon: Icon, name, title, kind }) => {
+            {sources.map(({ key, text }) => {
               const active = key === sample.source && (visiblePhase === "thinking" || answered);
               return (
                 <div key={key} className={styles.sourceCard} data-active={active}>
-                  <span className={styles.sourceIcon}><Icon size={17} aria-hidden="true" /></span>
-                  <div><span className={styles.sourceName}>{name}</span><small>{active ? sample.sourceTitle : title}</small></div>
-                  <span className={styles.sourceKind}>{active ? <Check size={13} aria-hidden="true" /> : kind}</span>
+                  <span className={styles.sourceName}>{text}</span>
                 </div>
               );
             })}
           </div>
-          <p className={styles.sourceHint}>{visiblePhase === "thinking" || answered ? <><span>FOUND IN YOUR KNOWLEDGE</span>{sample.sourceDetail}</> : <><span>READY TO ANSWER FROM</span>Your website, documents & FAQs</>}</p>
         </div>
         <div className={styles.agent}>
           <div className={styles.glow} aria-hidden="true" />
@@ -77,7 +73,7 @@ function AgentDemo({ selected, onReplay }: { selected: number; onReplay: () => v
         </div>
         <div className={styles.chatColumn} ref={previewRef}>
           <HeroChatPreview sample={sample} phase={visiblePhase} />
-          <p className={styles.knowledgeNote}><Sparkles size={12} aria-hidden="true" />{answered ? `Source: ${sample.sourceTitle}` : "An example of your agent at work"}</p>
+          <p className={styles.knowledgeNote}><Sparkles size={12} aria-hidden="true" />An example of your agent at work</p>
         </div>
       </div>
       <div className={styles.flowFooter}>
@@ -104,7 +100,7 @@ export function HeroBot() {
           <span className={styles.demoKicker}>See Dagsis in action</span>
           <h2 id="agent-demo-title" className={`section-title ${styles.demoTitle}`}>Your knowledge. <span>Their favorite chat.</span></h2>
         </div>
-        <p className={`section-description ${styles.demoDesc}`}>Watch your agent answer straight from your data, live on WhatsApp.</p>
+        <p className={`section-description ${styles.demoDesc}`}>Watch your agent answer straight from your data, <span className="desc-accent">live on WhatsApp.</span></p>
       </div>
       <AgentDemo key={`${selected}-${run}`} selected={selected} onReplay={() => setRun((value) => value + 1)} />
     </div>

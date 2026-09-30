@@ -23,21 +23,21 @@ export function Problem() {
           <p className={`section-description ${styles.desc}`}>{problemIntro.description}</p>
         </div>
 
-        <ol className="border-t border-ink-200">
+        <ol className="grid grid-cols-1 border-t border-ink-200 md:grid-cols-2">
           {problems.map((p, i) => (
             <li
               key={p.title}
-              className="grid grid-cols-[auto_1fr] items-center gap-x-6 px-2 py-8 sm:grid-cols-[72px_1fr] sm:px-4"
+              className={`grid grid-cols-[auto_1fr] items-start gap-x-6 border-b border-ink-200 px-2 py-9 sm:px-6 ${i % 2 === 0 ? "md:border-r" : ""}`}
             >
               <span
                 aria-hidden="true"
-                className="font-serif text-4xl leading-none text-ink-900 sm:text-5xl"
+                className={`${styles.pointNum} leading-none text-ink-900`}
               >
                 {pad(i + 1)}
               </span>
               <div className="min-w-0">
                 <h3 className={`${styles.pointTitle} text-ink-900`}>{p.title}</h3>
-                <p className="font-description mt-2 max-w-2xl text-ink-500">
+                <p className="font-description mt-2 text-ink-500">
                   {p.description}
                 </p>
               </div>

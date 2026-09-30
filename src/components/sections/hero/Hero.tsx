@@ -1,39 +1,80 @@
-import { ArrowRight, ArrowDown, Sparkles } from "lucide-react";
-import { heroContent } from "@/content";
-import { ButtonLink, Container } from "@/components/ui";
-import { HeroBot } from "./HeroBot";
-import { HeroGradient } from "./HeroGradient";
-import styles from "./Hero.module.css";
+"use client";
 
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Container } from "@/components/ui";
+import { HeroBot } from "./HeroBot";
+import { HeroVariantA } from "./HeroVariantA";
+import { HeroVariantB } from "./HeroVariantB";
+import { HeroVariantC } from "./HeroVariantC";
+import { HeroVariantD } from "./HeroVariantD";
+import { HeroVariantE } from "./HeroVariantE";
+import sliderStyles from "./HeroSlider.module.css";
+import demoStyles from "./Hero.module.css";
+
+const SLIDES = [
+  { id: "dashboard", label: "Design 5 · Dashboard" },
+  { id: "dark", label: "Design 1 · Dark centered (previous)" },
+  { id: "glass", label: "Design 2 · Glass D" },
+  { id: "chat", label: "Design 3 · Chat mockup" },
+  { id: "product", label: "Design 4 · Product phone" },
+];
+
+/**
+ * Hero slider for design review — switch between hero variants
+ * to finalize the design. Prev/next arrows + dots included.
+ * To ship a single design later, render that variant directly.
+ */
 export function Hero() {
-  const c = heroContent;
+  const [index, setIndex] = useState(0);
+  const total = SLIDES.length;
+  const go = (dir: 1 | -1) => setIndex((i) => (i + dir + total) % total);
+
   return (
     <>
-      <section aria-labelledby="hero-title" className={styles.hero}>
-        <div aria-hidden="true" className={styles.atmosphere}><HeroGradient /></div>
-        <Container className={`${styles.introContent} relative z-10`}>
-          <div className="mx-auto text-center">
-            <p className={`${styles.eyebrow} animate-fade-up`}><Sparkles size={14} aria-hidden="true" />{c.eyebrow}</p>
-            <h1 id="hero-title" className={`${styles.headline} animate-fade-up`}>
-              <span className={styles.firstLine}><span>{c.titleStart}</span>{" "}<span>{c.titleEnd}</span></span>
-              <span className={styles.titleAccent}>{c.titleAccent}</span>
-            </h1>
-            <p className={`${styles.description} animate-fade-up mx-auto mt-6 max-w-xl text-base leading-relaxed sm:text-lg`} style={{ animationDelay: "120ms" }}>
-              {c.description}
-            </p>
-            <div className="animate-fade-up mt-7 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: "220ms" }}>
-              <ButtonLink href={c.primaryCta.href} size="lg" className={styles.primaryButton}>
-                {c.primaryCta.label}<ArrowRight className="ml-1 size-4" aria-hidden="true" />
-              </ButtonLink>
-              <ButtonLink href={c.secondaryCta.href} variant="outline-light" size="lg" className={styles.secondaryButton}>
-                {c.secondaryCta.label}
-              </ButtonLink>
-            </div>
-          </div>
-        </Container>
-        <a href="#agent-demo" className={styles.scrollHint}>Meet your AI agent<ArrowDown size={15} aria-hidden="true" /></a>
-      </section>
-      <section id="agent-demo" aria-labelledby="agent-demo-title" className={styles.demoSection}>
+      <div className={sliderStyles.sliderWrap}>
+        <div key={SLIDES[index].id} className={sliderStyles.slide}>
+          {index === 0 ? <HeroVariantE /> : index === 1 ? <HeroVariantC /> : index === 2 ? <HeroVariantA /> : index === 3 ? <HeroVariantB /> : <HeroVariantD />}
+        </div>
+
+        <div className={sliderStyles.controls} role="group" aria-label="Hero design switcher">
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            className={sliderStyles.arrow}
+            aria-label="Previous hero design"
+          >
+            <ChevronLeft size={16} aria-hidden="true" />
+          </button>
+          <span className={sliderStyles.counter}>
+            {index + 1} / {total}
+          </span>
+          <span className={sliderStyles.dots}>
+            {SLIDES.map((slide, i) => (
+              <button
+                key={slide.id}
+                type="button"
+                onClick={() => setIndex(i)}
+                title={slide.label}
+                aria-label={`Show ${slide.label}`}
+                aria-current={i === index}
+                className={sliderStyles.dot}
+                data-active={i === index}
+              />
+            ))}
+          </span>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            className={sliderStyles.arrow}
+            aria-label="Next hero design"
+          >
+            <ChevronRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+
+      <section id="agent-demo" aria-labelledby="agent-demo-title" className={demoStyles.demoSection}>
         <Container className="max-w-[1440px]">
           <HeroBot />
         </Container>
