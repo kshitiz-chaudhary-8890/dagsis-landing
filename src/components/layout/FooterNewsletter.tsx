@@ -97,7 +97,19 @@ export function FooterNewsletter() {
   };
 
   return (
-    <footer id="footer-section" className="relative overflow-hidden bg-white text-ink-900">
+    <footer
+      id="footer-section"
+      className="relative overflow-hidden text-ink-900"
+      style={{
+        background: [
+          "radial-gradient(760px 520px at 0% 100%, #fdeee2 0%, rgba(253, 238, 226, 0) 70%)",
+          "radial-gradient(980px 700px at 80% 100%, #e2ecff 0%, #ebf2ff 40%, rgba(235, 242, 255, 0) 72%)",
+          "radial-gradient(820px 640px at 100% 30%, #eae3fe 0%, rgba(234, 227, 254, 0) 72%)",
+          "radial-gradient(760px 520px at 8% 0%, #f0f4fe 0%, rgba(240, 244, 254, 0) 70%)",
+          "#ffffff",
+        ].join(", "),
+      }}
+    >
       <div className="border-t border-ink-200" aria-hidden="true" />
       <Container className="max-w-[1440px]">
         <motion.div
