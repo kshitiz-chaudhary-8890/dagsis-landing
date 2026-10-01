@@ -1,11 +1,17 @@
-/* Design 5 — clean light hero with grid background (centered layout + dashboard).
+/* Design 5 — gradient + grid light hero (centered layout + dashboard).
+   Peach top-left, blue centre-right, lavender bottom-right over white.
    Ink #0a1240, blue #0b46ff, hairline #e1e7f5. */
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: 152px 0 80px;
-  background: #ffffff;
+  background:
+    radial-gradient(760px 520px at 0% 0%, #fdeee2 0%, rgba(253, 238, 226, 0) 70%),
+    radial-gradient(980px 700px at 80% 16%, #e2ecff 0%, #ebf2ff 40%, rgba(235, 242, 255, 0) 72%),
+    radial-gradient(820px 640px at 100% 62%, #eae3fe 0%, rgba(234, 227, 254, 0) 72%),
+    radial-gradient(760px 520px at 8% 100%, #f0f4fe 0%, rgba(240, 244, 254, 0) 70%),
+    #ffffff;
   border-bottom: 1px solid #e6e9f4;
 }
 
