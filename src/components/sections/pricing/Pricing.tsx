@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Check, ArrowRight, Sparkles, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui";
 import { plans } from "@/utils/constants/billing.constants";
 
 const planMeta: Record<string, { tagline: string; color: string }> = {
@@ -27,7 +27,7 @@ const planMeta: Record<string, { tagline: string; color: string }> = {
 
 const POPULAR = "Pro";
 
-export function Pricing() {
+export function Pricing({ showIntro = true }: { showIntro?: boolean }) {
   const [cycle, setCycle] = useState<"monthly" | "annual">("monthly");
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const monthlyRef = useRef<HTMLButtonElement>(null);
@@ -54,8 +54,8 @@ export function Pricing() {
     >
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Section header ── */}
-        <div className="mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-end gap-x-14 gap-y-4">
+        <div className={showIntro ? "mb-20" : "mb-10"}>
+          {showIntro && <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-end gap-x-14 gap-y-4">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export function Pricing() {
                 Pricing
               </span>
               <h2 className="section-title mt-[18px] text-[#16213a]">
-                Simple, transparent pricing
+                Simple, <em className="title-accent">transparent pricing</em>
               </h2>
             </motion.div>
 
@@ -80,7 +80,7 @@ export function Pricing() {
             >
               Start free. Scale as you grow. No hidden fees, no surprises.
             </motion.p>
-          </div>
+          </div>}
 
           {/* ── Billing toggle ── */}
           <motion.div
@@ -272,28 +272,23 @@ export function Pricing() {
 
                   {/* CTA */}
                   {plan.title === "Custom" ? (
-                    <Link
+                    <ButtonLink
                       href="/contact-sales"
-                      className="mt-auto w-full inline-flex items-center justify-center gap-2 h-11 px-5 rounded-full bg-surface-raised text-ink-900 ring-1 ring-ink-200 hover:bg-ink-50 hover:ring-ink-300 text-sm font-semibold transition-all duration-200 group/cta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                      className="mt-auto w-full"
                     >
                       Contact Sales
-                      <ArrowRight className="w-4 h-4 opacity-60 group-hover/cta:translate-x-0.5 transition-transform" />
-                    </Link>
+                      <ArrowRight className="size-4" aria-hidden="true" />
+                    </ButtonLink>
                   ) : (
-                    <Link
+                    <ButtonLink
                       href={`/signup?plan=${encodeURIComponent(plan.title.toLowerCase())}&cycle=${cycle}`}
-                      className={`mt-auto w-full inline-flex items-center justify-center gap-2 h-11 px-5 rounded-full text-sm font-semibold transition-all duration-200 group/cta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500
-                        ${
-                          isPopular
-                            ? "bg-brand-600 hover:bg-brand-700 text-white shadow-[0_4px_14px_rgba(59,130,246,0.35)] hover:shadow-[0_4px_18px_rgba(59,130,246,0.5)]"
-                            : "bg-surface-raised text-ink-900 ring-1 ring-ink-200 hover:bg-ink-50 hover:ring-ink-300"
-                        }`}
+                      className="mt-auto w-full"
                     >
                       {plan.title === "Free"
                         ? "Start for free"
                         : `Get ${plan.title}`}
-                      <ArrowRight className="w-3.5 h-3.5 opacity-70 group-hover/cta:translate-x-0.5 transition-transform" />
-                    </Link>
+                      <ArrowRight className="size-4" aria-hidden="true" />
+                    </ButtonLink>
                   )}
                 </div>
               </motion.div>

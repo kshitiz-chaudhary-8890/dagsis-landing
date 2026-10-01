@@ -30,7 +30,7 @@ export function UseCases() {
         <div className={styles.intro}>
           <div>
             <span className={styles.kicker}>{useCasesIntro.eyebrow}</span>
-            <h2 className={`section-title ${styles.title}`}>{useCasesIntro.title}</h2>
+            <h2 className={`section-title ${styles.title}`}>One Platform, <em className="title-accent">Many Ways to Grow.</em></h2>
           </div>
           <p className={`section-description ${styles.desc}`}>{useCasesIntro.description}</p>
         </div>

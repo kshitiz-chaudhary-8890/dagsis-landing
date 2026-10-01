@@ -1,17 +1,11 @@
-/* Design 5 — gradient + grid light hero (centered layout + dashboard).
-   Peach top-left, blue centre-right, lavender bottom-right over white.
+/* Design 5 — clean light hero with grid background (centered layout + dashboard).
    Ink #0a1240, blue #0b46ff, hairline #e1e7f5. */
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: 152px 0 80px;
-  background:
-    radial-gradient(760px 520px at 0% 0%, #fde2cf 0%, rgba(253, 226, 207, 0) 70%),
-    radial-gradient(980px 700px at 80% 16%, #b3d1ff 0%, #cfe0ff 40%, rgba(207, 224, 255, 0) 72%),
-    radial-gradient(820px 640px at 100% 62%, #d8c9ff 0%, rgba(216, 201, 255, 0) 72%),
-    radial-gradient(760px 520px at 8% 100%, #e6edff 0%, rgba(230, 237, 255, 0) 70%),
-    #ffffff;
+  background: #ffffff;
   border-bottom: 1px solid #e6e9f4;
 }
 
@@ -44,18 +38,18 @@
 
 .headline {
   margin: 0 auto; max-width: 1000px;
+  color: #0c1734;
   font-family: var(--font-dm-serif), Georgia, serif;
-  font-size: clamp(40px, 5.2vw, 72px);
-  font-weight: 400; line-height: 1.12; letter-spacing: 0;
+  font-size: clamp(44px, 5.2vw, 72px);
+  font-weight: 400; line-height: 1.06; letter-spacing: -.025em;
   text-wrap: balance;
 }
 .lineDark, .lineGradient { display: block; }
-.lineDark { color: #0a0e2a; }
-.accentDark { color: #0a0e2a; }
+.lineDark { color: #0c1734; }
+.accentDark { color: #0c1734; }
 .lineGradient {
   padding-bottom: 0.08em;
-  background: linear-gradient(90deg, #0054fb 5%, #2e5bf5 45%, #6d3df0 80%, #7c3aed 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: #0c1734;
 }
 .description {
   margin: 22px auto 0; max-width: 610px;
@@ -65,20 +59,15 @@
 .primaryButton {
   display: inline-flex; align-items: center; gap: 12px;
   height: 56px; padding: 0 30px; border-radius: 999px;
-  background: linear-gradient(180deg, #3580f9 0%, #1e56f0 100%);
   color: #fff; font-size: 16px; font-weight: 600; letter-spacing: -0.005em;
-  box-shadow: 0 14px 30px #2f6bff45, inset 0 1px 0 #ffffff4d;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.primaryButton:hover { transform: translateY(-1px); box-shadow: 0 18px 36px #2f6bff5c; }
 .secondaryButton {
   display: inline-flex; align-items: center; gap: 12px;
   height: 56px; padding: 0 28px 0 10px; border-radius: 999px;
-  background: #fff; color: #101736; font-size: 16px; font-weight: 600; letter-spacing: -0.005em;
-  border: 1px solid #e3e8f5; box-shadow: 0 8px 20px #10173610;
-  transition: border-color 0.2s ease;
+  background: #fff; color: #101736; border: 1px solid #e3e8f5;
+  font-size: 16px; font-weight: 600; letter-spacing: -0.005em;
 }
-.secondaryButton:hover { border-color: #b9c9f5; }
+.secondaryButton:hover { background: #fff; border-color: #b9c9f5; }
 .playCircle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 38px; height: 38px; border-radius: 50%; background: #edf3ff; color: #1f5cf0;
@@ -158,14 +147,19 @@
 .panelHead small { margin-left: auto; font-size: 11.5px; color: #7c86a6; }
 
 /* channel tabs (interactive) */
-.tabs { margin-left: auto; display: inline-flex; gap: 4px; padding: 3px; border-radius: 999px; background: #eff2f9; }
+.tabs { margin-left: auto; display: inline-flex; gap: 4px; padding: 3px; border-radius: 999px; background: #eff2f9; box-shadow: inset 0 0 0 1px #e4e9f2; }
 .tab {
+  display: inline-flex; align-items: center; gap: 6px;
   padding: 5px 12px; border: 0; border-radius: 999px; background: transparent;
   font: inherit; font-size: 12px; font-weight: 600; color: #5a6379; cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
+.tab svg { width: 14px; height: 14px; flex: none; }
+.tab[data-channel="WhatsApp"] svg { color: #25d366; }
+.tab[data-channel="Instagram"] svg { color: #e1306c; }
+.tab[data-channel="Website"] svg { color: #3171f3; }
 .tab:hover { color: #0a1240; }
-.tabActive { background: #fff; color: #0b46ff; box-shadow: 0 2px 8px #10173618; }
+.tabActive { background: #fff; color: #0a1240; font-weight: 600; box-shadow: 0 2px 8px #10173618, inset 0 0 0 1px #e4e9f2; }
 .tab:focus-visible { outline: 2px solid #0b46ff; outline-offset: 2px; }
 
 .msgs { display: flex; flex-direction: column; gap: 10px; animation: msgs-in 0.4s ease both; }
@@ -228,5 +222,4 @@
 @media (prefers-reduced-motion: reduce) {
   .msgs { animation: none; }
   .typing i { animation: none; opacity: 0.6; }
-  .primaryButton:hover { transform: none; }
 }

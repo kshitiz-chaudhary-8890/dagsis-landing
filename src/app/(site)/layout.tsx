@@ -1,4 +1,4 @@
-import { Footer } from "@/components/layout/Footer";
+import { FooterNewsletter } from "@/components/layout/FooterNewsletter";
 import { Navbar } from "@/components/layout/Navbar";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
@@ -18,7 +18,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <main id="main" className="flex-1 overflow-x-clip">
         {children}
       </main>
-      <Footer />
+      <FooterNewsletter />
     </>
   );
 }

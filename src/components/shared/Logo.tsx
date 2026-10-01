@@ -70,9 +70,12 @@ function ThemedArtwork({
 export function Logo({
   variant = "compact",
   className,
+  logoSize = "md",
 }: {
   variant?: "compact" | "full";
   className?: string;
+  /** Compact lock-up size: md (header) or lg (footer). */
+  logoSize?: "md" | "lg";
 }) {
   return (
     <Link
@@ -84,8 +87,13 @@ export function Logo({
         <ThemedArtwork name="logo" size={FULL} className="h-20" />
       ) : (
         <span className="inline-flex items-center gap-2">
-          <LogoMark className="h-8" priority />
-          <ThemedArtwork name="wordmark" size={WORDMARK} className="h-[22px]" priority />
+          <LogoMark className={logoSize === "lg" ? "h-12" : "h-8"} priority />
+          <ThemedArtwork
+            name="wordmark"
+            size={WORDMARK}
+            className={logoSize === "lg" ? "h-[33px]" : "h-[22px]"}
+            priority
+          />
         </span>
       )}
     </Link>

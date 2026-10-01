@@ -18,7 +18,7 @@ export function Problem() {
         <div className={styles.intro}>
           <div>
             <span className={styles.kicker}>{problemIntro.eyebrow}</span>
-            <h2 className={`section-title ${styles.title}`}>{problemIntro.title}</h2>
+            <h2 className={`section-title ${styles.title}`}>Customers <em className="title-accent">Don&apos;t Wait.</em> Your Team Can&apos;t Be Everywhere.</h2>
           </div>
           <p className={`section-description ${styles.desc}`}>{problemIntro.description}</p>
         </div>

@@ -17,7 +17,7 @@ export function DeployEverywhere() {
       <header className={styles.intro}>
         <div>
           <span className={styles.kicker}>{channelsIntro.eyebrow}</span>
-          <h2 id="deploy-title" className={`section-title ${styles.title}`}>{channelsIntro.title} {channelsIntro.titleAccent}</h2>
+          <h2 id="deploy-title" className={`section-title ${styles.title}`}>{channelsIntro.title} <em className="title-accent">{channelsIntro.titleAccent}</em></h2>
         </div>
         <p className={`section-description ${styles.description}`}>{channelsIntro.description}</p>
       </header>

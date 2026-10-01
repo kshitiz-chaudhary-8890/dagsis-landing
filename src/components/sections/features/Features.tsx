@@ -85,7 +85,7 @@ export function Features() {
   return <Section id="features" aria-labelledby="features-title" containerClassName="max-w-[1440px]" className={`${styles.section} py-8 sm:py-10`}>
     <div className={styles.inner}>
       <header className={styles.intro}>
-        <div><span className={styles.kicker}>Core platform features</span><h2 id="features-title" className={`section-title ${styles.title}`}>{featuresIntro.title}</h2></div>
+        <div><span className={styles.kicker}>Core platform features</span><h2 id="features-title" className={`section-title ${styles.title}`}>Everything You Need to Run <em className="title-accent">AI Customer Conversations.</em></h2></div>
         <div className={styles.introAside}><span className={styles.platformLabel}><span /> One connected platform</span><p className={`section-description ${styles.desc}`}>{featuresIntro.description}</p></div>
       </header>
       <div className={styles.featureGrid}>

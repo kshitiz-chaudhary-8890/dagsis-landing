@@ -357,9 +357,9 @@ export function DashboardMockup() {
       <div className="dm-head">
         <div>
           <span className="dm-kicker">Interactive Platform Demo</span>
-          <h2 className="section-title dm-title">
-            From Zero to Deployed in Under 5 Minutes.
-          </h2>
+            <h2 className="section-title dm-title">
+              From Zero to Deployed <em className="title-accent">in Under 5 Minutes.</em>
+            </h2>
         </div>
         <p className="section-description dm-desc">
           Walk through every step of the Dagsis platform — live, interactive, no

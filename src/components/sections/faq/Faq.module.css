@@ -14,10 +14,7 @@
 .help { padding: 25px; border-radius: 14px; background: #eef4ff; }
 .help h3 { font-family: var(--font-jakarta), sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -.025em; }
 .help p { margin-top: 12px; max-width: 240px; font-size: 12px; line-height: 1.85; color: #5c7090; }
-.help > a { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; margin-top: 25px; padding: 7px 7px 7px 17px; background: #2466ec; color: #fff; border-radius: 50px; font-size: 12px; font-weight: 500; transition: background 220ms cubic-bezier(.16,1,.3,1), transform 220ms cubic-bezier(.16,1,.3,1); }
-.help > a > span { display: grid; place-items: center; width: 34px; height: 34px; background: #ffffff1c; border-radius: 50%; }
-.help > a:hover { transform: translateY(-1px); }
-.help > a:active { transform: scale(.98); }
+.helpCta { margin-top: 25px; }
 .questions { min-width: 0; }
 .group { scroll-margin-top: 112px; }
 .group + .group { margin-top: 36px; }
@@ -32,7 +29,7 @@
 .item[open] summary { color: #2158bb; }
 .answer { padding: 0 54px 24px 0; }
 .answer p { max-width: 660px; font-size: 14px; line-height: 1.9; color: #5d6c80; text-wrap: pretty; }
-.topicNav a:focus-visible, .help > a:focus-visible, .item summary:focus-visible { outline: 2px solid #2466ec; outline-offset: 5px; border-radius: 5px; }
+.topicNav a:focus-visible, .item summary:focus-visible { outline: 2px solid #2466ec; outline-offset: 5px; border-radius: 5px; }
 @media (max-width: 1199px) {
   .layout { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 45px; }
   .help { padding: 23px; }
@@ -43,7 +40,7 @@
   .layout { grid-template-columns: 1fr; gap: 36px; }
   .sidebar { position: static; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
   .help { padding: 24px; }
-  .help > a { margin-top: 20px; }
+  .helpCta { margin-top: 20px; }
 }
 @media (max-width: 639px) {
   .intro { margin-bottom: 48px; }
@@ -55,7 +52,7 @@
   .help { display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; align-items: center; padding: 22px; }
   .help h3 { font-size: 16px; }
   .help p { margin: 0; grid-column: 1; max-width: none; font-size: 11px; }
-  .help > a { grid-column: 2; grid-row: 1 / 3; gap: 12px; margin: 0; padding-left: 13px; font-size: 11px; }
+  .helpCta { grid-column: 2; grid-row: 1 / 3; margin: 0; }
   .group + .group { margin-top: 30px; }
   .item summary { min-height: 72px; padding-block: 19px; font-size: 15px; gap: 18px; }
   .answer { padding-right: 16px; }
@@ -65,8 +62,8 @@
   .intro .title { font-size: clamp(36px, 9vw, 44px); }
   .kicker { font-size: 12px; letter-spacing: .18em; }
   .help { grid-template-columns: 1fr; gap: 10px; }
-  .help > a { grid-column: 1; grid-row: auto; margin-top: 7px; justify-self: start; gap: 25px; }
+  .helpCta { grid-column: 1; grid-row: auto; margin-top: 7px; justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .topicNav a, .help > a, .item summary, .expandMark { transition: none; }
+  .topicNav a, .item summary, .expandMark { transition: none; }
 }

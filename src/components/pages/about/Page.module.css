@@ -1,0 +1,29 @@
+/* About page hero. All other sections own their styles (per-component modules). */
+
+.hero { position: relative; display: flex; align-items: center; overflow: hidden; min-height: 88svh; padding: 180px 0 70px; background: #fff; }
+.hero::before { position: absolute; inset: 0; content: ""; opacity: .5; background-image: linear-gradient(#b4c2de44 1px, transparent 1px), linear-gradient(90deg, #b4c2de44 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 80% at 50% 20%, #000 0%, transparent 75%); pointer-events: none; }
+.heroIntro { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; text-align: center; }
+.pill { display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 9px 18px; border: 1px solid #d6e3fb; border-radius: 999px; background: #fff; color: #1c2f55; font-family: var(--font-dm-sans), Arial, sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; box-shadow: 0 8px 20px -12px rgb(35 93 224 / 35%); }
+.pill::before { content: ""; width: 7px; height: 7px; flex: none; border-radius: 50%; background: #235de0; box-shadow: 0 0 0 3px #e0e9fb; }
+.heroTitle { margin: 24px auto 0; color: #0c1734; font-family: var(--font-dm-serif), Georgia, serif; font-size: clamp(44px, 5.2vw, 72px); font-weight: 400; line-height: 1.06; letter-spacing: -.025em; text-wrap: balance; }
+.heroTitle span { color: #235de0; }
+.heroDescription { max-width: 720px; margin: 28px auto 0; color: #46506b; font-family: var(--font-dm-sans), Arial, sans-serif; font-size: clamp(18px, 1.6vw, 21px); font-weight: 400; line-height: 1.65; text-wrap: pretty; }
+.heroCtas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 34px; }
+.heroVisual { position: relative; isolation: isolate; height: clamp(390px, 42vw, 600px); max-width: 1360px; margin: 66px auto 0; overflow: hidden; border-radius: 24px; background: #d8d8d3; }
+.heroPhoto { z-index: 0; object-fit: cover; object-position: center 53%; }
+.heroVisualShade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgb(6 20 53 / 68%) 0%, rgb(6 20 53 / 36%) 31%, transparent 62%); }
+.heroVisualStatement { position: absolute; z-index: 2; bottom: 54px; left: 5.5%; max-width: 430px; margin: 0; color: #fff; font-family: var(--font-dm-serif), Georgia, serif; font-size: clamp(32px, 3.5vw, 52px); line-height: 1.1; text-wrap: balance; }
+
+@media (max-width: 900px) {
+  .hero { padding: 150px 0 64px; }
+  .heroVisual { margin-top: 52px; }
+}
+@media (max-width: 700px) {
+  .hero { padding: 120px 0 56px; }
+  .heroTitle { margin-top: 20px; font-size: clamp(42px, 10vw, 58px); line-height: 1.09; }
+  .heroDescription { margin-top: 22px; font-size: 18px; line-height: 1.6; }
+  .heroVisual { height: 440px; margin-top: 42px; border-radius: 18px; }
+  .heroPhoto { object-position: 66% center; }
+  .heroVisualShade { background: linear-gradient(0deg, rgb(6 20 53 / 76%), transparent 60%); }
+  .heroVisualStatement { right: 26px; bottom: 28px; left: 26px; max-width: 360px; font-size: clamp(31px, 8vw, 43px); }
+}

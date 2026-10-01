@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "brand" | "secondary" | "ghost" | "white" | "outline-light";
-type Size = "sm" | "md" | "lg";
+type Size = "sm" | "md" | "lg" | "custom";
 
 const variants: Record<Variant, string> = {
   /** Main call to action: the logo blue, in both themes. */
@@ -22,6 +22,7 @@ const sizes: Record<Size, string> = {
   sm: "h-9 px-4 text-sm",
   md: "h-11 px-5 text-sm",
   lg: "h-12 px-6 text-base",
+  custom: "",
 };
 
 export function buttonClasses({
@@ -30,7 +31,8 @@ export function buttonClasses({
   className,
 }: { variant?: Variant; size?: Size; className?: string } = {}) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap",
+    "inline-flex items-center justify-center rounded-full font-semibold whitespace-nowrap",
+    size !== "custom" && "gap-2",
     "transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
     "disabled:pointer-events-none disabled:opacity-50",
     variants[variant],

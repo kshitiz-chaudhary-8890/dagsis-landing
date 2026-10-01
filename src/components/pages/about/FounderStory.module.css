@@ -1,0 +1,32 @@
+/* Meet Our Founder and CEO — editorial portrait with offset frame + letter. */
+
+.section { padding: 32px 0; background: #fff; }
+@media (min-width: 640px) { .section { padding: 40px 0; } }
+
+.layout { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); align-items: center; gap: clamp(64px, 8vw, 128px); max-width: 1300px; margin-inline: auto; }
+
+.photoWrap { position: relative; min-width: 0; }
+.photoWrap::before { position: absolute; inset: 22px -20px -22px 22px; z-index: 0; border-radius: 24px; background: linear-gradient(150deg, #e6eefe, #f4f8fe); content: ""; }
+.photo { position: relative; z-index: 1; overflow: hidden; border-radius: 22px; aspect-ratio: 4 / 4.6; background: #dce4ec; box-shadow: 0 30px 60px -42px rgb(26 54 111 / 45%); }
+.photo img { object-fit: cover; object-position: center 28%; }
+
+.letter { max-width: 620px; }
+.title { margin: 18px 0 0; color: #101a37; font-family: var(--font-dm-serif), Georgia, serif; font-size: clamp(44px, 4.6vw, 68px); font-weight: 400; line-height: 1.04; letter-spacing: -.025em; text-wrap: balance; }
+.title em { font-family: var(--font-dm-serif), Georgia, serif; font-style: italic; font-weight: 400; color: #235de0; letter-spacing: -.015em; }
+.quote { margin: 40px 0 0; color: #16213a; font-family: var(--font-dm-serif), Georgia, serif; font-style: italic; font-size: clamp(27px, 2.6vw, 38px); line-height: 1.36; letter-spacing: 0; text-wrap: pretty; }
+.signature { display: flex; flex-direction: column; gap: 4px; margin-top: 34px; padding-top: 26px; border-top: 1px solid #e5eaf2; font-family: var(--font-dm-sans), Arial, sans-serif; }
+.signature strong { color: #1c2a44; font-size: 18px; font-weight: 700; }
+.signature span { color: #667389; font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .layout { gap: 56px; }
+  .photoWrap { max-width: 480px; }
+  .photoWrap::before { inset: 16px -14px -16px 16px; border-radius: 20px; }
+}
+@media (max-width: 700px) {
+  .layout { grid-template-columns: 1fr; gap: 38px; }
+  .photo { aspect-ratio: 4 / 4.2; }
+  .title { font-size: clamp(40px, 10vw, 52px); }
+  .quote { margin-top: 30px; font-size: clamp(24px, 6.4vw, 30px); }
+  .signature { margin-top: 26px; }
+}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight, CheckCheck, Mic, MoreVertical, Paperclip, Phone, Smile } from "lucide-react";
 import { featureFlags } from "@/config/site";
 import { finalCtaContent } from "@/content";
-import { Container } from "@/components/ui";
+import { ButtonLink, Container } from "@/components/ui";
 import { ChannelBrandIcon } from "@/components/sections/features/ChannelBrandIcon";
 import styles from "./FinalCta.module.css";
 
@@ -14,11 +14,11 @@ export function FinalCta() {
       <div className={styles.panel}>
         <div className={styles.copy}>
           <span className={styles.kicker}>{content.eyebrow}</span>
-          <h2 id="final-cta-title" className={`section-title ${styles.title}`}>{content.title}</h2>
+          <h2 id="final-cta-title" className={`section-title ${styles.title}`}>Ready to Let AI Handle Your <em className="title-accent">Customer Conversations?</em></h2>
           <p className={`section-description ${styles.description}`}>{content.description}</p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href={content.primaryCta.href}>{content.primaryCta.label}<span><ArrowUpRight size={19} strokeWidth={1.5} aria-hidden="true" /></span></a>
-            <a className={styles.secondaryAction} href={content.secondaryCta.href}>{content.secondaryCta.label}<ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" /></a>
+            <ButtonLink href={content.primaryCta.href}>{content.primaryCta.label}<ArrowUpRight size={17} aria-hidden="true" /></ButtonLink>
+            <ButtonLink href={content.secondaryCta.href}>{content.secondaryCta.label}<ArrowUpRight size={17} aria-hidden="true" /></ButtonLink>
           </div>
           <p className={styles.note}>{note}</p>
         </div>

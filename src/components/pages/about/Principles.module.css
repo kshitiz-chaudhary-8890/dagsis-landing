@@ -1,0 +1,218 @@
+/* What We Believe — 4-column editorial strip with hairline dividers. */
+
+.section {
+  padding: 32px 0;
+  background: #fff;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 40px 0;
+  }
+}
+
+.head {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.head :global(.section-eyebrow)::after {
+  content: "";
+  width: 44px;
+  height: 2px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: #1f5cf0;
+}
+
+.title {
+  margin: 18px 0 0;
+  color: #101a37;
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: clamp(44px, 4.8vw, 68px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.title em {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #235de0;
+  letter-spacing: -0.015em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1320px;
+  margin: clamp(48px, 5vw, 72px) auto 0;
+  border-top: 1px solid #e3e9f2;
+  border-bottom: 1px solid #e3e9f2;
+}
+
+.cellWrap {
+  min-width: 0;
+}
+
+.cellWrap + .cellWrap .cell {
+  border-left: 1px solid #e3e9f2;
+}
+
+.cell {
+  height: 100%;
+  padding: clamp(28px, 2.8vw, 40px) clamp(22px, 2.4vw, 34px) clamp(32px, 3vw, 44px);
+  transition: background 0.25s ease;
+}
+
+.cell:hover {
+  background: #f7f9fc;
+}
+
+.index {
+  display: block;
+  color: #8fa0b8;
+  font-family: var(--font-jakarta), Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-top: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #101a37;
+  background: transparent;
+  color: #101a37;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.cell:hover .badge {
+  background: #101a37;
+  color: #fff;
+}
+
+.badge svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.75;
+}
+
+.cell h3 {
+  margin: 22px 0 0;
+  color: #101a37;
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: clamp(23px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.cell p {
+  margin: 10px 0 0;
+  color: #5b687d;
+  font-family: var(--font-dm-sans), Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+@media (max-width: 1180px) {
+  .cell {
+    padding: 28px 22px 34px;
+  }
+
+  .cell h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cellWrap + .cellWrap .cell {
+    border-left: 0;
+  }
+
+  .cellWrap:nth-child(even) .cell {
+    border-left: 1px solid #e3e9f2;
+  }
+
+  .cellWrap:nth-child(n + 3) .cell {
+    border-top: 1px solid #e3e9f2;
+  }
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: clamp(40px, 10.4vw, 54px);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .cellWrap + .cellWrap .cell,
+  .cellWrap:nth-child(even) .cell {
+    border-left: 0;
+  }
+
+  .cellWrap + .cellWrap .cell {
+    border-top: 1px solid #e3e9f2;
+  }
+
+  .cell {
+    padding: 26px 20px 30px;
+  }
+
+  .cell h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 380px) {
+  .section {
+    padding: 28px 0 80px;
+  }
+
+  .grid {
+    margin-top: 32px;
+  }
+
+  .cell {
+    padding: 22px 16px 26px;
+  }
+
+  .badge {
+    width: 44px;
+    height: 44px;
+    margin-top: 20px;
+  }
+
+  .cell h3 {
+    margin-top: 18px;
+    font-size: 23px;
+  }
+
+  .cell p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell {
+    transition: none;
+  }
+}

@@ -7,10 +7,10 @@ import { DemoWebsite } from "./DemoWebsite";
 import styles from "./ProductShowcase.module.css";
 
 export function ProductShowcase() {
-  return <Section id="showcase" aria-labelledby="showcase-title" containerClassName="max-w-[1440px]" className={`${styles.section} py-8 sm:py-10`}>
+  return <Section id="showcase" aria-labelledby="showcase-title" containerClassName="max-w-[1440px] px-0" className={`${styles.section} py-8 sm:py-10`}>
     <div className={styles.inner}>
       <header className={styles.intro}>
-        <div><span className={styles.kicker}>{demoShowcase.eyebrow}</span><h2 id="showcase-title" className={`section-title ${styles.title}`}>{demoShowcase.title}</h2></div>
+        <div><span className={styles.kicker}>{demoShowcase.eyebrow}</span><h2 id="showcase-title" className={`section-title ${styles.title}`}>Don&apos;t Just Read About It. <em className="title-accent">Try It.</em></h2></div>
         <p className={`section-description ${styles.description}`}>{demoShowcase.description}</p>
       </header>
       <div className={styles.demoGrid}>

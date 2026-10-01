@@ -1,14 +1,14 @@
 import { ArrowUpRight, Plus } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { faqGroups, faqIntro } from "@/content/faq";
-import { Section } from "@/components/ui";
+import { ButtonLink, Section } from "@/components/ui";
 import styles from "./Faq.module.css";
 
 export function Faq() {
   return <Section id="faq" aria-labelledby="faq-title" containerClassName="max-w-[1440px]" className={`${styles.section} py-8 sm:py-10`}>
     <div className={styles.inner}>
       <header className={styles.intro}>
-        <div><span className={styles.kicker}>{faqIntro.eyebrow}</span><h2 id="faq-title" className={`section-title ${styles.title}`}>{faqIntro.title}</h2></div>
+        <div><span className={styles.kicker}>{faqIntro.eyebrow}</span><h2 id="faq-title" className={`section-title ${styles.title}`}>Frequently Asked <em className="title-accent">Questions.</em></h2></div>
         <p className={`section-description ${styles.description}`}>{faqIntro.description}</p>
       </header>
       <div className={styles.layout}>
@@ -20,7 +20,7 @@ export function Faq() {
           <div className={styles.help}>
             <h3>Still have questions?</h3>
             <p>Book a demo and talk through your business with our team.</p>
-            <a href={siteConfig.links.bookDemo}>Book a Demo<span><ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" /></span></a>
+            <ButtonLink href={siteConfig.links.bookDemo} className={styles.helpCta}>Book a Demo<ArrowUpRight size={17} aria-hidden="true" /></ButtonLink>
           </div>
         </aside>
         <div className={styles.questions}>

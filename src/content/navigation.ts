@@ -1,12 +1,23 @@
 import type { FooterColumn, NavItem } from "@/types/content";
 
-/** Top navigation. Hrefs are section anchors on the landing page. */
+/** Top navigation for the pages in the inner-page content brief. */
 export const mainNav: NavItem[] = [
-  { label: "Product", href: "#features" },
-  { label: "Use cases", href: "#use-cases" },
-  { label: "Integrations", href: "#deploy" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About Us", href: "/about" },
+  { label: "Industries", href: "/industries" },
+  { label: "Demo Websites", href: "/demo-websites" },
+  { label: "Features", href: "/features" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+export const industryNav: NavItem[] = [
+  { label: "Real Estate", href: "/industries/property" },
+  { label: "Retail", href: "/industries/retail" },
+  { label: "Education", href: "/industries/education" },
+  { label: "Healthcare", href: "/industries/healthcare" },
+  { label: "Travel", href: "/industries/travel" },
+  { label: "Food", href: "/industries/food" },
 ];
 
 export const footerColumns: FooterColumn[] = [

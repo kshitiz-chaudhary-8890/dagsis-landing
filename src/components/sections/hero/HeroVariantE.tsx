@@ -17,8 +17,9 @@ import {
   Send,
 } from "lucide-react";
 import { heroContent } from "@/content";
-import { Container } from "@/components/ui";
+import { ButtonLink, Container } from "@/components/ui";
 import { LogoMark } from "@/components/shared/Logo";
+import { ChannelBrandIcon } from "@/components/sections/features/ChannelBrandIcon";
 import styles from "./HeroVariantE.module.css";
 
 /* Demo data — sirf product window ke liye, apne hisaab se edit kar lo */
@@ -60,7 +61,7 @@ export function HeroVariantE() {
   const c = heroContent;
 
   return (
-    <section aria-label="Hero design 5" className={styles.hero}>
+    <section aria-label="Hero" className={styles.hero}>
       <div aria-hidden="true" className={styles.grid} />
 
       <Container className={styles.inner}>
@@ -72,23 +73,23 @@ export function HeroVariantE() {
           <h1 className={`${styles.headline} animate-fade-up`} style={{ animationDelay: "80ms" }}>
             <span className={styles.lineDark}>Your Customers Have</span>
             <span className={styles.lineGradient}>
-              Questions, <span className={styles.accentDark}>You Have</span> Dagsis
+              <em className="title-accent">Questions,</em> You Have <em className="title-accent">Dagsis</em>
             </span>
           </h1>
           <p className={`${styles.description} animate-fade-up`} style={{ animationDelay: "160ms" }}>
             {c.description}
           </p>
           <div className={`${styles.ctaRow} animate-fade-up`} style={{ animationDelay: "240ms" }}>
-            <Link href={c.primaryCta.href} className={styles.primaryButton}>
+            <ButtonLink href={c.primaryCta.href} size="custom" className={styles.primaryButton}>
               {c.primaryCta.label}
               <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-            <Link href={c.secondaryCta.href} className={styles.secondaryButton}>
+            </ButtonLink>
+            <ButtonLink href={c.secondaryCta.href} variant="secondary" size="custom" className={styles.secondaryButton}>
               <span className={styles.playCircle}>
                 <Play size={13} aria-hidden="true" />
               </span>
               {c.secondaryCta.label}
-            </Link>
+            </ButtonLink>
           </div>
           <ul className={`${styles.proof} animate-fade-up`} style={{ animationDelay: "300ms" }}>
             <li>
@@ -157,9 +158,11 @@ export function HeroVariantE() {
                             type="button"
                             role="tab"
                             aria-selected={tab === t}
+                            data-channel={t}
                             className={`${styles.tab} ${tab === t ? styles.tabActive : ""}`}
                             onClick={() => setTab(t)}
                           >
+                            <ChannelBrandIcon channel={t} />
                             {t}
                           </button>
                         ))}

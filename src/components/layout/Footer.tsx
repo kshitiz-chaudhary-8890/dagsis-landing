@@ -1,33 +1,69 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { footerColumns } from "@/content";
+import { industryNav, mainNav } from "@/content";
 import { Container } from "@/components/ui";
 import styles from "./Footer.module.css";
 
+const find = (label: string) => mainNav.find((item) => item.label === label)!;
+
+const columns = [
+  {
+    title: "Product",
+    links: ["Features", "Solutions", "Pricing", "Demo Websites"].map(find),
+  },
+  {
+    title: "Company",
+    links: ["About Us", "Industries", "Contact Us"].map(find),
+  },
+  { title: "Industries", links: [...industryNav] },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
-  const pages = footerColumns.find(column => column.title === "Legal")?.links ?? [];
-  const socials = [
-    { label: "X / Twitter", href: siteConfig.social.twitter },
-    { label: "LinkedIn", href: siteConfig.social.linkedin },
-    { label: "Contact", href: siteConfig.links.contactSales },
-  ];
 
-  return <footer className={styles.footer}>
-    <Container className="max-w-[1440px]">
-      <div className={styles.main}>
-        <div className={styles.brand}>
-          <Link href="/" aria-label={`${siteConfig.name}.ai home`} className={styles.logo}><Image src="/brand/dagsis-footer-reference.png" alt="Dagsis.ai — Platform for your AI solutions" width={5200} height={2000} sizes="250px" /></Link>
-          <p>AI agents that know your business. Train, deploy and start answering your customers.<br /><a href={siteConfig.links.signUp}>Start for Free<ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" /></a></p>
+  return (
+    <footer className={styles.footer}>
+      <Container className="max-w-[1440px]">
+        <div className={styles.top}>
+          <div className={styles.brand}>
+            <Link href="/" aria-label="Dagsis.ai home" className={styles.logo}>
+              <Image
+                src="/brand/dagsis-wordmark-dark.png"
+                alt="Dagsis.ai"
+                width={520}
+                height={200}
+                sizes="210px"
+              />
+            </Link>
+            <p>
+              AI agents that know your business. Train, deploy and start
+              answering your customers.
+            </p>
+          </div>
+
+          <nav className={styles.nav} aria-label="Footer navigation">
+            {columns.map((column) => (
+              <div key={column.title} className={styles.column}>
+                <h2>{column.title}</h2>
+                <ul>
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <Link href={link.href}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
-        <nav className={styles.navigation} aria-label="Footer navigation">
-          <div className={styles.column}><h2>Pages</h2><ul>{pages.map(page => <li key={page.label}>{page.href === "#" ? <span className={styles.unavailable} aria-disabled="true" title="This page is not available yet">{page.label}</span> : <Link href={page.href}>{page.label}</Link>}</li>)}</ul></div>
-          <div className={styles.column}><h2>Socials</h2><ul>{socials.map(social => <li key={social.label}><a href={social.href} target={social.href.startsWith("https://") ? "_blank" : undefined} rel={social.href.startsWith("https://") ? "noopener noreferrer" : undefined}>{social.label}<ArrowUpRight size={15} strokeWidth={1.5} aria-hidden="true" /></a></li>)}</ul></div>
-        </nav>
-      </div>
-      <div className={styles.copyright}><p>&copy; {year} {siteConfig.name}. All rights reserved.</p></div>
-    </Container>
-  </footer>;
+
+        <div className={styles.bottom}>
+          <p>
+            &copy; {year} {siteConfig.name}. All rights reserved.
+          </p>
+        </div>
+      </Container>
+    </footer>
+  );
 }
